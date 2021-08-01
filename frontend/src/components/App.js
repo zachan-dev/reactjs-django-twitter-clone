@@ -1,53 +1,32 @@
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { useState, useEffect } from 'react';
+import Sidebar from './Sidebar';
+import Feed from './Feed';
+import Widgets from './Widgets';
+import './App.css';
+import APIHelper from '../helpers/api'
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: [],
-      loaded: false,
-      placeholder: "Loading"
-    };
-  }
+function App() {
+  const [user, setUser] = useState({});
+  
+  useEffect(() =>{ // componentWillMount
+    APIHelper.getUserInfo().then(user => {
+      setUser(user);
+    });
+  }, []);
 
-  componentDidMount() {
-    fetch("api/tweet")
-      .then(response => {
-        if (response.status > 400) {
-          return this.setState(() => {
-            return { placeholder: "Something went wrong!" };
-          });
-        }
-        return response.json();
-      })
-      .then(data => {
-        this.setState(() => {
-          return {
-            data,
-            loaded: true
-          };
-        });
-      });
-  }
+  return (
+    // BEM
+    <div className="app">
+      {/* Sidebar (LHS) */}
+      <Sidebar />
 
-  render() {
-    return (
-      <ul>
-        {this.state.data.map(tweet => {
-          return (
-            <li key={tweet.id}>
-              {tweet.user} - {tweet.text}, created at {tweet.created_at}, updated at {tweet.updated_at}
-              <img src={tweet.image} alt={tweet.id} />
-            </li>
-          );
-        })}
-      </ul>
-    );
-  }
+      {/* Feed (middle) */}
+      <Feed user={user}/>
+
+      {/* Widgets (RHS) */}
+      <Widgets/>
+    </div>
+  );
 }
 
 export default App;
-
-const container = document.getElementById("app");
-render(<App />, container);

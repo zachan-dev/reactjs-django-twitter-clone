@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Tweetbox.css';
 import { Avatar, Button } from '@material-ui/core';
 import TextareaAutosize from 'react-textarea-autosize';
-import APIHelper from './helpers/api';
+import APIHelper from '../helpers/api';
 
 function Tweetbox({ user, setPosts }) {
     const [tweetMessage, setTweetMessage] = useState('');

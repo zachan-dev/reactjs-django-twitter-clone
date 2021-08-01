@@ -3,7 +3,7 @@ import Tweetbox from './Tweetbox';
 import Post from './Post';
 import './Feed.css';
 import FlipMove from 'react-flip-move';
-import APIHelper from './helpers/api';
+import APIHelper from '../helpers/api';
 
 function Feed({ user }) {
     const [posts, setPosts] = useState([]);
