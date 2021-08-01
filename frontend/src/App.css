@@ -1,0 +1,26 @@
+* {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+  /** Global colors */
+  --twitter-color: rgb(29, 161, 242);
+  --twitter-lighter-color: rgb(142,208,249);
+  --twitter-lightest-color: rgba(29, 161, 242, 0.1);
+  --twitter-darker-color: rgb(26, 145, 218);
+  --twitter-border: rgb(235, 238, 240);
+  --twitter-background: rgb(247, 249, 250);
+}
+
+.app {
+  display: flex;
+  height: 100vh;
+  max-width: 1300px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 10px;
+}
+
+input:focus {
+  outline: none !important;
+}

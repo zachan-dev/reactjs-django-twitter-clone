@@ -1,0 +1,29 @@
+.sidebarOption {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.sidebarOption:hover {
+    background-color: var(--twitter-lightest-color);
+    border-radius: 30px;
+    color: var(--twitter-color);
+    transition: color 100ms ease-out;
+}
+
+/** Material UI icon **/
+.sidebarOption > .MuiSvgIcon-root {
+    padding: 15px;
+    padding-right: 15px;
+    font-size: 30px;
+}
+
+.sidebarOption > h2 {
+    font-weight: 800;
+    font-size: 20px;
+    margin-right: 20px;
+}
+
+.sidebarOption--active {
+    color: var(--twitter-color);
+}
