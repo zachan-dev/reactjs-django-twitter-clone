@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Sidebar from './Sidebar';
 import Feed from './Feed';
 import Widgets from './Widgets';
-import './App.css';
+import '../styles/components/App.css';
 import APIHelper from '../helpers/api'
 
 function App() {

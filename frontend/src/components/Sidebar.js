@@ -1,6 +1,6 @@
 // rfce: useful snippet
 import React from 'react';
-import './Sidebar.css';
+import '../styles/components/Sidebar.css';
 import SidebarOption from './SidebarOption';
 /** Icons */
 import TwitterIcon from '@material-ui/icons/Twitter';

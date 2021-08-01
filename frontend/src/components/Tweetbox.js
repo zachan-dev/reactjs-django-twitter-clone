@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Tweetbox.css';
+import '../styles/components/Tweetbox.css';
 import { Avatar, Button } from '@material-ui/core';
 import TextareaAutosize from 'react-textarea-autosize';
 import APIHelper from '../helpers/api';

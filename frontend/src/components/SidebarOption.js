@@ -1,5 +1,5 @@
 import React from 'react';
-import './SidebarOption.css';
+import '../styles/components/SidebarOption.css';
 
 // onHover turn Blue
 // pass component as prop: pass it an icon with styling, text and es6

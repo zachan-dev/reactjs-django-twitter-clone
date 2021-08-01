@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Tweetbox from './Tweetbox';
 import Post from './Post';
-import './Feed.css';
+import '../styles/components/Feed.css';
 import FlipMove from 'react-flip-move';
 import APIHelper from '../helpers/api';
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Widgets.css';
+import '../styles/components/Widgets.css';
 import {
     TwitterTimelineEmbed,
     TwitterShareButton,
