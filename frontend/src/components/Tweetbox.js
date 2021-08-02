@@ -4,7 +4,7 @@ import { Avatar, Button } from '@material-ui/core';
 import TextareaAutosize from 'react-textarea-autosize';
 import APIHelper from '../helpers/api';
 
-function Tweetbox({ user, setPosts }) {
+function Tweetbox({ user, fecthPosts }) {
     const [tweetMessage, setTweetMessage] = useState('');
     const [tweetImage, setTweetImage] = useState('');
 
@@ -16,19 +16,12 @@ function Tweetbox({ user, setPosts }) {
             text: tweetMessage,
             image: tweetImage,
         }).then(data => {
-            if (APIHelper.type(data) == "Object" && data.error) {
+            if (APIHelper.type(data) === "Object" && data.error) {
                 return console.error(data.error);
             }
             setTweetMessage('');
             setTweetImage('');
-            APIHelper.getAllTweets()
-                .then(data => {
-                    if (APIHelper.type(data) == "Object" && data.error) {
-                        return console.error(data.error);
-                    }
-                    data.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());  // latest first
-                    setPosts(data);
-                });
+            fecthPosts();
         });
     };
 

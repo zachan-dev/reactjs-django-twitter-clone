@@ -24,6 +24,7 @@
 .post__footer {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin-top: 20px;
 }
 
@@ -50,4 +51,19 @@
 
 .post__avatar {
     padding: 20px;
+}
+
+.post__likeDiv {
+    height: 50px;
+}
+
+.post__likeCount {
+    font-size: 13px;
+    vertical-align: 110%;
+    color: grey;
+}
+
+.post__likeCount__empty {
+    vertical-align: 90%;
+    margin-left: 7px;
 }

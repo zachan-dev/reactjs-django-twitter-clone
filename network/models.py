@@ -22,8 +22,8 @@ class Tweet(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
 class TweetLike(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    tweet = models.ForeignKey(Tweet, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='like_set')
+    tweet = models.ForeignKey(Tweet, on_delete=models.CASCADE, related_name='like_set')
     created_at = models.DateTimeField(auto_now_add=True)
 
 class UserFollower(models.Model):

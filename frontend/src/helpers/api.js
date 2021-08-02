@@ -1,4 +1,5 @@
 const $ = require( "jquery" );
+var withQuery = require('with-query').default;
 
 // Helpers for API Handlers
 // JSON detection
@@ -56,8 +57,8 @@ const getUserInfo = () => {
         });
 };
 
-const getAllTweets = () => {
-    return fetch("api/tweet/")
+const getAllTweets = (query) => {
+    return fetch(withQuery("api/tweet/", query))
         .then(response => {
             if (response.status >= 400) {
                 return { 
@@ -74,7 +75,7 @@ const postTweet = (tweet) => {
         headers: {
             'Accept': 'application/json',
             "Content-Type": "application/json",
-            'X-CSRFToken': getCookie('csrftoken')
+            'X-CSRFToken': getCookie('csrftoken'),
         },
         body: JSON.stringify(tweet)
     })
@@ -89,7 +90,63 @@ const postTweet = (tweet) => {
 };
 
 const likeTweet = (tweetID) => {
-}
+    return fetch("api/tweet_like/", {
+        method: "POST",
+        headers: {
+            'Accept': 'application/json',
+            "Content-Type": "application/json",
+            'X-CSRFToken': getCookie('csrftoken'),
+        },
+        body: JSON.stringify({
+            "tweet": tweetID
+        })
+    })
+};
+
+const getTweetLikes = (query) => {
+    return fetch(withQuery('api/tweet_like/', query))
+        .then(response => {
+            if (response.status >= 400) {
+                return { 
+                    'error': 'Unlike tweet: Cannot get tweet likes by current user and tweetID' 
+                };
+            }
+            return response.json();
+        });
+};
+
+const isTweetLiked = (tweetID) => {
+    return getTweetLikes({ 'tweet': tweetID })
+        .then(likes => {
+            if (type(likes) === "Object" && likes.error) {
+                return { 
+                    'error': 'Unlike tweet: Something went wrong' 
+                };
+            }
+            return like.length > 0;
+        });
+};
+
+const unlikeTweet = (tweetID) => {
+    return getTweetLikes({ 'tweet': tweetID })
+        .then(likes => {
+            if (type(likes) === "Object" && likes.error) {
+                return { 
+                    'error': 'Unlike tweet: Something went wrong' 
+                };
+            }
+            for (var i = 0; i < likes.length; i++) {
+                return fetch(`api/tweet_like/${likes[i].id}`, {
+                    method: "DELETE",
+                    headers: {
+                        'Accept': 'application/json',
+                        "Content-Type": "application/json",
+                        'X-CSRFToken': getCookie('csrftoken'),
+                    }
+                });
+            }
+        });
+};
 
 
-export default { type, getCookie, getUserInfo, getAllTweets, postTweet, };
+export default { type, getCookie, getUserInfo, getAllTweets, postTweet, likeTweet, isTweetLiked, unlikeTweet };

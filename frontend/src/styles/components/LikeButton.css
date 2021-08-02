@@ -1,0 +1,30 @@
+.like-button {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+}
+
+.like-button__heart {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background: url("/static/images/heart.png") no-repeat;
+    background-position: 0 0;
+    cursor: pointer;
+    transition: 0.5s;
+    background-size: 1450px;
+}
+
+.like-button__heart:hover {
+    background: url("/static/images/heart_hover.png") no-repeat;
+    background-position: 0 0;
+    cursor: pointer;
+    transition: background-position 1s steps(28);
+    transition-duration: 0s;
+    background-size: 1450px;
+}
+
+.like-button__heart.is-active {
+    transition-duration: 1s;
+    background-position: -1400px 0;
+}

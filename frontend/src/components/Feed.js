@@ -8,17 +8,17 @@ import APIHelper from '../helpers/api';
 function Feed({ user }) {
     const [posts, setPosts] = useState([]);
 
+    const fecthPosts = () => {
+        return APIHelper.getAllTweets({ sort: 'latest', related: 'likes_current' })
+            .then(data => {
+                if (APIHelper.type(data) === "Object" && data.error) {
+                    return console.error(data.error);
+                }
+                setPosts(data);
+            });
+    };
+
     useEffect(() => {
-        const fecthPosts = () => {
-            APIHelper.getAllTweets()
-                .then(data => {
-                    if (APIHelper.type(data) == "Object" && data.error) {
-                        return console.error(data.error);
-                    }
-                    data.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());  // latest first
-                    setPosts(data);
-                });
-        };
         fecthPosts(); // fetch immediately
         setInterval(fecthPosts, 5000); // fetch every 5 seconds
     }, [])
@@ -31,14 +31,15 @@ function Feed({ user }) {
             </div>
             
             {/* TweetBox */}
-            <Tweetbox user={user} setPosts={setPosts}/>
+            <Tweetbox user={user} fecthPosts={fecthPosts}/>
             <div className="feed__seperator"></div>
 
             {/* Post */}
             <FlipMove>
                 {posts.map(post => (
                     <Post
-                        key={post.text}
+                        key={post.id}
+                        tweet={post.id}
                         displayName={post.user.display_name}
                         username={post.user.username}
                         verified={post.user.verified}
@@ -46,6 +47,9 @@ function Feed({ user }) {
                         avatar={post.user.photo}
                         image={post.image}
                         dateTime={post.created_at}
+                        likes_count={post.likes_count}
+                        liked={post.likes.length > 0}
+                        fecthPosts={fecthPosts}
                     />
                 ))}
             </FlipMove>

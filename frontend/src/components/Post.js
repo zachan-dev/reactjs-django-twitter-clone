@@ -1,6 +1,7 @@
 import { Avatar } from '@material-ui/core';
-import React, { forwardRef } from 'react'
+import React, { forwardRef, useState } from 'react'
 import '../styles/components/Post.css';
+import LikeButton from './LikeButton';
 import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
 import ChatBubbleOutlineIcon from "@material-ui/icons/ChatBubbleOutline";
 import RepeatIcon from "@material-ui/icons/Repeat";
@@ -11,6 +12,7 @@ import moment from 'moment-timezone';
 
 const Post = forwardRef((
     { 
+        tweet,
         displayName, 
         username, 
         verified, 
@@ -18,7 +20,11 @@ const Post = forwardRef((
         image, 
         avatar,
         dateTime, 
+        likes_count,
+        liked,
+        fecthPosts,
     }, ref ) => {
+
     return (
         <div className="post" ref={ref}>
             <div className="post__avatar">
@@ -49,7 +55,13 @@ const Post = forwardRef((
                 <div className="post__footer">
                     <ChatBubbleOutlineIcon fontSize="small" />
                     <RepeatIcon fontSize="small" />
-                    <FavoriteIcon fontSize="small" color="secondary" />
+                    <div className="post__likeDiv">
+                        <LikeButton tweet={tweet} liked={liked} fecthPosts={fecthPosts} />
+                        {likes_count > 0 ? 
+                            <span className="post__likeCount">{likes_count}</span> : 
+                            <span className="post__likeCount__empty"></span>
+                        }
+                    </div>
                     <PublishIcon fontSize="small" />
                 </div>
             </div>
