@@ -2,13 +2,14 @@ import { Avatar } from '@material-ui/core';
 import React, { forwardRef, useState } from 'react'
 import '../styles/components/Post.css';
 import LikeButton from './LikeButton';
+import MoreButton from './MoreButton';
 import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
 import ChatBubbleOutlineIcon from "@material-ui/icons/ChatBubbleOutline";
 import RepeatIcon from "@material-ui/icons/Repeat";
-import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
-import FavoriteIcon from "@material-ui/icons/Favorite";
 import PublishIcon from "@material-ui/icons/Publish";
 import moment from 'moment-timezone';
+import Tooltip from '@material-ui/core/Tooltip';
+import MathHelper from '../helpers/math'
 
 const Post = forwardRef((
     { 
@@ -22,7 +23,7 @@ const Post = forwardRef((
         dateTime, 
         likes_count,
         liked,
-        fecthPosts,
+        fetchPosts,
     }, ref ) => {
 
     return (
@@ -32,6 +33,7 @@ const Post = forwardRef((
             </div>
             <div className="post__body">
                 <div className="post__header">
+                    <MoreButton className="post__more" avatar={avatar} text={text} image={image} tweet={tweet} fetchPosts={fetchPosts}/>
                     <div className="post__headerText">
                         <h3 style={{fontWeight: "normal"}}>
                             <b>{displayName}{" "}</b>
@@ -53,16 +55,22 @@ const Post = forwardRef((
                     alt=""
                 />
                 <div className="post__footer">
-                    <ChatBubbleOutlineIcon fontSize="small" />
-                    <RepeatIcon fontSize="small" />
+                    <Tooltip title="Reply" aria-label="reply">
+                        <ChatBubbleOutlineIcon fontSize="small" />
+                    </Tooltip>
+                    <Tooltip title="Retweet" aria-label="retweet">
+                        <RepeatIcon fontSize="small" />
+                    </Tooltip>
                     <div className="post__likeDiv">
-                        <LikeButton tweet={tweet} liked={liked} fecthPosts={fecthPosts} />
+                        <LikeButton tweet={tweet} liked={liked} fetchPosts={fetchPosts} />
                         {likes_count > 0 ? 
-                            <span className="post__likeCount">{likes_count}</span> : 
+                            <span className="post__likeCount">{MathHelper.nFormatter(likes_count, 1)}</span> : 
                             <span className="post__likeCount__empty"></span>
                         }
                     </div>
-                    <PublishIcon fontSize="small" />
+                    <Tooltip title="Share" aria-label="share">
+                        <PublishIcon fontSize="small" />
+                    </Tooltip>
                 </div>
             </div>
         </div>

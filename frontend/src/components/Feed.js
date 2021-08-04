@@ -7,8 +7,8 @@ import APIHelper from '../helpers/api';
 
 function Feed({ user }) {
     const [posts, setPosts] = useState([]);
-
-    const fecthPosts = () => {
+    
+    const fetchPosts = () => {
         return APIHelper.getAllTweets({ sort: 'latest', related: 'likes_current' })
             .then(data => {
                 if (APIHelper.type(data) === "Object" && data.error) {
@@ -19,19 +19,26 @@ function Feed({ user }) {
     };
 
     useEffect(() => {
-        fecthPosts(); // fetch immediately
-        setInterval(fecthPosts, 5000); // fetch every 5 seconds
-    }, [])
+        fetchPosts(); // fetch immediately
+    }, []);
+
+    const handleScroll = (e) => {
+        const top = e.target.scrollTop === 0;
+        if (top) {
+            fetchPosts(); // only fetch when scroll to the top of feeds
+        }
+    };
+
 
     return (
-        <div className="feed">
+        <div className="feed" onScroll={handleScroll}>
             {/* Header */}
             <div className="feed__header">
                 <h2>Home</h2>
             </div>
             
             {/* TweetBox */}
-            <Tweetbox user={user} fecthPosts={fecthPosts}/>
+            <Tweetbox isEditMode={false} avatar={user.photo} fetchPosts={fetchPosts}/>
             <div className="feed__seperator"></div>
 
             {/* Post */}
@@ -49,7 +56,7 @@ function Feed({ user }) {
                         dateTime={post.created_at}
                         likes_count={post.likes_count}
                         liked={post.likes.length > 0}
-                        fecthPosts={fecthPosts}
+                        fetchPosts={fetchPosts}
                     />
                 ))}
             </FlipMove>

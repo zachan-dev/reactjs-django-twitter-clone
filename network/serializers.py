@@ -13,10 +13,10 @@ class TweetUserSerializer(serializers.ModelSerializer):
         model = Tweet
         fields = ('id', 'user', 'text', 'image', 'created_at', 'updated_at')
 
-class TweetSerializer(serializers.ModelSerializer):
+class TweetWithoutUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tweet
-        fields = ('id', 'user', 'text', 'image', 'created_at', 'updated_at')
+        fields = ('id', 'text', 'image', 'created_at', 'updated_at')
 
 class TweetLikeSerializer(serializers.ModelSerializer):
     class Meta:

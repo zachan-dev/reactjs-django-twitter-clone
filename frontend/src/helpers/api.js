@@ -148,5 +148,43 @@ const unlikeTweet = (tweetID) => {
         });
 };
 
+const deleteTweet = (tweetID) => {
+    return fetch(`api/tweet/${tweetID}`, {
+        method: "DELETE",
+        headers: {
+            'X-CSRFToken': getCookie('csrftoken'),
+        },
+    })
+    .then(response => {
+        if (response.status >= 400) {
+            return { 
+                'error': 'Delete tweet: Something went wrong' 
+            };
+        }
+        return response.json();
+    });
+};
 
-export default { type, getCookie, getUserInfo, getAllTweets, postTweet, likeTweet, isTweetLiked, unlikeTweet };
+const editTweet = (tweetID, tweet) => {
+    return fetch(`api/tweet/${tweetID}/`, {
+        method: "PUT",
+        headers: {
+            'Accept': 'application/json',
+            "Content-Type": "application/json",
+            'X-CSRFToken': getCookie('csrftoken'),
+        },
+        body: JSON.stringify(tweet)
+    })
+    .then(response => {
+        if (response.status >= 400) {
+            return { 
+                'error': 'Edit tweet: Something went wrong' 
+            };
+        }
+        return response.json();
+    });
+};
+
+
+export default { type, getCookie, getUserInfo, getAllTweets, postTweet, 
+                 likeTweet, isTweetLiked, unlikeTweet, deleteTweet, editTweet };

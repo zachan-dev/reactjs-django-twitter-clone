@@ -4,38 +4,54 @@ import { Avatar, Button } from '@material-ui/core';
 import TextareaAutosize from 'react-textarea-autosize';
 import APIHelper from '../helpers/api';
 
-function Tweetbox({ user, fecthPosts }) {
-    const [tweetMessage, setTweetMessage] = useState('');
-    const [tweetImage, setTweetImage] = useState('');
+function Tweetbox({ isEditMode, avatar, fetchPosts, initText='', initImage='', tweetID=null, handleEditModalClose=null }) {
+    const [tweetMessage, setTweetMessage] = useState(initText);
+    const [tweetImage, setTweetImage] = useState(initImage);
 
     const sendTweet = e => {
         e.preventDefault();
-
-        APIHelper.postTweet({
-            user: user.id,
-            text: tweetMessage,
-            image: tweetImage,
-        }).then(data => {
-            if (APIHelper.type(data) === "Object" && data.error) {
-                return console.error(data.error);
+        
+        if (isEditMode) {
+            // edit mode
+            if (tweetID) {
+                APIHelper.editTweet(tweetID, {
+                    text: tweetMessage,
+                    image: tweetImage,
+                }).then(data => {
+                    if (APIHelper.type(data) === "Object" && data.error) {
+                        return console.error(data.error);
+                    }
+                    if (handleEditModalClose) handleEditModalClose();
+                    fetchPosts();
+                });
             }
-            setTweetMessage('');
-            setTweetImage('');
-            fecthPosts();
-        });
+        } else {
+            // create mode
+            APIHelper.postTweet({
+                text: tweetMessage,
+                image: tweetImage,
+            }).then(data => {
+                if (APIHelper.type(data) === "Object" && data.error) {
+                    return console.error(data.error);
+                }
+                setTweetMessage('');
+                setTweetImage('');
+                fetchPosts();
+            });
+        }
     };
 
     return (
         <div className="tweetBox">
             <form>
                 <div className="tweetBox__input">
-                    <Avatar src={user.photo} />
+                    <Avatar src={avatar} />
                     <TextareaAutosize 
                         className="tweetBox__input__textarea"
                         onChange={e => setTweetMessage(e.target.value)}
                         value={tweetMessage} 
                         placeholder="What's happening?" 
-                        type="text"    
+                        type="url"    
                     />
                 </div>
                 <input 

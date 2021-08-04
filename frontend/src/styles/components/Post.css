@@ -34,6 +34,7 @@
 }
 
 .post__headerText > h3 {
+    margin-top: 5px;
     font-size: 15px;
     margin-bottom: 5px;
 }

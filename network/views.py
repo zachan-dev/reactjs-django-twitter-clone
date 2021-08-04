@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.urls import reverse
 
 from .models import User, Tweet, TweetLike, UserFollower
-from .serializers import UserSerializer, TweetUserSerializer, TweetSerializer, TweetLikeSerializer, TweetLikeWithoutUserSerializer, UserFollowerSerializer
+from .serializers import UserSerializer, TweetUserSerializer, TweetWithoutUserSerializer, TweetLikeSerializer, TweetLikeWithoutUserSerializer, UserFollowerSerializer
 from rest_framework import viewsets
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -29,7 +29,7 @@ class TweetAPIView(viewsets.ModelViewSet):
         if self.request.method == 'GET':
             return TweetUserSerializer
         else:
-            return TweetSerializer
+            return TweetWithoutUserSerializer
         
     def list(self, request):
         queryset = self.get_queryset()
@@ -52,6 +52,14 @@ class TweetAPIView(viewsets.ModelViewSet):
                     ).data
 
         return Response(serializer.data)
+    
+    def perform_create(self, serializer):
+        kwargs = {
+            'user': self.request.user, 
+            'text': serializer.validated_data['text'],
+            'image': serializer.validated_data['image'],
+        }
+        serializer.save(**kwargs)
 
 class CurrentUserView(APIView):
     def get(self, request):

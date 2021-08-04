@@ -1,0 +1,41 @@
+.moreButton__icon {
+    float: right;
+    padding: 5px;
+    border-radius: 30px;
+}
+
+.moreButton__icon:hover, .moreButton__icon.is-active {
+    background-color: var(--twitter-lightest-color);
+    color: var(--twitter-color);
+}
+
+.moreButton__icon:hover {
+    cursor: pointer;
+}
+
+.moreButton__delete {
+    color: rgb(224, 36, 94);
+}
+
+.moreButton__editDialog .MuiPaper-root {
+    border-radius: 16px;
+}
+
+.moreButton__editDialog__closeButton {
+    position: 'absolute';
+    right: 0;
+    top: 0;
+}
+
+.moreButton__editDialog__closeButton {
+    color: var(--twitter-color) !important;
+}
+.moreButton__editDialog__closeButton:hover {
+    background-color: var(--twitter-lightest-color) !important;
+}
+.moreButton__editDialog__title {
+    padding: 8px 16px !important;
+}
+.moreButton__editDialog__content {
+    padding: 0px !important;
+}
