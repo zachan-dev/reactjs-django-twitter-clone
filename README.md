@@ -89,6 +89,7 @@
 
 ### Built With
 
+* [Node](https://nodejs.org/)
 * [React](https://reactjs.org/)
 * [Django REST Framework](https://www.django-rest-framework.org/)
 * [Material UI](https://material-ui.com/)
@@ -102,10 +103,14 @@ To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
+Make sure npm and python are installed.
 * npm
   ```sh
-  npm install npm@latest -g
+  npm --version
+  ```
+* python
+  ```sh
+  python --version
   ```
 
 ### Installation
@@ -114,11 +119,33 @@ This is an example of how to list things you need to use the software and how to
    ```sh
    git clone https://github.com/zachan-dev/reactjs-django-twitter-clone.git
    ```
-2. Install NPM packages
+2. Activate python virtual environment
    ```sh
+   python -m venv testVenv
+   .\\testVenv\\Scripts\\activate.bat
+   ```
+3. Install PIP packages
+   ```sh
+   pip install -r requirements.py
+   ```
+4. Install NPM packages
+   ```sh
+   cd frontend
    npm install
    ```
-
+5. Build React outputs
+   ```sh
+   npm run dev
+   ```
+6. Django Init
+   ```sh
+   cd ..
+   python manage.py makemigrations network
+   python manage.py makemigrations
+   python manage.py migrate
+   python manage.py createsuperuser
+7. Run Django Server
+   python manage.py runserver
 
 
 <!-- USAGE EXAMPLES -->
