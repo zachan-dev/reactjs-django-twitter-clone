@@ -179,15 +179,15 @@ Project Link: [https://github.com/zachan-dev/reactjs-django-twitter-clone](https
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/zachan-dev/repo.svg?style=for-the-badge
-[contributors-url]: https://github.com/zachan-dev/repo/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/zachan-dev/repo.svg?style=for-the-badge
-[forks-url]: https://github.com/zachan-dev/repo/network/members
-[stars-shield]: https://img.shields.io/github/stars/zachan-dev/repo.svg?style=for-the-badge
-[stars-url]: https://github.com/zachan-dev/repo/stargazers
-[issues-shield]: https://img.shields.io/github/issues/zachan-dev/repo.svg?style=for-the-badge
-[issues-url]: https://github.com/zachan-dev/repo/issues
-[license-shield]: https://img.shields.io/github/license/zachan-dev/repo.svg?style=for-the-badge
-[license-url]: https://github.com/zachan-dev/repo/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/zachan-dev/reactjs-django-twitter-clone.svg?style=for-the-badge
+[contributors-url]: https://github.com/zachan-dev/reactjs-django-twitter-clone/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/zachan-dev/reactjs-django-twitter-clone.svg?style=for-the-badge
+[forks-url]: https://github.com/zachan-dev/reactjs-django-twitter-clone/network/members
+[stars-shield]: https://img.shields.io/github/stars/zachan-dev/reactjs-django-twitter-clone.svg?style=for-the-badge
+[stars-url]: https://github.com/zachan-dev/reactjs-django-twitter-clone/stargazers
+[issues-shield]: https://img.shields.io/github/issues/zachan-dev/reactjs-django-twitter-clone.svg?style=for-the-badge
+[issues-url]: https://github.com/zachan-dev/reactjs-django-twitter-clone/issues
+[license-shield]: https://img.shields.io/github/license/zachan-dev/reactjs-django-twitter-clone.svg?style=for-the-badge
+[license-url]: https://github.com/zachan-dev/reactjs-django-twitter-clone/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/zachan-dev
+[linkedin-url]: https://linkedin.com/in/zach-chan-hk/
