@@ -1,15 +1,16 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import '../styles/components/SidebarOption.css';
 
 // onHover turn Blue
 // pass component as prop: pass it an icon with styling, text and es6
 
-function SidebarOption({ active, text, Icon }) {
+function SidebarOption({ to, exact, text, Icon }) {
     return (
-        <div className={`sidebarOption ${active && 'sidebarOption--active'}`}>
+        <NavLink className="sidebarOption" exact={exact} to={to} activeClassName="sidebarOption--active">
             <Icon />
             <h2>{text}</h2>
-        </div>
+        </NavLink>
     );
 };
 

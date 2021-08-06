@@ -45,3 +45,7 @@
 .sidebar__tweet:hover {
     background-color: var(--twitter-darker-color) !important;
 }
+
+.sidebar__twitterIcon__navLink {
+    text-decoration: none;
+}

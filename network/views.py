@@ -1,7 +1,7 @@
 from django.contrib.auth import authenticate, login, logout
 from django.db import IntegrityError
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 
 from .models import User, Tweet, TweetLike, UserFollower
@@ -13,6 +13,17 @@ from rest_framework.response import Response
 class UserAPIView(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+
+class CurrentUserView(APIView):
+    def get(self, request):
+        serializer = UserSerializer(request.user)
+        return Response(serializer.data)
+
+class UserByUsernameView(APIView):
+    def get(self, request, **kwargs):
+        user = get_object_or_404(User, username=kwargs['username'])
+        serializer = UserSerializer(user)
+        return Response(serializer.data)
 
 class TweetAPIView(viewsets.ModelViewSet):
     queryset = Tweet.objects.all()
@@ -61,11 +72,6 @@ class TweetAPIView(viewsets.ModelViewSet):
         }
         serializer.save(**kwargs)
 
-class CurrentUserView(APIView):
-    def get(self, request):
-        serializer = UserSerializer(request.user)
-        return Response(serializer.data)
-
 class TweetLikeAPIView(viewsets.ModelViewSet):
     queryset = TweetLike.objects.all()
 
@@ -106,8 +112,6 @@ class FollowAPIView(viewsets.ModelViewSet):
 
 
 
-def index(request):
-    return render(request, "network/index.html")
 
 def login_view(request):
     if request.method == "POST":

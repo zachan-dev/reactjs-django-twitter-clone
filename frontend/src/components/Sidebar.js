@@ -1,5 +1,6 @@
 // rfce: useful snippet
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import '../styles/components/Sidebar.css';
 import SidebarOption from './SidebarOption';
 /** Icons */
@@ -19,17 +20,19 @@ function Sidebar() {
     return (
         <div className="sidebar">
             {/* Twitter icon */}
-            <TwitterIcon className="sidebar__twitterIcon" />
+            <NavLink className="sidebar__twitterIcon__navLink" exact to='/'>
+                <TwitterIcon className="sidebar__twitterIcon" />
+            </NavLink>
 
             {/* SidebarOption */}
-            <SidebarOption Icon={HomeIcon} text="Home" active />
-            <SidebarOption Icon={SearchIcon} text="Explore" />
-            <SidebarOption Icon={NotificationsNoneIcon} text="Notifications" />
-            <SidebarOption Icon={MailOutlineIcon} text="Messages" />
-            <SidebarOption Icon={BookmarkBorderIcon} text="Bookmarks" />
-            <SidebarOption Icon={ListAltIcon} text="Lists" />
-            <SidebarOption Icon={PermIdentityIcon} text="Profile" />
-            <SidebarOption Icon={MoreHorizIcon} text="More" />
+            <SidebarOption Icon={HomeIcon} text="Home" to="/" exact={true} />
+            <SidebarOption Icon={SearchIcon} text="Explore" to="/search" exact={false}  />
+            <SidebarOption Icon={NotificationsNoneIcon} text="Notifications" to="/notifications" exact={false} />
+            <SidebarOption Icon={MailOutlineIcon} text="Messages" to="/messages" exact={false} />
+            <SidebarOption Icon={BookmarkBorderIcon} text="Bookmarks" to="/bookmarks" exact={false} />
+            <SidebarOption Icon={ListAltIcon} text="Lists" to="/lists" exact={false} />
+            <SidebarOption Icon={PermIdentityIcon} text="Profile" to="/profile" exact={false} />
+            <SidebarOption Icon={MoreHorizIcon} text="More" to="/more" exact={false} />
 
             {/* Button -> Tweet */}
             <Button variant="outlined" className="sidebar__tweet" fullWidth>Tweet</Button>

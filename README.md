@@ -134,8 +134,13 @@ Make sure npm and python are installed.
    npm install
    ```
 5. Build React outputs
+   - For Development Environment
    ```sh
    npm run dev
+   ```
+   - For Production Environment
+   ```sh
+   npm run build
    ```
 6. Django Init
    ```sh
@@ -145,8 +150,9 @@ Make sure npm and python are installed.
    python manage.py migrate
    python manage.py createsuperuser
 7. Run Django Server
+   ```sh
    python manage.py runserver
-
+   ```
 
 <!-- USAGE EXAMPLES -->
 ## Usage

@@ -45,20 +45,30 @@ const getCookie = (name) => {
 //----------------------------------------------------------------
 // Actual API Handlers
 
-const getUserInfo = () => {
-    return fetch("current_user/")
-        .then(response => {
-            if (response.status >= 400) {
-                return { 
-                    'error': 'Retrieve current user: Something went wrong' 
-                };
-            }
-            return response.json();
-        });
+const getCurrentUserInfo = () => {
+    return fetch("/api/current_user/").then(response => {
+        if (response.status >= 400) {
+            return { 
+                'error': 'Retrieve current user: Something went wrong' 
+            };
+        }
+        return response.json();
+    });
+};
+
+const getUserInfoByUsername = (username) => {
+    return fetch(`/api/username/${username}/`).then(response => {
+        if (response.status >= 400) {
+            return { 
+                'error': 'Retrieve user by username: Something went wrong' 
+            };
+        }
+        return response.json();
+    });
 };
 
 const getAllTweets = (query) => {
-    return fetch(withQuery("api/tweet/", query))
+    return fetch(withQuery("/api/tweet/", query))
         .then(response => {
             if (response.status >= 400) {
                 return { 
@@ -70,7 +80,7 @@ const getAllTweets = (query) => {
 };
 
 const postTweet = (tweet) => {
-    return fetch("api/tweet/", {
+    return fetch("/api/tweet/", {
         method: "POST",
         headers: {
             'Accept': 'application/json',
@@ -90,7 +100,7 @@ const postTweet = (tweet) => {
 };
 
 const likeTweet = (tweetID) => {
-    return fetch("api/tweet_like/", {
+    return fetch("/api/tweet_like/", {
         method: "POST",
         headers: {
             'Accept': 'application/json',
@@ -104,7 +114,7 @@ const likeTweet = (tweetID) => {
 };
 
 const getTweetLikes = (query) => {
-    return fetch(withQuery('api/tweet_like/', query))
+    return fetch(withQuery('/api/tweet_like/', query))
         .then(response => {
             if (response.status >= 400) {
                 return { 
@@ -136,7 +146,7 @@ const unlikeTweet = (tweetID) => {
                 };
             }
             for (var i = 0; i < likes.length; i++) {
-                return fetch(`api/tweet_like/${likes[i].id}`, {
+                return fetch(`/api/tweet_like/${likes[i].id}`, {
                     method: "DELETE",
                     headers: {
                         'Accept': 'application/json',
@@ -149,7 +159,7 @@ const unlikeTweet = (tweetID) => {
 };
 
 const deleteTweet = (tweetID) => {
-    return fetch(`api/tweet/${tweetID}`, {
+    return fetch(`/api/tweet/${tweetID}`, {
         method: "DELETE",
         headers: {
             'X-CSRFToken': getCookie('csrftoken'),
@@ -166,7 +176,7 @@ const deleteTweet = (tweetID) => {
 };
 
 const editTweet = (tweetID, tweet) => {
-    return fetch(`api/tweet/${tweetID}/`, {
+    return fetch(`/api/tweet/${tweetID}/`, {
         method: "PUT",
         headers: {
             'Accept': 'application/json',
@@ -186,5 +196,6 @@ const editTweet = (tweetID, tweet) => {
 };
 
 
-export default { type, getCookie, getUserInfo, getAllTweets, postTweet, 
-                 likeTweet, isTweetLiked, unlikeTweet, deleteTweet, editTweet };
+export default { type, getCookie, 
+                 getCurrentUserInfo, getUserInfoByUsername,
+                 getAllTweets, postTweet, likeTweet, isTweetLiked, unlikeTweet, deleteTweet, editTweet };
