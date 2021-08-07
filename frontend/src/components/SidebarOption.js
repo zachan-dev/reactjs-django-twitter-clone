@@ -5,9 +5,9 @@ import '../styles/components/SidebarOption.css';
 // onHover turn Blue
 // pass component as prop: pass it an icon with styling, text and es6
 
-function SidebarOption({ to, exact, text, Icon }) {
+function SidebarOption({ to, end, text, Icon }) {
     return (
-        <NavLink className="sidebarOption" exact={exact} to={to} activeClassName="sidebarOption--active">
+        <NavLink className="sidebarOption" end={end} to={to}>
             <Icon />
             <h2>{text}</h2>
         </NavLink>

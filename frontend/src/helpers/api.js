@@ -67,6 +67,26 @@ const getUserInfoByUsername = (username) => {
     });
 };
 
+const updateUserInfo = (userInfo) => {
+    return fetch(`/api/current_user/`, {
+        method: "PATCH",
+        headers: {
+            'Accept': 'application/json',
+            "Content-Type": "application/json",
+            'X-CSRFToken': getCookie('csrftoken'),
+        },
+        body: JSON.stringify(userInfo)
+    })
+    .then(response => {
+        if (response.status >= 400) {
+            return { 
+                'error': 'Update user by username: Something went wrong' 
+            };
+        }
+        return {'message': 'User updated'};
+    });
+};
+
 const getAllTweets = (query) => {
     return fetch(withQuery("/api/tweet/", query))
         .then(response => {
@@ -146,7 +166,7 @@ const unlikeTweet = (tweetID) => {
                 };
             }
             for (var i = 0; i < likes.length; i++) {
-                return fetch(`/api/tweet_like/${likes[i].id}`, {
+                return fetch(`/api/tweet_like/${likes[i].id}/`, {
                     method: "DELETE",
                     headers: {
                         'Accept': 'application/json',
@@ -159,7 +179,7 @@ const unlikeTweet = (tweetID) => {
 };
 
 const deleteTweet = (tweetID) => {
-    return fetch(`/api/tweet/${tweetID}`, {
+    return fetch(`/api/tweet/${tweetID}/`, {
         method: "DELETE",
         headers: {
             'X-CSRFToken': getCookie('csrftoken'),
@@ -171,7 +191,7 @@ const deleteTweet = (tweetID) => {
                 'error': 'Delete tweet: Something went wrong' 
             };
         }
-        return response.json();
+        return {'message': 'Tweet deleted'};
     });
 };
 
@@ -197,5 +217,5 @@ const editTweet = (tweetID, tweet) => {
 
 
 export default { type, getCookie, 
-                 getCurrentUserInfo, getUserInfoByUsername,
+                 getCurrentUserInfo, updateUserInfo, getUserInfoByUsername,
                  getAllTweets, postTweet, likeTweet, isTweetLiked, unlikeTweet, deleteTweet, editTweet };

@@ -159,7 +159,7 @@ function MoreButton({ avatar, text, image, tweet, fetchPosts }) {
                     <IconButton className="moreButton__editDialog__closeButton" onClick={handleEditModalClose}>
                         <CloseIcon />
                     </IconButton>
-                    Edit Tweet
+                    <span>Edit Tweet</span>
                 </DialogTitle>
                 <DialogContent dividers className="moreButton__editDialog__content">
                     <Tweetbox isEditMode={true} avatar={avatar} fetchPosts={fetchPosts} initText={text} initImage={image} tweetID={tweet} handleEditModalClose={handleEditModalClose} />

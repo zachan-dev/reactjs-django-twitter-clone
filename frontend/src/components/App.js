@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Switch, Route, Link, Redirect } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Sidebar from './Sidebar';
 import Feed from './Feed';
 import Profile from './Profile';
@@ -20,20 +20,14 @@ function App() {
     // BEM
     <div className="app">
       {/* Sidebar (LHS) */}
-      <Sidebar />
+      <Sidebar user={user} />
 
-      {/* Switch (middle) */}
-      <Switch>
-        <Route exact path="/">
-          <Feed user={user}/> {/* Feed */}
-        </Route>
-        <Route exact path="/profile">
-          <Redirect to={`/profile/${user.username}`} /> {/* Profile */}
-        </Route>
-        <Route exact path="/profile/:username">
-          <Profile /> {/* Profile/username */}
-        </Route>
-      </Switch>
+      {/* Routes (middle) */}
+      <Routes>
+        <Route path="/" element={<Feed user={user}/>} /> {/* Feed */}
+        <Route path="/profile" element={<Navigate to={`/profile/${user.username}`} />} /> {/* Profile */}
+        <Route path="/profile/:username" element={<Profile />} /> {/* Profile/username */}
+      </Routes>
 
       {/* Widgets (RHS) */}
       <Widgets/>

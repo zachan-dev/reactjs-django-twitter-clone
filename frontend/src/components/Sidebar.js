@@ -16,23 +16,23 @@ import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 /** Button */
 import { Button } from '@material-ui/core';
 
-function Sidebar() {
+function Sidebar({ user }) {
     return (
         <div className="sidebar">
             {/* Twitter icon */}
-            <NavLink className="sidebar__twitterIcon__navLink" exact to='/'>
+            <NavLink className="sidebar__twitterIcon__navLink" end to='/'>
                 <TwitterIcon className="sidebar__twitterIcon" />
             </NavLink>
 
             {/* SidebarOption */}
-            <SidebarOption Icon={HomeIcon} text="Home" to="/" exact={true} />
-            <SidebarOption Icon={SearchIcon} text="Explore" to="/search" exact={false}  />
-            <SidebarOption Icon={NotificationsNoneIcon} text="Notifications" to="/notifications" exact={false} />
-            <SidebarOption Icon={MailOutlineIcon} text="Messages" to="/messages" exact={false} />
-            <SidebarOption Icon={BookmarkBorderIcon} text="Bookmarks" to="/bookmarks" exact={false} />
-            <SidebarOption Icon={ListAltIcon} text="Lists" to="/lists" exact={false} />
-            <SidebarOption Icon={PermIdentityIcon} text="Profile" to="/profile" exact={false} />
-            <SidebarOption Icon={MoreHorizIcon} text="More" to="/more" exact={false} />
+            <SidebarOption Icon={HomeIcon} text="Home" to="/" end={true} />
+            <SidebarOption Icon={SearchIcon} text="Explore" to="/search" end={false}  />
+            <SidebarOption Icon={NotificationsNoneIcon} text="Notifications" to="/notifications" end={false} />
+            <SidebarOption Icon={MailOutlineIcon} text="Messages" to="/messages" end={false} />
+            <SidebarOption Icon={BookmarkBorderIcon} text="Bookmarks" to="/bookmarks" end={false} />
+            <SidebarOption Icon={ListAltIcon} text="Lists" to="/lists" end={false} />
+            <SidebarOption Icon={PermIdentityIcon} text="Profile" to={`/profile/${user.username}`} end={false} />
+            <SidebarOption Icon={MoreHorizIcon} text="More" to="/more" end={false} />
 
             {/* Button -> Tweet */}
             <Button variant="outlined" className="sidebar__tweet" fullWidth>Tweet</Button>

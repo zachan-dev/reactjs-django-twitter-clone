@@ -3,14 +3,18 @@ from django.db import IntegrityError
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
+from django.core.exceptions import PermissionDenied
 
 from .models import User, Tweet, TweetLike, UserFollower
-from .serializers import UserSerializer, TweetUserSerializer, TweetWithoutUserSerializer, TweetLikeSerializer, TweetLikeWithoutUserSerializer, UserFollowerSerializer
-from rest_framework import viewsets
+from .serializers import UserSerializer, TweetUserSerializer, TweetLikeExposeTweetSerializer, TweetWithoutUserSerializer, TweetLikeSerializer, TweetLikeWithoutUserSerializer, UserFollowerSerializer
+from rest_framework import viewsets, mixins
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
-class UserAPIView(viewsets.ModelViewSet):
+class UserAPIView(mixins.CreateModelMixin, 
+                   mixins.RetrieveModelMixin,
+                   mixins.ListModelMixin,
+                   viewsets.GenericViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
@@ -18,12 +22,29 @@ class CurrentUserView(APIView):
     def get(self, request):
         serializer = UserSerializer(request.user)
         return Response(serializer.data)
+    
+    def patch(self, request):
+        # print(request.data)
+        serializer = UserSerializer(request.user, data=request.data, partial=True)
+        # print(serializer.initial_data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(status=204)
+        # print(serializer.errors)
+        return Response(status=400)
 
 class UserByUsernameView(APIView):
     def get(self, request, **kwargs):
         user = get_object_or_404(User, username=kwargs['username'])
         serializer = UserSerializer(user)
-        return Response(serializer.data)
+        data = serializer.data
+        # Users' Tweets
+        tweets = Tweet.objects.filter(user=user).order_by('-created_at')
+        data['tweets'] = TweetUserSerializer(tweets, many=True).data
+        # Users' Likes
+        likes = TweetLike.objects.filter(user=user).order_by('-created_at')
+        data['likes'] = TweetLikeExposeTweetSerializer(likes, many=True).data
+        return Response(data)
 
 class TweetAPIView(viewsets.ModelViewSet):
     queryset = Tweet.objects.all()
@@ -72,6 +93,20 @@ class TweetAPIView(viewsets.ModelViewSet):
         }
         serializer.save(**kwargs)
 
+    def perform_update(self, serializer, **kwargs):
+        tweet = self.get_object()
+        # disable update other user' tweets
+        if (tweet.user != self.request.user):
+            raise PermissionDenied()
+        serializer.save(**kwargs)
+    
+    def perform_destroy(self, instance):
+        tweet = self.get_object()
+        # disable delete other user' tweets
+        if (tweet.user != self.request.user):
+            raise PermissionDenied()
+        instance.delete()
+
 class TweetLikeAPIView(viewsets.ModelViewSet):
     queryset = TweetLike.objects.all()
 
@@ -104,12 +139,38 @@ class TweetLikeAPIView(viewsets.ModelViewSet):
         }
         serializer.save(**kwargs)
     
+    def perform_update(self, serializer, **kwargs):
+        tweetLike = self.get_object()
+        # disable update other user' tweet likes
+        if (tweetLike.user != self.request.user):
+            raise PermissionDenied()
+        serializer.save(**kwargs)
+    
+    def perform_destroy(self, instance):
+        tweetLike = self.get_object()
+        # disable delete other user' tweet likes
+        if (tweetLike.user != self.request.user):
+            raise PermissionDenied()
+        instance.delete()
+    
 
 class FollowAPIView(viewsets.ModelViewSet):
     queryset = UserFollower.objects.all()
     serializer_class = UserFollowerSerializer
 
-
+    def perform_update(self, serializer, **kwargs):
+        follow = self.get_object()
+        # disable update other user' follows
+        if (follow.user != self.request.user):
+            raise PermissionDenied()
+        serializer.save(**kwargs)
+    
+    def perform_destroy(self, instance):
+        follow = self.get_object()
+        # disable delete other user' follows
+        if (follow.user != self.request.user):
+            raise PermissionDenied()
+        instance.delete()
 
 
 

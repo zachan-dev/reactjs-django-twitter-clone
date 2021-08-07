@@ -23,6 +23,12 @@ class TweetLikeSerializer(serializers.ModelSerializer):
         model = TweetLike
         fields = ('id', 'user', 'tweet', 'created_at')
 
+class TweetLikeExposeTweetSerializer(serializers.ModelSerializer):
+    tweet = TweetUserSerializer()
+    class Meta:
+        model = TweetLike
+        fields = ('id', 'user', 'tweet', 'created_at')
+
 class TweetLikeWithoutUserSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         tweet_like, created = TweetLike.objects.get_or_create(**validated_data)

@@ -10,6 +10,7 @@ body {
   --twitter-darker-color: rgb(26, 145, 218);
   --twitter-border: rgb(235, 238, 240);
   --twitter-background: rgb(247, 249, 250);
+  --twitter-grey: rgb(83, 100, 113);
 }
 
 .app {
