@@ -11,9 +11,11 @@ import IconButton from '@material-ui/core/IconButton';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import DeleteIcon from '@material-ui/icons/Delete';
-import EditIcon from '@material-ui/icons/Edit';
+import DeleteForeverOutlinedIcon from '@material-ui/icons/DeleteForeverOutlined';
+import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
 import CloseIcon from '@material-ui/icons/Close';
+import PersonAddOutlinedIcon from '@material-ui/icons/PersonAddOutlined';
+import PersonAddDisabledOutlinedIcon from '@material-ui/icons/PersonAddDisabledOutlined';
 // Dialog
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -43,7 +45,7 @@ const StyledMenu = withStyles({
     />
 ));
 
-function MoreButton({ avatar, text, image, tweet, fetchPosts }) {
+function MoreButton({ tweetUserID, avatar, text, image, tweet, fetchPosts, currentUserID }) {
     const [anchorEl, setAnchorEl] = useState(null);
     const [delModalOpen, setDelModalOpen] = useState(false);
     const [editModalOpen, setEditModalOpen] = useState(false);
@@ -110,18 +112,38 @@ function MoreButton({ avatar, text, image, tweet, fetchPosts }) {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
             >
-                <MenuItem onClick={handlePrimaryDelete}>
-                    <ListItemIcon>
-                        <DeleteIcon fontSize="small" color="secondary"/>
-                    </ListItemIcon>
-                    <ListItemText primary="Delete" className="moreButton__delete"/>
-                </MenuItem>
-                <MenuItem onClick={handlePrimaryEdit}>
-                    <ListItemIcon>
-                        <EditIcon fontSize="small" />
-                    </ListItemIcon>
-                    <ListItemText primary="Edit" />
-                </MenuItem>
+                {/** Current User = Tweet Owner */}
+                {tweetUserID === currentUserID ?
+                    <div>
+                        <MenuItem onClick={handlePrimaryDelete}>
+                            <ListItemIcon>
+                                <DeleteForeverOutlinedIcon fontSize="small" color="secondary"/>
+                            </ListItemIcon>
+                            <ListItemText primary="Delete" className="moreButton__delete"/>
+                        </MenuItem>
+                        <MenuItem onClick={handlePrimaryEdit}>
+                            <ListItemIcon>
+                                <EditOutlinedIcon fontSize="small" />
+                            </ListItemIcon>
+                            <ListItemText primary="Edit" />
+                        </MenuItem>
+                    </div>
+                    :
+                    <div>
+                        <MenuItem>
+                            <ListItemIcon>
+                                <PersonAddOutlinedIcon fontSize="small"/>
+                            </ListItemIcon>
+                            <ListItemText primary="Follow" />
+                        </MenuItem>
+                        <MenuItem>
+                            <ListItemIcon>
+                                <PersonAddDisabledOutlinedIcon fontSize="small" color="secondary"/>
+                            </ListItemIcon>
+                            <ListItemText primary="Unfollow" className="moreButton__delete"/>
+                        </MenuItem>
+                    </div>
+                }
             </StyledMenu>
 
             {/** Delete Dialog  */}

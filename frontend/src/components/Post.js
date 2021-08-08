@@ -15,6 +15,7 @@ const Post = forwardRef((
     { 
         tweet,
         displayName, 
+        userID, 
         username, 
         verified, 
         text, 
@@ -24,6 +25,7 @@ const Post = forwardRef((
         likes_count,
         liked,
         fetchPosts,
+        currentUserID
     }, ref ) => {
 
     return (
@@ -33,7 +35,7 @@ const Post = forwardRef((
             </div>
             <div className="post__body">
                 <div className="post__header">
-                    <MoreButton className="post__more" avatar={avatar} text={text} image={image} tweet={tweet} fetchPosts={fetchPosts}/>
+                    <MoreButton className="post__more" tweetUserID={userID} avatar={avatar} text={text} image={image} tweet={tweet} fetchPosts={fetchPosts} currentUserID={currentUserID}/>
                     <div className="post__headerText">
                         <h3 style={{fontWeight: "normal"}}>
                             <b>{displayName}{" "}</b>
@@ -50,10 +52,13 @@ const Post = forwardRef((
                         <p>{text}</p>
                     </div>
                 </div>
-                <img 
-                    src={image} 
-                    alt=""
-                />
+                {image ?
+                    <img 
+                        src={image} 
+                        alt=""
+                        onError={(e)=>{e.target.onerror = null; e.target.src="/static/images/image_placeholder.png"}}
+                    /> : null
+                }
                 <div className="post__footer">
                     <Tooltip title="Reply" aria-label="reply">
                         <ChatBubbleOutlineIcon fontSize="small" />

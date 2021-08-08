@@ -49,6 +49,7 @@ function Feed({ user }) {
                         tweet={post.id}
                         displayName={post.user.display_name}
                         username={post.user.username}
+                        userID={post.user.id}
                         verified={post.user.verified}
                         text={post.text}
                         avatar={post.user.photo}
@@ -57,6 +58,7 @@ function Feed({ user }) {
                         likes_count={post.likes_count}
                         liked={post.likes.length > 0}
                         fetchPosts={fetchPosts}
+                        currentUserID={user.id}
                     />
                 ))}
             </FlipMove>

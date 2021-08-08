@@ -146,7 +146,7 @@ const getTweetLikes = (query) => {
 };
 
 const isTweetLiked = (tweetID) => {
-    return getTweetLikes({ 'tweet': tweetID })
+    return getTweetLikes({ 'tweet': tweetID, 'current': true })
         .then(likes => {
             if (type(likes) === "Object" && likes.error) {
                 return { 
@@ -158,7 +158,7 @@ const isTweetLiked = (tweetID) => {
 };
 
 const unlikeTweet = (tweetID) => {
-    return getTweetLikes({ 'tweet': tweetID })
+    return getTweetLikes({ 'tweet': tweetID, 'current': true })
         .then(likes => {
             if (type(likes) === "Object" && likes.error) {
                 return { 

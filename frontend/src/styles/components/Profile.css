@@ -128,15 +128,6 @@
     margin-right: 5px;
 }
 
-.profile__warning {
-    text-align: center;
-    padding: 40px 20px;
-}
-.profile__warning > p {
-    margin-top: 10px;
-    color: var(--twitter-grey);
-}
-
 /** Edit Dialog */
 .profile__editDialog .MuiPaper-root {
     border-radius: 16px;

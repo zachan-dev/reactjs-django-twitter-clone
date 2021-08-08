@@ -41,9 +41,29 @@ class UserByUsernameView(APIView):
         # Users' Tweets
         tweets = Tweet.objects.filter(user=user).order_by('-created_at')
         data['tweets'] = TweetUserSerializer(tweets, many=True).data
+        # Users' Tweets' Likes Count and liked by user
+        if isinstance(data['tweets'], list):
+            for tweet in data['tweets']:
+                likes_set = TweetLike.objects.filter(tweet=tweet['id'])
+                tweet['likes_count'] = likes_set.count()
+                likes_set = likes_set.filter(user=request.user)
+                tweet['likes'] = TweetLikeSerializer(
+                    likes_set,
+                    many=True
+                ).data
         # Users' Likes
         likes = TweetLike.objects.filter(user=user).order_by('-created_at')
         data['likes'] = TweetLikeExposeTweetSerializer(likes, many=True).data
+        # Users' LikedTweets' Likes Count and liked by user
+        if isinstance(data['likes'], list):
+            for tweetLike in data['likes']:
+                likes_set = TweetLike.objects.filter(tweet=tweetLike['tweet']['id'])
+                tweetLike['tweet']['likes_count'] = likes_set.count()
+                likes_set = likes_set.filter(user=request.user)
+                tweetLike['tweet']['likes'] = TweetLikeSerializer(
+                    likes_set,
+                    many=True
+                ).data
         return Response(data)
 
 class TweetAPIView(viewsets.ModelViewSet):
@@ -149,6 +169,7 @@ class TweetLikeAPIView(viewsets.ModelViewSet):
     def perform_destroy(self, instance):
         tweetLike = self.get_object()
         # disable delete other user' tweet likes
+        print(tweetLike.id)
         if (tweetLike.user != self.request.user):
             raise PermissionDenied()
         instance.delete()

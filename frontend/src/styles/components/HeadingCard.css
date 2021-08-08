@@ -1,0 +1,8 @@
+.headingCard {
+    text-align: center;
+    padding: 40px 20px;
+}
+.headingCard > p {
+    margin-top: 10px;
+    color: var(--twitter-grey);
+}

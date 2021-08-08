@@ -19,8 +19,11 @@ import TextField from '@material-ui/core/TextField';
 import { MuiPickersUtilsProvider, KeyboardDatePicker, } from '@material-ui/pickers';
 import MomentUtils from '@date-io/moment';
 import { withStyles } from "@material-ui/core/styles";
+// Tab
+import ProfileTweets from './ProfileTweets'
+import HeadingCard from './HeadingCard'
 
-function Profile({ classes }) {
+function Profile({ user, classes }) {
     const navigate = useNavigate();
     const { username } = useParams();
     const [profileUser, setProfileUser] = useState({});
@@ -38,6 +41,13 @@ function Profile({ classes }) {
                     setEditBirthDate(moment(profileUser.birth_date));
                 }
             });
+    };
+
+    const handleScroll = (e) => {
+        const top = e.target.scrollTop === 0;
+        if (top) {
+            loadUserProfile(); // only fetch when scroll to the top of feeds
+        }
     };
 
     useEffect(() =>{ // componentWillMount
@@ -83,7 +93,7 @@ function Profile({ classes }) {
     };
 
     return (
-        <div className="profile">
+        <div className="profile" onScroll={handleScroll}>
             {!profileUser.error && !profileUser.id ? 
                 <div className="profile__loading"></div>
                 :
@@ -103,7 +113,10 @@ function Profile({ classes }) {
                         </div>
                         <div className="profile__info">
                             <div className="profile__info__editProfile">
-                                <Button variant="outlined" size="medium" onClick={handleClickEditModalOpen}>Edit Profile</Button>
+                                {user.id === profileUser.id ?
+                                    <Button variant="outlined" size="medium" onClick={handleClickEditModalOpen}>Edit Profile</Button>
+                                    : <Button variant="outlined" size="medium">Follow</Button>
+                                }
                             </div>
                             <h2>{profileUser.display_name}</h2>
                             <p className="profile__info__username">@{profileUser.username}</p>
@@ -115,6 +128,7 @@ function Profile({ classes }) {
                                 </time></span>
                             </p>
                         </div>
+                        <ProfileTweets currentUser={user} profileUser={profileUser} loadUserProfile={loadUserProfile}/>
                     </div>
                     :
                     // user not found
@@ -136,10 +150,10 @@ function Profile({ classes }) {
                             <div className="profile__info__editProfile" style={{height: 20}}/>
                         </div>
                         <Divider light />
-                        <div className="profile__warning">
-                            <h3>This account doesn’t exist</h3>
-                            <p>Try searching for another.</p>
-                        </div>
+                        <HeadingCard 
+                            line_1="This account doesn’t exist" 
+                            line_2="Try searching for another."
+                        />
                     </div>
                 )
             }
