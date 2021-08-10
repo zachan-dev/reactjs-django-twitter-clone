@@ -6,10 +6,12 @@ from django.urls import reverse
 from django.core.exceptions import PermissionDenied
 
 from .models import User, Tweet, TweetLike, UserFollower
-from .serializers import UserSerializer, TweetUserSerializer, TweetLikeExposeTweetSerializer, TweetWithoutUserSerializer, TweetLikeSerializer, TweetLikeWithoutUserSerializer, UserFollowerSerializer
+from .serializers import UserSerializer, TweetUserSerializer, TweetLikeExposeTweetSerializer, TweetWithoutUserSerializer, TweetLikeSerializer, TweetLikeWithoutUserSerializer, UserFollowerSerializer, UserFollowerWithoutFollowerSerializer
+from .exceptions import CannotFollowSelfError, CannotActionOtherUserInfoError
 from rest_framework import viewsets, mixins
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework.decorators import action
 
 class UserAPIView(mixins.CreateModelMixin, 
                    mixins.RetrieveModelMixin,
@@ -117,14 +119,14 @@ class TweetAPIView(viewsets.ModelViewSet):
         tweet = self.get_object()
         # disable update other user' tweets
         if (tweet.user != self.request.user):
-            raise PermissionDenied()
+            raise CannotActionOtherUserInfoError(action='update', info='tweets')
         serializer.save(**kwargs)
     
     def perform_destroy(self, instance):
         tweet = self.get_object()
         # disable delete other user' tweets
         if (tweet.user != self.request.user):
-            raise PermissionDenied()
+            raise CannotActionOtherUserInfoError(action='delete', info='tweets')
         instance.delete()
 
 class TweetLikeAPIView(viewsets.ModelViewSet):
@@ -163,36 +165,68 @@ class TweetLikeAPIView(viewsets.ModelViewSet):
         tweetLike = self.get_object()
         # disable update other user' tweet likes
         if (tweetLike.user != self.request.user):
-            raise PermissionDenied()
+            raise CannotActionOtherUserInfoError(action='update', info='tweet likes')
         serializer.save(**kwargs)
     
     def perform_destroy(self, instance):
         tweetLike = self.get_object()
         # disable delete other user' tweet likes
-        print(tweetLike.id)
         if (tweetLike.user != self.request.user):
-            raise PermissionDenied()
+            raise CannotActionOtherUserInfoError(action='delete', info='tweet likes')
         instance.delete()
     
 
 class FollowAPIView(viewsets.ModelViewSet):
     queryset = UserFollower.objects.all()
-    serializer_class = UserFollowerSerializer
+
+    def get_queryset(self):
+        queryset = UserFollower.objects.all()
+
+        current_user_query = self.request.query_params.get('current', None)
+        user_query = self.request.query_params.get('user', None)
+
+        valid_current_user_query = current_user_query and current_user_query.lower() == 'true'
+
+        if valid_current_user_query:
+            # filter current user's follows
+            queryset = queryset.filter(follower=self.request.user.id)
+        if user_query:
+            # filter follows for specified user
+            queryset = queryset.filter(user=user_query)
+        return queryset
+
+    def get_serializer_class(self):
+        if self.request.method == 'GET':
+            return UserFollowerSerializer
+        else:
+            return UserFollowerWithoutFollowerSerializer
+
+    def perform_create(self, serializer):
+        kwargs = {
+            'follower': self.request.user, 
+            'user': serializer.validated_data['user']
+        }
+        # Deny follow self
+        if kwargs['user'].id == self.request.user.id:
+            raise CannotFollowSelfError()
+        serializer.save(**kwargs)
 
     def perform_update(self, serializer, **kwargs):
         follow = self.get_object()
         # disable update other user' follows
-        if (follow.user != self.request.user):
-            raise PermissionDenied()
+        if (follow.follower != self.request.user):
+            raise CannotActionOtherUserInfoError(action='update', info='follows')
+        # Deny follow self
+        if serializer.validated_data['user'].id == self.request.user.id:
+            raise CannotFollowSelfError()
         serializer.save(**kwargs)
     
     def perform_destroy(self, instance):
         follow = self.get_object()
         # disable delete other user' follows
-        if (follow.user != self.request.user):
-            raise PermissionDenied()
+        if (follow.follower != self.request.user):
+            raise CannotActionOtherUserInfoError(action='delete', info='follows')
         instance.delete()
-
 
 
 def login_view(request):

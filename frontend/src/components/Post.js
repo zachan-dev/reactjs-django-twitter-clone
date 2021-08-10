@@ -10,6 +10,7 @@ import PublishIcon from "@material-ui/icons/Publish";
 import moment from 'moment-timezone';
 import Tooltip from '@material-ui/core/Tooltip';
 import MathHelper from '../helpers/math'
+import { Link } from 'react-router-dom'
 
 const Post = forwardRef((
     { 
@@ -38,10 +39,12 @@ const Post = forwardRef((
                     <MoreButton className="post__more" tweetUserID={userID} avatar={avatar} text={text} image={image} tweet={tweet} fetchPosts={fetchPosts} currentUserID={currentUserID}/>
                     <div className="post__headerText">
                         <h3 style={{fontWeight: "normal"}}>
-                            <b>{displayName}{" "}</b>
+                            <Link className="post__profileLink" to={`/profile/${username}`}>
+                                <b>{displayName}</b>
+                            </Link>
                             <span style={{color: "grey"}}>
                                 <span>
-                                    { verified && <VerifiedUserIcon className="post__badge" /> } @{username} 
+                                    {" "}{ verified && <VerifiedUserIcon className="post__badge" /> } @{username} 
                                 </span>
                                 <span> · </span>
                                 <time dateTime={dateTime}>{moment(dateTime).tz(moment.tz.guess()).format('hh:mm A, DD MMM YYYY')}</time>

@@ -138,7 +138,7 @@ const getTweetLikes = (query) => {
         .then(response => {
             if (response.status >= 400) {
                 return { 
-                    'error': 'Unlike tweet: Cannot get tweet likes by current user and tweetID' 
+                    'error': 'Get tweet likes: Cannot get tweet likes by current user and tweetID' 
                 };
             }
             return response.json();
@@ -150,7 +150,7 @@ const isTweetLiked = (tweetID) => {
         .then(likes => {
             if (type(likes) === "Object" && likes.error) {
                 return { 
-                    'error': 'Unlike tweet: Something went wrong' 
+                    'error': 'Is tweet liked: Something went wrong' 
                 };
             }
             return like.length > 0;
@@ -216,6 +216,69 @@ const editTweet = (tweetID, tweet) => {
 };
 
 
+const followUser = (userID) => {
+    return fetch("/api/follow/", {
+        method: "POST",
+        headers: {
+            'Accept': 'application/json',
+            "Content-Type": "application/json",
+            'X-CSRFToken': getCookie('csrftoken'),
+        },
+        body: JSON.stringify({
+            "user": userID
+        })
+    })
+};
+
+const getFollowers = (query) => {
+    return fetch(withQuery('/api/follow/', query))
+        .then(response => {
+            if (response.status >= 400) {
+                return { 
+                    'error': 'Get followers: Cannot get user followers by userID w/o current user as follower filter' 
+                };
+            }
+            return response.json();
+        });
+};
+
+const isUserFollowedByMe = (userID) => {
+    return getFollowers({ 'user': userID, 'current': true })
+        .then(follows => {
+            if (type(follows) === "Object" && follows.error) {
+                return { 
+                    'error': 'Is user followed by me: Something went wrong' 
+                };
+            }
+            return follows.length > 0;
+        });
+};
+
+const unfollowUser = (userID) => {
+    return getFollowers({ 'user': userID, 'current': true })
+        .then(follows => {
+            if (type(follows) === "Object" && follows.error) {
+                return { 
+                    'error': 'Unfollow: Something went wrong' 
+                };
+            }
+            for (var i = 0; i < follows.length; i++) {
+                return fetch(`/api/follow/${follows[i].id}/`, {
+                    method: "DELETE",
+                    headers: {
+                        'Accept': 'application/json',
+                        "Content-Type": "application/json",
+                        'X-CSRFToken': getCookie('csrftoken'),
+                    }
+                });
+            }
+        });
+};
+
+
+
+
 export default { type, getCookie, 
                  getCurrentUserInfo, updateUserInfo, getUserInfoByUsername,
-                 getAllTweets, postTweet, likeTweet, isTweetLiked, unlikeTweet, deleteTweet, editTweet };
+                 getAllTweets, postTweet, likeTweet, isTweetLiked, unlikeTweet, deleteTweet, editTweet,
+                 isUserFollowedByMe, followUser, unfollowUser, };

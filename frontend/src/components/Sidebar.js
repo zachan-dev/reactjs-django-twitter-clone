@@ -5,7 +5,7 @@ import '../styles/components/Sidebar.css';
 import SidebarOption from './SidebarOption';
 /** Icons */
 import TwitterIcon from '@material-ui/icons/Twitter';
-import HomeIcon from '@material-ui/icons/Home';
+import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
 import SearchIcon from '@material-ui/icons/Search';
 import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
@@ -25,7 +25,7 @@ function Sidebar({ user }) {
             </NavLink>
 
             {/* SidebarOption */}
-            <SidebarOption Icon={HomeIcon} text="Home" to="/" end={true} />
+            <SidebarOption Icon={HomeOutlinedIcon} text="Home" to="/" end={true} />
             <SidebarOption Icon={SearchIcon} text="Explore" to="/search" end={false}  />
             <SidebarOption Icon={NotificationsNoneIcon} text="Notifications" to="/notifications" end={false} />
             <SidebarOption Icon={MailOutlineIcon} text="Messages" to="/messages" end={false} />

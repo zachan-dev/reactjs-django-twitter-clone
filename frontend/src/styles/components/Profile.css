@@ -95,11 +95,12 @@
     cursor: pointer;
 }
 
+/** Edit Profile or Follow/Unfollow button */
 .profile__info__editProfile {
     display: flex;
     justify-content: flex-end;
 }
-.profile__info__editProfile > Button {
+.profile__info__editProfile > .profile__info__editProfile__outlinedBtn {
     color: var(--twitter-color) !important;
     border: 1px solid var(--twitter-color) !important;
     border-radius: 20px !important;
@@ -107,8 +108,31 @@
     font-weight: bold !important;
     text-transform: none !important;
 }
-.profile__info__editProfile > Button:hover {
+.profile__info__editProfile > .profile__info__editProfile__outlinedBtn[name="differentUser"] {
+    width: 100px;
+}
+.profile__info__editProfile > .profile__info__editProfile__outlinedBtn[name="differentUser"]:hover {
     background-color: var(--twitter-lightest-color) !important;
+}
+.profile__info__editProfile > .profile__info__editProfile__btn {
+    width: 100px;
+    color: white !important;
+    background-color: var(--twitter-color) !important;
+    border: 1px solid var(--twitter-color) !important;
+    border-radius: 20px !important;
+    font-size: 15px !important;
+    font-weight: bold !important;
+    text-transform: none !important;
+}
+.profile__info__editProfile > .profile__info__editProfile__btn:hover span span[name="following"] {
+    display: none;
+}
+.profile__info__editProfile > .profile__info__editProfile__btn:hover span span[name="unfollow"] {
+    display: block !important;
+}
+.profile__info__editProfile > .profile__info__editProfile__btn:hover {
+    background-color: var(--twitter-red) !important;
+    border: 1px solid var(--twitter-red) !important;
 }
 
 .profile__info__username {

@@ -33,7 +33,6 @@ class TweetLikeWithoutUserSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         tweet_like, created = TweetLike.objects.get_or_create(**validated_data)
         return tweet_like
-
     class Meta:
         model = TweetLike
         fields = ('id', 'tweet', 'created_at')
@@ -42,3 +41,11 @@ class UserFollowerSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserFollower
         fields = ('id', 'user', 'follower', 'created_at')
+
+class UserFollowerWithoutFollowerSerializer(serializers.ModelSerializer):
+    def create(self, validated_data):
+        user_follower, created = UserFollower.objects.get_or_create(**validated_data)
+        return user_follower
+    class Meta:
+        model = TweetLike
+        fields = ('id', 'user', 'created_at')

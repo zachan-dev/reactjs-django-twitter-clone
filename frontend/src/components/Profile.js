@@ -13,6 +13,8 @@ import CloseIcon from '@material-ui/icons/Close';
 // Dialog
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogActions from '@material-ui/core/DialogActions';
 import DialogTitle from '@material-ui/core/DialogTitle';
 // Fields
 import TextField from '@material-ui/core/TextField';
@@ -29,6 +31,18 @@ function Profile({ user, classes }) {
     const [profileUser, setProfileUser] = useState({});
     const [editModalOpen, setEditModalOpen] = useState(false);
     const [editBirthDate, setEditBirthDate] = useState(null);
+    const [unfollowModalOpen, setUnfollowModalOpen] = useState(false);
+    const [isFollowing, setIsFollowing] = useState(false);
+
+    const loadUserFollowed = (userId) => {
+        APIHelper.isUserFollowedByMe(userId)
+            .then(data => {
+                if (APIHelper.type(data) === "Object" && data.error) {
+                    console.error(data.error);
+                }
+                setIsFollowing(data);
+            });
+    };
 
     const loadUserProfile = () => {
         APIHelper.getUserInfoByUsername(username)
@@ -40,6 +54,7 @@ function Profile({ user, classes }) {
                 if (profileUser.birth_date) {
                     setEditBirthDate(moment(profileUser.birth_date));
                 }
+                loadUserFollowed(profileUser.id);
             });
     };
 
@@ -92,6 +107,41 @@ function Profile({ user, classes }) {
         });
     };
 
+    {/** Handle Follow/Unfollow button */}
+    const handleClickFollow = () => {
+        APIHelper.followUser(profileUser.id).then(data => {
+            if (APIHelper.type(data) === "Object" && data.error) {
+                return console.error(data.error);
+            }
+            // setIsFollowing(true);
+            loadUserFollowed(profileUser.id);
+        });
+    };
+    
+    {/** Unfollow Button Dialog */}
+    const handleClickUnfollowModalOpen = () => {
+        setUnfollowModalOpen(true);
+    };
+    const handleUnfollowModalClose = () => {
+        setUnfollowModalOpen(false);
+    };
+    const handlePrimaryUnfollow = () => {
+        // pop up modal to ask if sure to delete
+        handleClickUnfollowModalOpen();
+    };
+    const handleSecondaryUnfollow = () => {
+        handleUnfollowModalClose();
+        APIHelper.unfollowUser(profileUser.id)
+            .then(data =>{
+                if (APIHelper.type(data) === "Object" && data.error) {
+                    return console.error(data.error);
+                }
+                // setIsFollowing(false);
+                loadUserFollowed(profileUser.id);
+            });
+    };
+
+
     return (
         <div className="profile" onScroll={handleScroll}>
             {!profileUser.error && !profileUser.id ? 
@@ -114,8 +164,15 @@ function Profile({ user, classes }) {
                         <div className="profile__info">
                             <div className="profile__info__editProfile">
                                 {user.id === profileUser.id ?
-                                    <Button variant="outlined" size="medium" onClick={handleClickEditModalOpen}>Edit Profile</Button>
-                                    : <Button variant="outlined" size="medium">Follow</Button>
+                                    <Button className="profile__info__editProfile__outlinedBtn" name="sameUser" variant="outlined" size="medium" onClick={handleClickEditModalOpen}>Edit Profile</Button>
+                                    : (!isFollowing ?
+                                        <Button className="profile__info__editProfile__outlinedBtn" name="differentUser" variant="outlined" size="medium" onClick={handleClickFollow}>Follow</Button>
+                                        :
+                                        <Button className="profile__info__editProfile__btn" name="differentUser" size="medium" onClick={handlePrimaryUnfollow}>
+                                            <span name="following">Following</span>
+                                            <span name="unfollow" style={{display: 'none'}}>Unfollow</span>
+                                        </Button>
+                                      )
                                 }
                             </div>
                             <h2>{profileUser.display_name}</h2>
@@ -129,6 +186,29 @@ function Profile({ user, classes }) {
                             </p>
                         </div>
                         <ProfileTweets currentUser={user} profileUser={profileUser} loadUserProfile={loadUserProfile}/>
+                                
+                        {/** Unfollow Dialog */}
+                        <Dialog
+                            open={unfollowModalOpen}
+                            onClose={handleUnfollowModalClose}
+                            aria-labelledby="unfollow-dialog-title"
+                            aria-describedby="unfollow-dialog-description"
+                        >
+                            <DialogTitle id="unfollow-dialog-title">{`Unfollow @${profileUser.username}?`}</DialogTitle>
+                            <DialogContent>
+                                <DialogContentText id="unfollow-dialog-description">
+                                    Their Tweets will no longer show up in your home timeline. You can still view their profile, unless their Tweets are protected. 
+                                </DialogContentText>
+                            </DialogContent>
+                            <DialogActions>
+                                <Button onClick={handleUnfollowModalClose} color="primary" autoFocus>
+                                    Cancel
+                                </Button>
+                                <Button onClick={handleSecondaryUnfollow} color="secondary">
+                                    Unfollow
+                                </Button>
+                            </DialogActions>
+                        </Dialog>
                     </div>
                     :
                     // user not found

@@ -68,3 +68,12 @@
     vertical-align: 90%;
     margin-left: 7px;
 }
+
+.post__profileLink {
+    text-decoration: none;
+    color: black;
+}
+
+.post__profileLink:hover {
+    text-decoration: underline;
+}
