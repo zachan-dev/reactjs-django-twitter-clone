@@ -7,10 +7,21 @@
 }
 
 .sidebarOption:hover {
-    background-color: var(--twitter-lightest-color);
-    border-radius: 30px;
-    color: var(--twitter-color);
-    transition: color 100ms ease-out;
+    @media (min-width: 1281px) {
+        background-color: var(--twitter-lightest-color);
+        border-radius: 30px;
+        color: var(--twitter-color);
+        transition: color 100ms ease-out;
+    }
+}
+
+.sidebarOption__icon:hover {
+    @media (max-width: 1280px) {
+        background-color: var(--twitter-lightest-color);
+        border-radius: 30px;
+        color: var(--twitter-color);
+        transition: color 100ms ease-out;
+    }
 }
 
 /** Material UI icon **/
@@ -24,6 +35,10 @@
     font-weight: 800;
     font-size: 20px;
     margin-right: 20px;
+
+    @media (max-width: 1280px) {
+        display: none;
+    }
 }
 
 .sidebarOption.active {

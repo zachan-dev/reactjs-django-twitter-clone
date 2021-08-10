@@ -6,7 +6,12 @@ from django.urls import reverse
 from django.core.exceptions import PermissionDenied
 
 from .models import User, Tweet, TweetLike, UserFollower
-from .serializers import UserSerializer, TweetUserSerializer, TweetLikeExposeTweetSerializer, TweetWithoutUserSerializer, TweetLikeSerializer, TweetLikeWithoutUserSerializer, UserFollowerSerializer, UserFollowerWithoutFollowerSerializer
+from .serializers import (
+    UserSerializer, 
+    TweetUserSerializer, TweetLikeExposeTweetSerializer, TweetWithoutUserSerializer, 
+    TweetLikeSerializer, TweetLikeWithoutUserSerializer, 
+    UserFollowerSerializer, UserFollowerWithoutFollowerSerializer, UserFollowerExposeUserSerializer, UserFollowerExposeFollowerSerializer,
+)
 from .exceptions import CannotFollowSelfError, CannotActionOtherUserInfoError
 from rest_framework import viewsets, mixins
 from rest_framework.views import APIView
@@ -66,6 +71,14 @@ class UserByUsernameView(APIView):
                     likes_set,
                     many=True
                 ).data
+        # Users' Followings
+        followings = UserFollower.objects.filter(follower=user).order_by('-created_at')
+        data['followings'] = UserFollowerExposeUserSerializer(followings, many=True).data
+        data['followings_count'] = followings.count()
+        # Users' Followers
+        followers = UserFollower.objects.filter(user=user).order_by('-created_at')
+        data['followers'] = UserFollowerExposeFollowerSerializer(followers, many=True).data
+        data['followers_count'] = followers.count()
         return Response(data)
 
 class TweetAPIView(viewsets.ModelViewSet):
@@ -104,6 +117,14 @@ class TweetAPIView(viewsets.ModelViewSet):
                         likes_set,
                         many=True
                     ).data
+
+                    # add props to show if user is following the tweet
+                    tweet['is_following'] = False
+                    followings = UserFollower.objects.filter(follower=request.user)
+                    for following in followings:
+                        if following.user.id == tweet['user']['id']:
+                            tweet['is_following'] = True
+                            break
 
         return Response(serializer.data)
     

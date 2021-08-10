@@ -3,6 +3,10 @@
     border-right: 1px solid var(--twitter-border);
     /* min-width: fit-content; */
     overflow-y: scroll;
+
+    @media (max-width: 1280px) {
+        flex: 1;
+    }
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -144,12 +148,23 @@
     margin-bottom: 10px;
 }
 
-.profile__info__dateJoined {
+.profile__info__miscellaneous {
     display: flex;
     color: var(--twitter-grey);
 }
-.profile__info__dateJoinedIcon {
+.profile__info__miscellaneous > span {
+    display: flex;
+    margin-right: 12px;
+}
+.profile__info__icons {
     margin-right: 5px;
+}
+.profile__info__website {
+    color: var(--twitter-color);
+    text-decoration: none;
+}
+.profile__info__website:hover {
+    text-decoration: underline;
 }
 
 /** Edit Dialog */
@@ -188,4 +203,15 @@
     width: 100% !important;
     margin-top: 16px !important;
     margin-bottom: 8px !important;
+}
+
+.profile__info__follows {
+    margin-top: 10px;
+    color: var(--twitter-grey);
+}
+.profile__info__follows > span > b {
+    color: black;
+}
+.profile__info__followingsCount {
+    margin-right: 20px;
 }

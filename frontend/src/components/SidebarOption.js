@@ -8,7 +8,7 @@ import '../styles/components/SidebarOption.css';
 function SidebarOption({ to, end, text, Icon }) {
     return (
         <NavLink className="sidebarOption" end={end} to={to}>
-            <Icon />
+            <Icon className="sidebarOption__icon"/>
             <h2>{text}</h2>
         </NavLink>
     );

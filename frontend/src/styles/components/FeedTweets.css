@@ -1,0 +1,7 @@
+.feedTweets__tweetsTabPanel > .MuiBox-root {
+    padding: 0px !important;
+}
+
+.feedTweets__tab {
+    margin-right: 0px !important;
+}

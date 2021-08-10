@@ -6,6 +6,8 @@ import MathHelper from '../helpers/math';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import Button from '@material-ui/core/Button';
 import moment from 'moment-timezone';
+import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
+import LinkIcon from '@material-ui/icons/Link';
 import DateRangeIcon from '@material-ui/icons/DateRange';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
@@ -178,11 +180,32 @@ function Profile({ user, classes }) {
                             <h2>{profileUser.display_name}</h2>
                             <p className="profile__info__username">@{profileUser.username}</p>
                             <p className="profile__info__bio">{profileUser.bio}</p>
-                            <p className="profile__info__dateJoined">
-                                <DateRangeIcon className="profile__info__dateJoinedIcon" size="small"/>
-                                <span>Joined <time dateTime={profileUser.date_joined}>
-                                    {moment(profileUser.date_joined).tz(moment.tz.guess()).format('MMM YYYY')}
-                                </time></span>
+                            <p className="profile__info__miscellaneous">
+                                {profileUser.location ?
+                                    <span>
+                                        <LocationOnOutlinedIcon className="profile__info__icons" size="small"/>
+                                        <span className="profile__info__location">{profileUser.location}</span>
+                                    </span>
+                                    : null
+                                }
+                                {profileUser.website ?
+                                    <span>
+                                        <LinkIcon className="profile__info__icons" size="small"/>
+                                        <a className="profile__info__website" href={profileUser.website}>{new URL(profileUser.website).hostname}</a>
+                                    </span>
+                                    : null
+                                }
+                                <span>
+                                    <DateRangeIcon className="profile__info__icons" size="small"/>
+                                    <span>Joined <time dateTime={profileUser.date_joined}>
+                                        {moment(profileUser.date_joined).tz(moment.tz.guess()).format('MMM YYYY')}
+                                    </time></span>
+                                </span>
+                            </p>
+                            
+                            <p className="profile__info__follows">
+                                <span className="profile__info__followingsCount"><b>{profileUser.followings_count}</b> Following</span>
+                                <span className="profile__info__followersCount"><b>{profileUser.followers_count}</b> Followers</span>
                             </p>
                         </div>
                         <ProfileTweets currentUser={user} profileUser={profileUser} loadUserProfile={loadUserProfile}/>

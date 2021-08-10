@@ -49,3 +49,15 @@ class UserFollowerWithoutFollowerSerializer(serializers.ModelSerializer):
     class Meta:
         model = TweetLike
         fields = ('id', 'user', 'created_at')
+
+class UserFollowerExposeUserSerializer(serializers.ModelSerializer):
+    user = UserSerializer()
+    class Meta:
+        model = UserFollower
+        fields = ('id', 'user', 'follower', 'created_at')
+
+class UserFollowerExposeFollowerSerializer(serializers.ModelSerializer):
+    follower = UserSerializer()
+    class Meta:
+        model = UserFollower
+        fields = ('id', 'user', 'follower', 'created_at')
