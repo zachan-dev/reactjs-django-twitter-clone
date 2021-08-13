@@ -1,0 +1,827 @@
+/*!****************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./src/styles/base/index.css ***!
+  \****************************************************************************************************************************************************************************/
+* {
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+/*!************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./src/styles/components/Sidebar.css ***!
+  \************************************************************************************************************************************************************************************/
+.sidebar {
+  border-right: 1px solid var(--twitter-border);
+  flex: 0.2;
+  /* min-width: 250px; */
+  overflow-y: scroll;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+@media (max-width: 1280px) {
+  .sidebar {
+    flex: 0 0 50px;
+  }
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.sidebar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firebox */
+.sidebar {
+  -ms-overflow-style: none;
+  /* IE, Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.sidebar__twitterIcon {
+  color: var(--twitter-color);
+  font-size: 30px !important;
+  padding: 15px;
+}
+
+.sidebar__twitterIcon:hover {
+  background-color: var(--twitter-lightest-color);
+  border-radius: 30px;
+  color: var(--twitter-color);
+  transition: color 100ms ease-out;
+  cursor: pointer;
+}
+
+.sidebar__tweet {
+  background-color: var(--twitter-color) !important;
+  border: none !important;
+  color: white !important;
+  font-weight: 900 !important;
+  text-transform: inherit !important;
+  border-radius: 30px !important;
+  height: 50px !important;
+  margin-top: 20px !important;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 28px;
+}
+
+.sidebar__tweet:hover {
+  background-color: var(--twitter-darker-color) !important;
+}
+
+@media (max-width: 1280px) {
+  .sidebar__tweet__text {
+    display: none;
+  }
+}
+
+@media (min-width: 1281px) {
+  .sidebar__tweet__icon {
+    display: none !important;
+  }
+}
+
+.sidebar__twitterIcon__navLink {
+  text-decoration: none;
+}
+
+/** Tweet Dialog */
+.sidebar__tweetDialog .MuiPaper-root {
+  border-radius: 16px;
+}
+
+.sidebar__tweetDialog__closeButton {
+  position: "absolute";
+  right: 0;
+  top: 0;
+}
+
+.sidebar__tweetDialog__closeButton {
+  color: var(--twitter-color) !important;
+}
+
+.sidebar__tweetDialog__closeButton:hover {
+  background-color: var(--twitter-lightest-color) !important;
+}
+
+.sidebar__tweetDialog__title {
+  padding: 8px 16px !important;
+}
+
+.sidebar__tweetDialog__content {
+  padding: 0px !important;
+}
+/*!******************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./src/styles/components/SidebarOption.css ***!
+  \******************************************************************************************************************************************************************************************/
+.sidebarOption {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+}
+
+@media (min-width: 1281px) {
+  .sidebarOption:hover {
+    background-color: var(--twitter-lightest-color);
+    border-radius: 30px;
+    color: var(--twitter-color);
+    transition: color 100ms ease-out;
+  }
+}
+
+@media (max-width: 1280px) {
+  .sidebarOption__icon:hover {
+    background-color: var(--twitter-lightest-color);
+    border-radius: 30px;
+    color: var(--twitter-color);
+    transition: color 100ms ease-out;
+  }
+}
+
+/** Material UI icon **/
+.sidebarOption > .MuiSvgIcon-root {
+  padding: 15px;
+  padding-right: 15px;
+  font-size: 30px;
+}
+
+.sidebarOption > h2 {
+  font-weight: 800;
+  font-size: 20px;
+  margin-right: 20px;
+}
+@media (max-width: 1280px) {
+  .sidebarOption > h2 {
+    display: none;
+  }
+}
+
+.sidebarOption.active {
+  color: var(--twitter-color);
+}
+/*!*************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./src/styles/components/Tweetbox.css ***!
+  \*************************************************************************************************************************************************************************************/
+.tweetBox {
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--twitter-border);
+  padding-right: 10px;
+}
+
+.tweetBox > form {
+  display: flex;
+  flex-direction: column;
+}
+
+.tweetBox__input {
+  padding: 20px;
+  display: flex;
+}
+
+.tweetBox__input__textarea {
+  flex: 1;
+  margin-left: 20px;
+  font-size: 20px;
+  border: none;
+}
+
+.tweetBox__input__textarea:focus {
+  outline: none;
+}
+
+.tweetBox__imageInput {
+  border: none;
+  padding: 10px;
+}
+
+.tweetBox__tweetButton {
+  background-color: var(--twitter-color) !important;
+  border: none !important;
+  color: white !important;
+  font-weight: 900 !important;
+  text-transform: inherit !important;
+  border-radius: 30px !important;
+  height: 40px !important;
+  margin-top: 20px !important;
+  margin-left: auto !important;
+  padding: 0px 20px !important;
+}
+
+.tweetBox__tweetButton:disabled {
+  background-color: var(--twitter-lighter-color) !important;
+}
+/*!*********************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./src/styles/components/Feed.css ***!
+  \*********************************************************************************************************************************************************************************/
+.feed {
+  flex: 0.5;
+  border-right: 1px solid var(--twitter-border);
+  /* min-width: fit-content; */
+  overflow-y: scroll;
+}
+@media (max-width: 1280px) {
+  .feed {
+    flex: 1;
+  }
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.feed::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firebox */
+.feed {
+  -ms-overflow-style: none;
+  /* IE, Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.feed__header {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 100;
+  border: 1px solid var(--twitter-border);
+  padding: 15px 20px;
+}
+
+.feed__header > h2 {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.feed__seperator {
+  height: 10px;
+  background-color: var(--twitter-background);
+  border-bottom: 1px solid var(--twitter-border);
+}
+/*!*********************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./src/styles/components/Post.css ***!
+  \*********************************************************************************************************************************************************************************/
+.post {
+  display: flex;
+  align-items: flex-start;
+  border-bottom: 1px solid var(--twitter-border);
+  padding-bottom: 10px;
+  background-color: white;
+  transition: background-color 200ms ease-out;
+}
+
+.post:hover {
+  background-color: rgba(0, 0, 0, 0.03);
+  transition: background-color 200ms ease-out;
+}
+
+.post__body {
+  flex: 1;
+  padding: 10px;
+}
+
+.post__body > img {
+  border-radius: 20px;
+  width: 100%;
+}
+
+.post__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.post__headerDescription {
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.post__headerText > h3 {
+  margin-top: 5px;
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+
+.post__badge {
+  font-size: 14px !important;
+  color: var(--twitter-color);
+}
+
+.post__headerSpecial {
+  font-weight: 600;
+  font-size: 12px;
+  color: gray;
+}
+
+.post__avatar {
+  padding: 20px;
+}
+
+.post__likeDiv {
+  height: 50px;
+}
+
+.post__likeCount {
+  font-size: 13px;
+  vertical-align: 110%;
+  color: grey;
+}
+
+.post__likeCount__empty {
+  vertical-align: 90%;
+  margin-left: 7px;
+}
+
+.post__profileLink {
+  text-decoration: none;
+  color: black;
+}
+
+.post__profileLink:hover {
+  text-decoration: underline;
+}
+/*!***************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./src/styles/components/LikeButton.css ***!
+  \***************************************************************************************************************************************************************************************/
+.like-button {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+}
+
+.like-button__heart {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background: url("/static/images/heart.png") no-repeat;
+  background-position: 0 0;
+  cursor: pointer;
+  transition: 0.5s;
+  background-size: 1450px;
+}
+
+.like-button__heart:hover {
+  background: url("/static/images/heart_hover.png") no-repeat;
+  background-position: 0 0;
+  cursor: pointer;
+  transition: background-position 1s steps(28);
+  transition-duration: 0s;
+  background-size: 1450px;
+}
+
+.like-button__heart.is-active {
+  transition-duration: 1s;
+  background-position: -1400px 0;
+}
+/*!***************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./src/styles/components/MoreButton.css ***!
+  \***************************************************************************************************************************************************************************************/
+.moreButton__icon {
+  float: right;
+  padding: 5px;
+  border-radius: 30px;
+}
+
+.moreButton__icon:hover, .moreButton__icon.is-active {
+  background-color: var(--twitter-lightest-color);
+  color: var(--twitter-color);
+}
+
+.moreButton__icon:hover {
+  cursor: pointer;
+}
+
+.moreButton__delete {
+  color: #e0245e;
+}
+
+.moreButton__editDialog .MuiPaper-root {
+  border-radius: 16px;
+}
+
+.moreButton__editDialog__closeButton {
+  position: "absolute";
+  right: 0;
+  top: 0;
+}
+
+.moreButton__editDialog__closeButton {
+  color: var(--twitter-color) !important;
+}
+
+.moreButton__editDialog__closeButton:hover {
+  background-color: var(--twitter-lightest-color) !important;
+}
+
+.moreButton__editDialog__title {
+  padding: 8px 16px !important;
+}
+
+.moreButton__editDialog__title > h2 {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.moreButton__editDialog__content {
+  padding: 0px !important;
+}
+/*!***************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./src/styles/components/FeedTweets.css ***!
+  \***************************************************************************************************************************************************************************************/
+.feedTweets__tweetsTabPanel > .MuiBox-root {
+  padding: 0px !important;
+}
+
+.feedTweets__tab {
+  margin-right: 0px !important;
+}
+/*!****************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./src/styles/components/HeadingCard.css ***!
+  \****************************************************************************************************************************************************************************************/
+.headingCard {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.headingCard > p {
+  margin-top: 10px;
+  color: var(--twitter-grey);
+}
+/*!************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./src/styles/components/Profile.css ***!
+  \************************************************************************************************************************************************************************************/
+.profile {
+  flex: 0.5;
+  border-right: 1px solid var(--twitter-border);
+  /* min-width: fit-content; */
+  overflow-y: scroll;
+}
+@media (max-width: 1280px) {
+  .profile {
+    flex: 1;
+  }
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.profile::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firebox */
+.profile {
+  -ms-overflow-style: none;
+  /* IE, Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.profile__header {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 100;
+  border: 1px solid var(--twitter-border);
+  padding-left: 5px;
+}
+
+.profile__header h2, .profile__header h2, .profile__info > h2, .profile__editDialog__title > h2 {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.profile__header__validUser, .profile__header__invalidUser {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 20px;
+  display: inline-block;
+}
+
+.profile__header__tweetsNum {
+  color: var(--twitter-grey);
+  font-size: 13px;
+}
+
+.profile__seperator {
+  height: 10px;
+  background-color: var(--twitter-background);
+  border-bottom: 1px solid var(--twitter-border);
+}
+
+.profile__photos {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.profile__photos__bg {
+  object-fit: cover;
+  width: 100%;
+  height: 200px;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.profile__photos__photo {
+  object-fit: cover;
+  width: 132px;
+  height: 132px;
+  position: absolute;
+  top: 115px;
+  left: 15px;
+  border: 5px solid white;
+  border-radius: 50%;
+}
+
+.profile__info {
+  padding-top: 12px;
+  padding-right: 16px;
+  padding-left: 16px;
+}
+
+.profile__backIcon {
+  color: var(--twitter-color);
+  font-size: 25px !important;
+  padding: 10px;
+}
+
+.profile__backIcon:hover {
+  background-color: var(--twitter-lightest-color);
+  border-radius: 50%;
+  color: var(--twitter-color);
+  transition: color 100ms ease-out;
+  cursor: pointer;
+}
+
+/** Edit Profile or Follow/Unfollow button */
+.profile__info__editProfile {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.profile__info__editProfile > .profile__info__editProfile__outlinedBtn {
+  color: var(--twitter-color) !important;
+  border: 1px solid var(--twitter-color) !important;
+  border-radius: 20px !important;
+  font-size: 15px !important;
+  font-weight: bold !important;
+  text-transform: none !important;
+}
+
+.profile__info__editProfile > .profile__info__editProfile__outlinedBtn[name=differentUser] {
+  width: 100px;
+}
+
+.profile__info__editProfile > .profile__info__editProfile__outlinedBtn[name=differentUser]:hover {
+  background-color: var(--twitter-lightest-color) !important;
+}
+
+.profile__info__editProfile > .profile__info__editProfile__btn {
+  width: 100px;
+  color: white !important;
+  background-color: var(--twitter-color) !important;
+  border: 1px solid var(--twitter-color) !important;
+  border-radius: 20px !important;
+  font-size: 15px !important;
+  font-weight: bold !important;
+  text-transform: none !important;
+}
+
+.profile__info__editProfile > .profile__info__editProfile__btn:hover span span[name=following] {
+  display: none;
+}
+
+.profile__info__editProfile > .profile__info__editProfile__btn:hover span span[name=unfollow] {
+  display: block !important;
+}
+
+.profile__info__editProfile > .profile__info__editProfile__btn:hover {
+  background-color: var(--twitter-red) !important;
+  border: 1px solid var(--twitter-red) !important;
+}
+
+.profile__info__username {
+  color: var(--twitter-grey);
+  margin-bottom: 10px;
+}
+
+.profile__info__bio {
+  margin-bottom: 10px;
+}
+
+.profile__info__miscellaneous {
+  display: flex;
+  color: var(--twitter-grey);
+}
+
+.profile__info__miscellaneous > span {
+  display: flex;
+  margin-right: 12px;
+}
+
+.profile__info__icons {
+  margin-right: 5px;
+}
+
+.profile__info__website {
+  color: var(--twitter-color);
+  text-decoration: none;
+}
+
+.profile__info__website:hover {
+  text-decoration: underline;
+}
+
+/** Edit Dialog */
+.profile__editDialog .MuiPaper-root {
+  border-radius: 16px;
+}
+
+.profile__editDialog__closeButton {
+  position: "absolute";
+  right: 0;
+  top: 0;
+}
+
+.profile__editDialog__closeButton {
+  color: var(--twitter-color) !important;
+}
+
+.profile__editDialog__closeButton:hover {
+  background-color: var(--twitter-lightest-color) !important;
+}
+
+.profile__editDialog__title {
+  padding: 8px 16px !important;
+}
+
+.profile__editDialog__saveButton {
+  float: right;
+  color: white !important;
+  background-color: var(--twitter-color) !important;
+  border-radius: 20px !important;
+  font-size: 15px !important;
+  font-weight: bold !important;
+  text-transform: none !important;
+}
+
+.profile__editDialog__saveButton:hover {
+  background-color: var(--twitter-darker-color) !important;
+}
+
+.profile__editDialog__content > * {
+  width: 100% !important;
+  margin-top: 16px !important;
+  margin-bottom: 8px !important;
+}
+
+.profile__info__follows {
+  margin-top: 10px;
+  color: var(--twitter-grey);
+}
+
+.profile__info__follows > span > b {
+  color: black;
+}
+
+.profile__info__followingsCount {
+  margin-right: 20px;
+}
+/*!******************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./src/styles/components/ProfileTweets.css ***!
+  \******************************************************************************************************************************************************************************************/
+.profileTweets__tweetsTabPanel > .MuiBox-root {
+  padding: 0px !important;
+}
+
+.profileTweets__tab {
+  margin-right: 0px !important;
+}
+/*!************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./src/styles/components/Widgets.css ***!
+  \************************************************************************************************************************************************************************************/
+.widgets {
+  flex: 0.3;
+  overflow-y: scroll;
+}
+@media (max-width: 1280px) {
+  .widgets {
+    flex: 0 0 375px;
+  }
+}
+@media (max-width: 1004px) {
+  .widgets {
+    display: none;
+  }
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.widgets::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firebox */
+.widgets {
+  -ms-overflow-style: none;
+  /* IE, Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.widgets__header {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 100;
+  padding-top: 10px;
+  border-bottom: 1px solid white;
+}
+
+.widgets__input {
+  display: flex;
+  align-items: center;
+  background-color: var(--twitter-background);
+  padding: 10px;
+  border: 1px solid white;
+  border-radius: 20px;
+  /* margin-top: 10px; */
+  margin-left: 20px;
+  margin-bottom: 5px;
+}
+
+.widgets__input--active {
+  background-color: white;
+  border: 1px solid var(--twitter-color);
+}
+
+.widgets__input > input {
+  border: none;
+  background-color: var(--twitter-background);
+  width: 100%;
+}
+
+.widgets__input > input:focus {
+  background-color: white;
+}
+
+.widgets__searchIcon {
+  color: gray;
+}
+
+.widgets__searchIcon--active {
+  color: var(--twitter-color);
+}
+
+.widgets__widgetContainer {
+  margin-top: 15px;
+  margin-left: 20px;
+  padding: 20px;
+  background-color: #f5f8fa;
+  border-radius: 20px;
+}
+
+.widgets__widgetContainer > h2 {
+  font-size: 18px;
+  font-weight: 800;
+}
+/*!********************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./src/styles/components/App.css ***!
+  \********************************************************************************************************************************************************************************/
+* {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+  /** Global colors */
+  --twitter-color: rgb(29, 161, 242);
+  --twitter-lighter-color: rgb(142,208,249);
+  --twitter-lightest-color: rgba(29, 161, 242, 0.1);
+  --twitter-darker-color: rgb(26, 145, 218);
+  --twitter-border: rgb(235, 238, 240);
+  --twitter-background: rgb(247, 249, 250);
+  --twitter-grey: rgb(83, 100, 113);
+  --twitter-red: rgb(202, 32, 85);
+}
+
+.app {
+  display: flex;
+  height: 100vh;
+  max-width: 1300px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 10px;
+}
+
+input:focus {
+  outline: none !important;
+}
+
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoic3R5bGVzLmNzcyIsIm1hcHBpbmdzIjoiQUFBQTtFQUNFO0FBQ0Y7O0FBRUE7RUFDRTtFQUNBO0VBR0E7RUFDQTtBQURGOztBQUlBO0VBQ0U7QUFERjs7OztBQ2JBO0VBQ0k7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0FBQ0o7QUFDSTtFQVJKO0lBU1E7RUFFTjtBQUNGOztBQUNBO0FBQ0E7RUFDSTtBQUVKOztBQUNBO0FBQ0E7RUFDSTtFQUEwQjtFQUMxQjtFQUF1QjtBQUkzQjs7QUFEQTtFQUNJO0VBQ0E7RUFDQTtBQUlKOztBQUZBO0VBQ0k7RUFDQTtFQUNBO0VBQ0E7RUFDQTtBQUtKOztBQUZBO0VBQ0k7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0FBS0o7O0FBSEE7RUFDSTtBQU1KOztBQUZJO0VBREo7SUFFUTtFQU1OO0FBQ0Y7O0FBSEk7RUFESjtJQUVRO0VBT047QUFDRjs7QUFKQTtFQUNJO0FBT0o7O0FBSkE7QUFDQTtFQUNJO0FBT0o7O0FBTEE7RUFDSTtFQUNBO0VBQ0E7QUFRSjs7QUFOQTtFQUNJO0FBU0o7O0FBUEE7RUFDSTtBQVVKOztBQVJBO0VBQ0k7QUFXSjs7QUFUQTtFQUNJO0FBWUo7Ozs7QUNsR0E7RUFDSTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0FBQ0o7O0FBR0k7RUFESjtJQUVRO0lBQ0E7SUFDQTtJQUNBO0VBQ047QUFDRjs7QUFHSTtFQURKO0lBRVE7SUFDQTtJQUNBO0lBQ0E7RUFDTjtBQUNGOztBQUVBO0FBQ0E7RUFDSTtFQUNBO0VBQ0E7QUFDSjs7QUFFQTtFQUNJO0VBQ0E7RUFDQTtBQUNKO0FBQ0k7RUFMSjtJQU1RO0VBRU47QUFDRjs7QUFDQTtFQUNJO0FBRUo7Ozs7QUM5Q0E7RUFDSTtFQUNBO0VBQ0E7QUFDSjs7QUFFQTtFQUNJO0VBQ0E7QUFDSjs7QUFFQTtFQUNJO0VBQ0E7QUFDSjs7QUFFQTtFQUNJO0VBQ0E7RUFDQTtFQUNBO0FBQ0o7O0FBQ0E7RUFDSTtBQUVKOztBQUNBO0VBQ0k7RUFDQTtBQUVKOztBQUNBO0VBQ0k7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7QUFFSjs7QUFBQTtFQUNJO0FBR0o7Ozs7QUMvQ0E7RUFDSTtFQUNBO0VBQ0E7RUFDQTtBQUNKO0FBQ0k7RUFOSjtJQU9RO0VBRU47QUFDRjs7QUFDQTtBQUNBO0VBQ0k7QUFFSjs7QUFDQTtBQUNBO0VBQ0k7RUFBMEI7RUFDMUI7RUFBdUI7QUFJM0I7O0FBREE7RUFDSTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7QUFJSjs7QUFEQTtFQUNJO0VBQ0E7QUFJSjs7QUFEQTtFQUNJO0VBQ0E7RUFDQTtBQUlKOzs7O0FDM0NBO0VBQ0k7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0FBQ0o7O0FBQ0E7RUFDRTtFQUNBO0FBRUY7O0FBQ0E7RUFDSTtFQUNBO0FBRUo7O0FBQ0E7RUFDSTtFQUNBO0FBRUo7O0FBQ0E7RUFDSTtFQUNBO0VBQ0E7RUFDQTtBQUVKOztBQUNBO0VBQ0k7RUFDQTtBQUVKOztBQUNBO0VBQ0k7RUFDQTtFQUNBO0FBRUo7O0FBQ0E7RUFDSTtFQUNBO0FBRUo7O0FBQ0E7RUFDSTtFQUNBO0VBQ0E7QUFFSjs7QUFDQTtFQUNJO0FBRUo7O0FBQ0E7RUFDSTtBQUVKOztBQUNBO0VBQ0k7RUFDQTtFQUNBO0FBRUo7O0FBQ0E7RUFDSTtFQUNBO0FBRUo7O0FBQ0E7RUFDSTtFQUNBO0FBRUo7O0FBQ0E7RUFDSTtBQUVKOzs7O0FDL0VBO0VBQ0k7RUFDQTtFQUNBO0FBQ0o7O0FBRUE7RUFDSTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0FBQ0o7O0FBRUE7RUFDSTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7QUFDSjs7QUFFQTtFQUNJO0VBQ0E7QUFDSjs7OztBQzdCQTtFQUNJO0VBQ0E7RUFDQTtBQUNKOztBQUVBO0VBQ0k7RUFDQTtBQUNKOztBQUVBO0VBQ0k7QUFDSjs7QUFFQTtFQUNJO0FBQ0o7O0FBRUE7RUFDSTtBQUNKOztBQUVBO0VBQ0k7RUFDQTtFQUNBO0FBQ0o7O0FBRUE7RUFDSTtBQUNKOztBQUNBO0VBQ0k7QUFFSjs7QUFBQTtFQUNJO0FBR0o7O0FBREE7RUFDSTtFQUNBO0FBSUo7O0FBRkE7RUFDSTtBQUtKOzs7O0FDaERBO0VBQ0k7QUFDSjs7QUFFQTtFQUNJO0FBQ0o7Ozs7QUNOQTtFQUNJO0VBQ0E7QUFDSjs7QUFDQTtFQUNJO0VBQ0E7QUFFSjs7OztBQ1JBO0VBQ0k7RUFDQTtFQUNBO0VBQ0E7QUFDSjtBQUNJO0VBTko7SUFPUTtFQUVOO0FBQ0Y7O0FBQ0E7QUFDQTtFQUNJO0FBRUo7O0FBQ0E7QUFDQTtFQUNJO0VBQTBCO0VBQzFCO0VBQXVCO0FBSTNCOztBQURBO0VBQ0k7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0FBSUo7O0FBREE7RUFDSTtFQUNBO0FBSUo7O0FBREE7RUFDSTtFQUNBO0VBQ0E7RUFDQTtBQUlKOztBQURBO0VBQ0k7RUFDQTtBQUlKOztBQURBO0VBQ0k7RUFDQTtFQUNBO0FBSUo7O0FBREE7RUFDSTtFQUNBO0VBQ0E7QUFJSjs7QUFEQTtFQUNJO0VBQ0E7RUFDQTtFQUVBO0VBQ0E7RUFDQTtBQUdKOztBQUFBO0VBQ0k7RUFDQTtFQUNBO0VBRUE7RUFDQTtFQUNBO0VBQ0E7RUFDQTtBQUVKOztBQUNBO0VBQ0k7RUFDQTtFQUNBO0FBRUo7O0FBQ0E7RUFDSTtFQUNBO0VBQ0E7QUFFSjs7QUFBQTtFQUNJO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7QUFHSjs7QUFBQTtBQUNBO0VBQ0k7RUFDQTtBQUdKOztBQURBO0VBQ0k7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0FBSUo7O0FBRkE7RUFDSTtBQUtKOztBQUhBO0VBQ0k7QUFNSjs7QUFKQTtFQUNJO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7QUFPSjs7QUFMQTtFQUNJO0FBUUo7O0FBTkE7RUFDSTtBQVNKOztBQVBBO0VBQ0k7RUFDQTtBQVVKOztBQVBBO0VBQ0k7RUFDQTtBQVVKOztBQVBBO0VBQ0k7QUFVSjs7QUFQQTtFQUNJO0VBQ0E7QUFVSjs7QUFSQTtFQUNJO0VBQ0E7QUFXSjs7QUFUQTtFQUNJO0FBWUo7O0FBVkE7RUFDSTtFQUNBO0FBYUo7O0FBWEE7RUFDSTtBQWNKOztBQVhBO0FBQ0E7RUFDSTtBQWNKOztBQVhBO0VBQ0k7RUFDQTtFQUNBO0FBY0o7O0FBWEE7RUFDSTtBQWNKOztBQVpBO0VBQ0k7QUFlSjs7QUFiQTtFQUNJO0FBZ0JKOztBQWRBO0VBQ0k7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7QUFpQko7O0FBZkE7RUFDSTtBQWtCSjs7QUFoQkE7RUFDSTtFQUNBO0VBQ0E7QUFtQko7O0FBaEJBO0VBQ0k7RUFDQTtBQW1CSjs7QUFqQkE7RUFDSTtBQW9CSjs7QUFsQkE7RUFDSTtBQXFCSjs7OztBQzVPQTtFQUNJO0FBQ0o7O0FBRUE7RUFDSTtBQUNKOzs7O0FDTkE7RUFDSTtFQUNBO0FBQ0o7QUFDSTtFQUpKO0lBS1E7RUFFTjtBQUNGO0FBQUk7RUFSSjtJQVNRO0VBR047QUFDRjs7QUFBQTtBQUNBO0VBQ0k7QUFHSjs7QUFBQTtBQUNBO0VBQ0k7RUFBMEI7RUFDMUI7RUFBdUI7QUFLM0I7O0FBRkE7RUFDSTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7QUFLSjs7QUFGQTtFQUNJO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtBQUtKOztBQUhBO0VBQ0k7RUFDQTtBQU1KOztBQUhBO0VBQ0k7RUFDQTtFQUNBO0FBTUo7O0FBSkE7RUFDSTtBQU9KOztBQUpBO0VBQ0k7QUFPSjs7QUFMQTtFQUNJO0FBUUo7O0FBTEE7RUFDSTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0FBUUo7O0FBTEE7RUFDSTtFQUNBO0FBUUo7Ozs7QUNuRkE7RUFDRTtBQUNGOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0FBQ0Y7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7QUFDRjs7QUFFQTtFQUNFO0FBQ0YiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9mcm9udGVuZC8uL3NyYy9zdHlsZXMvYmFzZS9pbmRleC5jc3MiLCJ3ZWJwYWNrOi8vZnJvbnRlbmQvLi9zcmMvc3R5bGVzL2NvbXBvbmVudHMvU2lkZWJhci5jc3MiLCJ3ZWJwYWNrOi8vZnJvbnRlbmQvLi9zcmMvc3R5bGVzL2NvbXBvbmVudHMvU2lkZWJhck9wdGlvbi5jc3MiLCJ3ZWJwYWNrOi8vZnJvbnRlbmQvLi9zcmMvc3R5bGVzL2NvbXBvbmVudHMvVHdlZXRib3guY3NzIiwid2VicGFjazovL2Zyb250ZW5kLy4vc3JjL3N0eWxlcy9jb21wb25lbnRzL0ZlZWQuY3NzIiwid2VicGFjazovL2Zyb250ZW5kLy4vc3JjL3N0eWxlcy9jb21wb25lbnRzL1Bvc3QuY3NzIiwid2VicGFjazovL2Zyb250ZW5kLy4vc3JjL3N0eWxlcy9jb21wb25lbnRzL0xpa2VCdXR0b24uY3NzIiwid2VicGFjazovL2Zyb250ZW5kLy4vc3JjL3N0eWxlcy9jb21wb25lbnRzL01vcmVCdXR0b24uY3NzIiwid2VicGFjazovL2Zyb250ZW5kLy4vc3JjL3N0eWxlcy9jb21wb25lbnRzL0ZlZWRUd2VldHMuY3NzIiwid2VicGFjazovL2Zyb250ZW5kLy4vc3JjL3N0eWxlcy9jb21wb25lbnRzL0hlYWRpbmdDYXJkLmNzcyIsIndlYnBhY2s6Ly9mcm9udGVuZC8uL3NyYy9zdHlsZXMvY29tcG9uZW50cy9Qcm9maWxlLmNzcyIsIndlYnBhY2s6Ly9mcm9udGVuZC8uL3NyYy9zdHlsZXMvY29tcG9uZW50cy9Qcm9maWxlVHdlZXRzLmNzcyIsIndlYnBhY2s6Ly9mcm9udGVuZC8uL3NyYy9zdHlsZXMvY29tcG9uZW50cy9XaWRnZXRzLmNzcyIsIndlYnBhY2s6Ly9mcm9udGVuZC8uL3NyYy9zdHlsZXMvY29tcG9uZW50cy9BcHAuY3NzIl0sInNvdXJjZXNDb250ZW50IjpbIioge1xuICBtYXJnaW46IDA7XG59XG5cbmJvZHkge1xuICBtYXJnaW46IDA7XG4gIGZvbnQtZmFtaWx5OiAtYXBwbGUtc3lzdGVtLCBCbGlua01hY1N5c3RlbUZvbnQsICdTZWdvZSBVSScsICdSb2JvdG8nLCAnT3h5Z2VuJyxcbiAgICAnVWJ1bnR1JywgJ0NhbnRhcmVsbCcsICdGaXJhIFNhbnMnLCAnRHJvaWQgU2FucycsICdIZWx2ZXRpY2EgTmV1ZScsXG4gICAgc2Fucy1zZXJpZjtcbiAgLXdlYmtpdC1mb250LXNtb290aGluZzogYW50aWFsaWFzZWQ7XG4gIC1tb3otb3N4LWZvbnQtc21vb3RoaW5nOiBncmF5c2NhbGU7XG59XG5cbmNvZGUge1xuICBmb250LWZhbWlseTogc291cmNlLWNvZGUtcHJvLCBNZW5sbywgTW9uYWNvLCBDb25zb2xhcywgJ0NvdXJpZXIgTmV3JyxcbiAgICBtb25vc3BhY2U7XG59XG4iLCIuc2lkZWJhciB7XHJcbiAgICBib3JkZXItcmlnaHQ6IDFweCBzb2xpZCB2YXIoLS10d2l0dGVyLWJvcmRlcik7XHJcbiAgICBmbGV4OiAwLjI7XHJcbiAgICAvKiBtaW4td2lkdGg6IDI1MHB4OyAqL1xyXG4gICAgb3ZlcmZsb3cteTogc2Nyb2xsO1xyXG4gICAgcGFkZGluZy1sZWZ0OiAyMHB4O1xyXG4gICAgcGFkZGluZy1yaWdodDogMjBweDtcclxuXHJcbiAgICBAbWVkaWEgKG1heC13aWR0aDogMTI4MHB4KSB7XHJcbiAgICAgICAgZmxleDogMCAwIDUwcHg7XHJcbiAgICB9XHJcbn1cclxuXHJcbi8qIEhpZGUgc2Nyb2xsYmFyIGZvciBDaHJvbWUsIFNhZmFyaSBhbmQgT3BlcmEgKi9cclxuLnNpZGViYXI6Oi13ZWJraXQtc2Nyb2xsYmFyIHtcclxuICAgIGRpc3BsYXk6IG5vbmU7XHJcbn1cclxuXHJcbi8qIEhpZGUgc2Nyb2xsYmFyIGZvciBJRSwgRWRnZSBhbmQgRmlyZWJveCAqL1xyXG4uc2lkZWJhciB7XHJcbiAgICAtbXMtb3ZlcmZsb3ctc3R5bGU6IG5vbmU7IC8qIElFLCBFZGdlICovXHJcbiAgICBzY3JvbGxiYXItd2lkdGg6IG5vbmU7IC8qIEZpcmVmb3ggKi9cclxufVxyXG5cclxuLnNpZGViYXJfX3R3aXR0ZXJJY29uIHtcclxuICAgIGNvbG9yOiB2YXIoLS10d2l0dGVyLWNvbG9yKTtcclxuICAgIGZvbnQtc2l6ZTogMzBweCAhaW1wb3J0YW50O1xyXG4gICAgcGFkZGluZzogMTVweDtcclxufVxyXG4uc2lkZWJhcl9fdHdpdHRlckljb246aG92ZXJ7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS10d2l0dGVyLWxpZ2h0ZXN0LWNvbG9yKTtcclxuICAgIGJvcmRlci1yYWRpdXM6IDMwcHg7XHJcbiAgICBjb2xvcjogdmFyKC0tdHdpdHRlci1jb2xvcik7XHJcbiAgICB0cmFuc2l0aW9uOiBjb2xvciAxMDBtcyBlYXNlLW91dDtcclxuICAgIGN1cnNvcjogcG9pbnRlcjtcclxufVxyXG5cclxuLnNpZGViYXJfX3R3ZWV0IHtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IHZhcigtLXR3aXR0ZXItY29sb3IpICFpbXBvcnRhbnQ7XHJcbiAgICBib3JkZXI6IG5vbmUgIWltcG9ydGFudDtcclxuICAgIGNvbG9yOiB3aGl0ZSAhaW1wb3J0YW50O1xyXG4gICAgZm9udC13ZWlnaHQ6IDkwMCAhaW1wb3J0YW50O1xyXG4gICAgdGV4dC10cmFuc2Zvcm06IGluaGVyaXQgIWltcG9ydGFudDtcclxuICAgIGJvcmRlci1yYWRpdXM6IDMwcHggIWltcG9ydGFudDtcclxuICAgIGhlaWdodDogNTBweCAhaW1wb3J0YW50O1xyXG4gICAgbWFyZ2luLXRvcDogMjBweCAhaW1wb3J0YW50O1xyXG4gICAgYm94LXNoYWRvdzogcmdiKDAgMCAwIC8gOCUpIDBweCA4cHggMjhweDtcclxufVxyXG4uc2lkZWJhcl9fdHdlZXQ6aG92ZXIge1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tdHdpdHRlci1kYXJrZXItY29sb3IpICFpbXBvcnRhbnQ7XHJcbn1cclxuXHJcbi5zaWRlYmFyX190d2VldF9fdGV4dCB7XHJcbiAgICBAbWVkaWEgKG1heC13aWR0aDogMTI4MHB4KSB7XHJcbiAgICAgICAgZGlzcGxheTogbm9uZTtcclxuICAgIH1cclxufVxyXG4uc2lkZWJhcl9fdHdlZXRfX2ljb24ge1xyXG4gICAgQG1lZGlhIChtaW4td2lkdGg6IDEyODFweCkge1xyXG4gICAgICAgIGRpc3BsYXk6IG5vbmUgIWltcG9ydGFudDtcclxuICAgIH1cclxufVxyXG5cclxuLnNpZGViYXJfX3R3aXR0ZXJJY29uX19uYXZMaW5rIHtcclxuICAgIHRleHQtZGVjb3JhdGlvbjogbm9uZTtcclxufVxyXG5cclxuLyoqIFR3ZWV0IERpYWxvZyAqL1xyXG4uc2lkZWJhcl9fdHdlZXREaWFsb2cgLk11aVBhcGVyLXJvb3Qge1xyXG4gICAgYm9yZGVyLXJhZGl1czogMTZweDtcclxufVxyXG4uc2lkZWJhcl9fdHdlZXREaWFsb2dfX2Nsb3NlQnV0dG9uIHtcclxuICAgIHBvc2l0aW9uOiAnYWJzb2x1dGUnO1xyXG4gICAgcmlnaHQ6IDA7XHJcbiAgICB0b3A6IDA7XHJcbn1cclxuLnNpZGViYXJfX3R3ZWV0RGlhbG9nX19jbG9zZUJ1dHRvbiB7XHJcbiAgICBjb2xvcjogdmFyKC0tdHdpdHRlci1jb2xvcikgIWltcG9ydGFudDtcclxufVxyXG4uc2lkZWJhcl9fdHdlZXREaWFsb2dfX2Nsb3NlQnV0dG9uOmhvdmVyIHtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IHZhcigtLXR3aXR0ZXItbGlnaHRlc3QtY29sb3IpICFpbXBvcnRhbnQ7XHJcbn1cclxuLnNpZGViYXJfX3R3ZWV0RGlhbG9nX190aXRsZSB7XHJcbiAgICBwYWRkaW5nOiA4cHggMTZweCAhaW1wb3J0YW50O1xyXG59XHJcbi5zaWRlYmFyX190d2VldERpYWxvZ19fY29udGVudCB7XHJcbiAgICBwYWRkaW5nOiAwcHggIWltcG9ydGFudDtcclxufSIsIi5zaWRlYmFyT3B0aW9uIHtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG4gICAgY3Vyc29yOiBwb2ludGVyO1xyXG4gICAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xyXG4gICAgY29sb3I6IGJsYWNrO1xyXG59XHJcblxyXG4uc2lkZWJhck9wdGlvbjpob3ZlciB7XHJcbiAgICBAbWVkaWEgKG1pbi13aWR0aDogMTI4MXB4KSB7XHJcbiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tdHdpdHRlci1saWdodGVzdC1jb2xvcik7XHJcbiAgICAgICAgYm9yZGVyLXJhZGl1czogMzBweDtcclxuICAgICAgICBjb2xvcjogdmFyKC0tdHdpdHRlci1jb2xvcik7XHJcbiAgICAgICAgdHJhbnNpdGlvbjogY29sb3IgMTAwbXMgZWFzZS1vdXQ7XHJcbiAgICB9XHJcbn1cclxuXHJcbi5zaWRlYmFyT3B0aW9uX19pY29uOmhvdmVyIHtcclxuICAgIEBtZWRpYSAobWF4LXdpZHRoOiAxMjgwcHgpIHtcclxuICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS10d2l0dGVyLWxpZ2h0ZXN0LWNvbG9yKTtcclxuICAgICAgICBib3JkZXItcmFkaXVzOiAzMHB4O1xyXG4gICAgICAgIGNvbG9yOiB2YXIoLS10d2l0dGVyLWNvbG9yKTtcclxuICAgICAgICB0cmFuc2l0aW9uOiBjb2xvciAxMDBtcyBlYXNlLW91dDtcclxuICAgIH1cclxufVxyXG5cclxuLyoqIE1hdGVyaWFsIFVJIGljb24gKiovXHJcbi5zaWRlYmFyT3B0aW9uID4gLk11aVN2Z0ljb24tcm9vdCB7XHJcbiAgICBwYWRkaW5nOiAxNXB4O1xyXG4gICAgcGFkZGluZy1yaWdodDogMTVweDtcclxuICAgIGZvbnQtc2l6ZTogMzBweDtcclxufVxyXG5cclxuLnNpZGViYXJPcHRpb24gPiBoMiB7XHJcbiAgICBmb250LXdlaWdodDogODAwO1xyXG4gICAgZm9udC1zaXplOiAyMHB4O1xyXG4gICAgbWFyZ2luLXJpZ2h0OiAyMHB4O1xyXG5cclxuICAgIEBtZWRpYSAobWF4LXdpZHRoOiAxMjgwcHgpIHtcclxuICAgICAgICBkaXNwbGF5OiBub25lO1xyXG4gICAgfVxyXG59XHJcblxyXG4uc2lkZWJhck9wdGlvbi5hY3RpdmUge1xyXG4gICAgY29sb3I6IHZhcigtLXR3aXR0ZXItY29sb3IpO1xyXG59IiwiLnR3ZWV0Qm94IHtcclxuICAgIHBhZGRpbmctYm90dG9tOiAxMHB4O1xyXG4gICAgYm9yZGVyLWJvdHRvbTogMXB4IHNvbGlkIHZhcigtLXR3aXR0ZXItYm9yZGVyKTtcclxuICAgIHBhZGRpbmctcmlnaHQ6IDEwcHg7XHJcbn1cclxuXHJcbi50d2VldEJveCA+IGZvcm0ge1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XHJcbn1cclxuXHJcbi50d2VldEJveF9faW5wdXQge1xyXG4gICAgcGFkZGluZzogMjBweDtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbn1cclxuXHJcbi50d2VldEJveF9faW5wdXRfX3RleHRhcmVhIHtcclxuICAgIGZsZXg6IDE7XHJcbiAgICBtYXJnaW4tbGVmdDogMjBweDtcclxuICAgIGZvbnQtc2l6ZTogMjBweDtcclxuICAgIGJvcmRlcjogbm9uZTtcclxufVxyXG4udHdlZXRCb3hfX2lucHV0X190ZXh0YXJlYTpmb2N1cyB7XHJcbiAgICBvdXRsaW5lOiBub25lO1xyXG59XHJcblxyXG4udHdlZXRCb3hfX2ltYWdlSW5wdXQge1xyXG4gICAgYm9yZGVyOiBub25lO1xyXG4gICAgcGFkZGluZzogMTBweDtcclxufVxyXG5cclxuLnR3ZWV0Qm94X190d2VldEJ1dHRvbiB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS10d2l0dGVyLWNvbG9yKSAhaW1wb3J0YW50O1xyXG4gICAgYm9yZGVyOiBub25lICFpbXBvcnRhbnQ7XHJcbiAgICBjb2xvcjogd2hpdGUgIWltcG9ydGFudDtcclxuICAgIGZvbnQtd2VpZ2h0OiA5MDAgIWltcG9ydGFudDtcclxuICAgIHRleHQtdHJhbnNmb3JtOiBpbmhlcml0ICFpbXBvcnRhbnQ7XHJcbiAgICBib3JkZXItcmFkaXVzOiAzMHB4ICFpbXBvcnRhbnQ7XHJcbiAgICBoZWlnaHQ6IDQwcHggIWltcG9ydGFudDtcclxuICAgIG1hcmdpbi10b3A6IDIwcHggIWltcG9ydGFudDtcclxuICAgIG1hcmdpbi1sZWZ0OiBhdXRvICFpbXBvcnRhbnQ7XHJcbiAgICBwYWRkaW5nOiAwcHggMjBweCAhaW1wb3J0YW50O1xyXG59XHJcbi50d2VldEJveF9fdHdlZXRCdXR0b246ZGlzYWJsZWQge1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tdHdpdHRlci1saWdodGVyLWNvbG9yKSAhaW1wb3J0YW50O1xyXG59IiwiLmZlZWQge1xyXG4gICAgZmxleDogMC41O1xyXG4gICAgYm9yZGVyLXJpZ2h0OiAxcHggc29saWQgdmFyKC0tdHdpdHRlci1ib3JkZXIpO1xyXG4gICAgLyogbWluLXdpZHRoOiBmaXQtY29udGVudDsgKi9cclxuICAgIG92ZXJmbG93LXk6IHNjcm9sbDtcclxuXHJcbiAgICBAbWVkaWEgKG1heC13aWR0aDogMTI4MHB4KSB7XHJcbiAgICAgICAgZmxleDogMTtcclxuICAgIH1cclxufVxyXG5cclxuLyogSGlkZSBzY3JvbGxiYXIgZm9yIENocm9tZSwgU2FmYXJpIGFuZCBPcGVyYSAqL1xyXG4uZmVlZDo6LXdlYmtpdC1zY3JvbGxiYXIge1xyXG4gICAgZGlzcGxheTogbm9uZTtcclxufVxyXG5cclxuLyogSGlkZSBzY3JvbGxiYXIgZm9yIElFLCBFZGdlIGFuZCBGaXJlYm94ICovXHJcbi5mZWVkIHtcclxuICAgIC1tcy1vdmVyZmxvdy1zdHlsZTogbm9uZTsgLyogSUUsIEVkZ2UgKi9cclxuICAgIHNjcm9sbGJhci13aWR0aDogbm9uZTsgLyogRmlyZWZveCAqL1xyXG59XHJcblxyXG4uZmVlZF9faGVhZGVyIHtcclxuICAgIHBvc2l0aW9uOiBzdGlja3k7XHJcbiAgICB0b3A6IDA7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcclxuICAgIHotaW5kZXg6IDEwMDtcclxuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLXR3aXR0ZXItYm9yZGVyKTtcclxuICAgIHBhZGRpbmc6IDE1cHggMjBweDtcclxufVxyXG5cclxuLmZlZWRfX2hlYWRlciA+IGgyIHtcclxuICAgIGZvbnQtc2l6ZTogMjBweDtcclxuICAgIGZvbnQtd2VpZ2h0OiA4MDA7XHJcbn1cclxuXHJcbi5mZWVkX19zZXBlcmF0b3Ige1xyXG4gICAgaGVpZ2h0OiAxMHB4O1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tdHdpdHRlci1iYWNrZ3JvdW5kKTtcclxuICAgIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCB2YXIoLS10d2l0dGVyLWJvcmRlcik7XHJcbn0iLCIucG9zdCB7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAgYWxpZ24taXRlbXM6IGZsZXgtc3RhcnQ7XHJcbiAgICBib3JkZXItYm90dG9tOiAxcHggc29saWQgdmFyKC0tdHdpdHRlci1ib3JkZXIpO1xyXG4gICAgcGFkZGluZy1ib3R0b206IDEwcHg7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcclxuICAgIHRyYW5zaXRpb246IGJhY2tncm91bmQtY29sb3IgMjAwbXMgZWFzZS1vdXQ7XHJcbn1cclxuLnBvc3Q6aG92ZXIge1xyXG4gIGJhY2tncm91bmQtY29sb3I6IHJnYmEoMCwgMCwgMCwgMC4wMyk7XHJcbiAgdHJhbnNpdGlvbjogYmFja2dyb3VuZC1jb2xvciAyMDBtcyBlYXNlLW91dDtcclxufVxyXG5cclxuLnBvc3RfX2JvZHkge1xyXG4gICAgZmxleDogMTtcclxuICAgIHBhZGRpbmc6IDEwcHg7XHJcbn1cclxuXHJcbi5wb3N0X19ib2R5ID4gaW1nIHtcclxuICAgIGJvcmRlci1yYWRpdXM6IDIwcHg7XHJcbiAgICB3aWR0aDogMTAwJTtcclxufVxyXG5cclxuLnBvc3RfX2Zvb3RlciB7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xyXG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICAgIG1hcmdpbi10b3A6IDIwcHg7XHJcbn1cclxuXHJcbi5wb3N0X19oZWFkZXJEZXNjcmlwdGlvbiB7XHJcbiAgICBtYXJnaW4tYm90dG9tOiAxMHB4O1xyXG4gICAgZm9udC1zaXplOiAxNXB4O1xyXG59XHJcblxyXG4ucG9zdF9faGVhZGVyVGV4dCA+IGgzIHtcclxuICAgIG1hcmdpbi10b3A6IDVweDtcclxuICAgIGZvbnQtc2l6ZTogMTVweDtcclxuICAgIG1hcmdpbi1ib3R0b206IDVweDtcclxufVxyXG5cclxuLnBvc3RfX2JhZGdlIHtcclxuICAgIGZvbnQtc2l6ZTogMTRweCAhaW1wb3J0YW50O1xyXG4gICAgY29sb3I6IHZhcigtLXR3aXR0ZXItY29sb3IpO1xyXG59XHJcblxyXG4ucG9zdF9faGVhZGVyU3BlY2lhbCB7XHJcbiAgICBmb250LXdlaWdodDogNjAwO1xyXG4gICAgZm9udC1zaXplOiAxMnB4O1xyXG4gICAgY29sb3I6IGdyYXk7XHJcbn1cclxuXHJcbi5wb3N0X19hdmF0YXIge1xyXG4gICAgcGFkZGluZzogMjBweDtcclxufVxyXG5cclxuLnBvc3RfX2xpa2VEaXYge1xyXG4gICAgaGVpZ2h0OiA1MHB4O1xyXG59XHJcblxyXG4ucG9zdF9fbGlrZUNvdW50IHtcclxuICAgIGZvbnQtc2l6ZTogMTNweDtcclxuICAgIHZlcnRpY2FsLWFsaWduOiAxMTAlO1xyXG4gICAgY29sb3I6IGdyZXk7XHJcbn1cclxuXHJcbi5wb3N0X19saWtlQ291bnRfX2VtcHR5IHtcclxuICAgIHZlcnRpY2FsLWFsaWduOiA5MCU7XHJcbiAgICBtYXJnaW4tbGVmdDogN3B4O1xyXG59XHJcblxyXG4ucG9zdF9fcHJvZmlsZUxpbmsge1xyXG4gICAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xyXG4gICAgY29sb3I6IGJsYWNrO1xyXG59XHJcblxyXG4ucG9zdF9fcHJvZmlsZUxpbms6aG92ZXIge1xyXG4gICAgdGV4dC1kZWNvcmF0aW9uOiB1bmRlcmxpbmU7XHJcbn0iLCIubGlrZS1idXR0b24ge1xyXG4gICAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xyXG4gICAgd2lkdGg6IDUwcHg7XHJcbiAgICBoZWlnaHQ6IDUwcHg7XHJcbn1cclxuXHJcbi5saWtlLWJ1dHRvbl9faGVhcnQge1xyXG4gICAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xyXG4gICAgd2lkdGg6IDUwcHg7XHJcbiAgICBoZWlnaHQ6IDUwcHg7XHJcbiAgICBiYWNrZ3JvdW5kOiB1cmwoXCIvc3RhdGljL2ltYWdlcy9oZWFydC5wbmdcIikgbm8tcmVwZWF0O1xyXG4gICAgYmFja2dyb3VuZC1wb3NpdGlvbjogMCAwO1xyXG4gICAgY3Vyc29yOiBwb2ludGVyO1xyXG4gICAgdHJhbnNpdGlvbjogMC41cztcclxuICAgIGJhY2tncm91bmQtc2l6ZTogMTQ1MHB4O1xyXG59XHJcblxyXG4ubGlrZS1idXR0b25fX2hlYXJ0OmhvdmVyIHtcclxuICAgIGJhY2tncm91bmQ6IHVybChcIi9zdGF0aWMvaW1hZ2VzL2hlYXJ0X2hvdmVyLnBuZ1wiKSBuby1yZXBlYXQ7XHJcbiAgICBiYWNrZ3JvdW5kLXBvc2l0aW9uOiAwIDA7XHJcbiAgICBjdXJzb3I6IHBvaW50ZXI7XHJcbiAgICB0cmFuc2l0aW9uOiBiYWNrZ3JvdW5kLXBvc2l0aW9uIDFzIHN0ZXBzKDI4KTtcclxuICAgIHRyYW5zaXRpb24tZHVyYXRpb246IDBzO1xyXG4gICAgYmFja2dyb3VuZC1zaXplOiAxNDUwcHg7XHJcbn1cclxuXHJcbi5saWtlLWJ1dHRvbl9faGVhcnQuaXMtYWN0aXZlIHtcclxuICAgIHRyYW5zaXRpb24tZHVyYXRpb246IDFzO1xyXG4gICAgYmFja2dyb3VuZC1wb3NpdGlvbjogLTE0MDBweCAwO1xyXG59IiwiLm1vcmVCdXR0b25fX2ljb24ge1xyXG4gICAgZmxvYXQ6IHJpZ2h0O1xyXG4gICAgcGFkZGluZzogNXB4O1xyXG4gICAgYm9yZGVyLXJhZGl1czogMzBweDtcclxufVxyXG5cclxuLm1vcmVCdXR0b25fX2ljb246aG92ZXIsIC5tb3JlQnV0dG9uX19pY29uLmlzLWFjdGl2ZSB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS10d2l0dGVyLWxpZ2h0ZXN0LWNvbG9yKTtcclxuICAgIGNvbG9yOiB2YXIoLS10d2l0dGVyLWNvbG9yKTtcclxufVxyXG5cclxuLm1vcmVCdXR0b25fX2ljb246aG92ZXIge1xyXG4gICAgY3Vyc29yOiBwb2ludGVyO1xyXG59XHJcblxyXG4ubW9yZUJ1dHRvbl9fZGVsZXRlIHtcclxuICAgIGNvbG9yOiByZ2IoMjI0LCAzNiwgOTQpO1xyXG59XHJcblxyXG4ubW9yZUJ1dHRvbl9fZWRpdERpYWxvZyAuTXVpUGFwZXItcm9vdCB7XHJcbiAgICBib3JkZXItcmFkaXVzOiAxNnB4O1xyXG59XHJcblxyXG4ubW9yZUJ1dHRvbl9fZWRpdERpYWxvZ19fY2xvc2VCdXR0b24ge1xyXG4gICAgcG9zaXRpb246ICdhYnNvbHV0ZSc7XHJcbiAgICByaWdodDogMDtcclxuICAgIHRvcDogMDtcclxufVxyXG5cclxuLm1vcmVCdXR0b25fX2VkaXREaWFsb2dfX2Nsb3NlQnV0dG9uIHtcclxuICAgIGNvbG9yOiB2YXIoLS10d2l0dGVyLWNvbG9yKSAhaW1wb3J0YW50O1xyXG59XHJcbi5tb3JlQnV0dG9uX19lZGl0RGlhbG9nX19jbG9zZUJ1dHRvbjpob3ZlciB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS10d2l0dGVyLWxpZ2h0ZXN0LWNvbG9yKSAhaW1wb3J0YW50O1xyXG59XHJcbi5tb3JlQnV0dG9uX19lZGl0RGlhbG9nX190aXRsZSB7XHJcbiAgICBwYWRkaW5nOiA4cHggMTZweCAhaW1wb3J0YW50O1xyXG59XHJcbi5tb3JlQnV0dG9uX19lZGl0RGlhbG9nX190aXRsZSA+IGgyIHtcclxuICAgIGZvbnQtc2l6ZTogMjBweDtcclxuICAgIGZvbnQtd2VpZ2h0OiA4MDA7XHJcbn1cclxuLm1vcmVCdXR0b25fX2VkaXREaWFsb2dfX2NvbnRlbnQge1xyXG4gICAgcGFkZGluZzogMHB4ICFpbXBvcnRhbnQ7XHJcbn0iLCIuZmVlZFR3ZWV0c19fdHdlZXRzVGFiUGFuZWwgPiAuTXVpQm94LXJvb3Qge1xyXG4gICAgcGFkZGluZzogMHB4ICFpbXBvcnRhbnQ7XHJcbn1cclxuXHJcbi5mZWVkVHdlZXRzX190YWIge1xyXG4gICAgbWFyZ2luLXJpZ2h0OiAwcHggIWltcG9ydGFudDtcclxufSIsIi5oZWFkaW5nQ2FyZCB7XHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgICBwYWRkaW5nOiA0MHB4IDIwcHg7XHJcbn1cclxuLmhlYWRpbmdDYXJkID4gcCB7XHJcbiAgICBtYXJnaW4tdG9wOiAxMHB4O1xyXG4gICAgY29sb3I6IHZhcigtLXR3aXR0ZXItZ3JleSk7XHJcbn0iLCIucHJvZmlsZSB7XHJcbiAgICBmbGV4OiAwLjU7XHJcbiAgICBib3JkZXItcmlnaHQ6IDFweCBzb2xpZCB2YXIoLS10d2l0dGVyLWJvcmRlcik7XHJcbiAgICAvKiBtaW4td2lkdGg6IGZpdC1jb250ZW50OyAqL1xyXG4gICAgb3ZlcmZsb3cteTogc2Nyb2xsO1xyXG5cclxuICAgIEBtZWRpYSAobWF4LXdpZHRoOiAxMjgwcHgpIHtcclxuICAgICAgICBmbGV4OiAxO1xyXG4gICAgfVxyXG59XHJcblxyXG4vKiBIaWRlIHNjcm9sbGJhciBmb3IgQ2hyb21lLCBTYWZhcmkgYW5kIE9wZXJhICovXHJcbi5wcm9maWxlOjotd2Via2l0LXNjcm9sbGJhciB7XHJcbiAgICBkaXNwbGF5OiBub25lO1xyXG59XHJcblxyXG4vKiBIaWRlIHNjcm9sbGJhciBmb3IgSUUsIEVkZ2UgYW5kIEZpcmVib3ggKi9cclxuLnByb2ZpbGUge1xyXG4gICAgLW1zLW92ZXJmbG93LXN0eWxlOiBub25lOyAvKiBJRSwgRWRnZSAqL1xyXG4gICAgc2Nyb2xsYmFyLXdpZHRoOiBub25lOyAvKiBGaXJlZm94ICovXHJcbn1cclxuXHJcbi5wcm9maWxlX19oZWFkZXIge1xyXG4gICAgcG9zaXRpb246IHN0aWNreTtcclxuICAgIHRvcDogMDtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xyXG4gICAgei1pbmRleDogMTAwO1xyXG4gICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tdHdpdHRlci1ib3JkZXIpO1xyXG4gICAgcGFkZGluZy1sZWZ0OiA1cHg7XHJcbn1cclxuXHJcbi5wcm9maWxlX19oZWFkZXIgaDIsIC5wcm9maWxlX19oZWFkZXIgaDIsIC5wcm9maWxlX19pbmZvID4gaDIsIC5wcm9maWxlX19lZGl0RGlhbG9nX190aXRsZSA+IGgyIHtcclxuICAgIGZvbnQtc2l6ZTogMjBweDtcclxuICAgIGZvbnQtd2VpZ2h0OiA4MDA7XHJcbn1cclxuXHJcbi5wcm9maWxlX19oZWFkZXJfX3ZhbGlkVXNlciwgLnByb2ZpbGVfX2hlYWRlcl9faW52YWxpZFVzZXIge1xyXG4gICAgcGFkZGluZy10b3A6IDZweDtcclxuICAgIHBhZGRpbmctYm90dG9tOiA2cHg7XHJcbiAgICBwYWRkaW5nLWxlZnQ6IDIwcHg7XHJcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XHJcbn1cclxuXHJcbi5wcm9maWxlX19oZWFkZXJfX3R3ZWV0c051bSB7XHJcbiAgICBjb2xvcjogdmFyKC0tdHdpdHRlci1ncmV5KTtcclxuICAgIGZvbnQtc2l6ZTogMTNweDtcclxufVxyXG5cclxuLnByb2ZpbGVfX3NlcGVyYXRvciB7XHJcbiAgICBoZWlnaHQ6IDEwcHg7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS10d2l0dGVyLWJhY2tncm91bmQpO1xyXG4gICAgYm9yZGVyLWJvdHRvbTogMXB4IHNvbGlkIHZhcigtLXR3aXR0ZXItYm9yZGVyKTtcclxufVxyXG5cclxuLnByb2ZpbGVfX3Bob3RvcyB7XHJcbiAgICBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbiAgICB0b3A6IDA7XHJcbiAgICBsZWZ0OiAwO1xyXG59XHJcblxyXG4ucHJvZmlsZV9fcGhvdG9zX19iZyB7XHJcbiAgICBvYmplY3QtZml0OiBjb3ZlcjtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgaGVpZ2h0OiAyMDBweDtcclxuXHJcbiAgICBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbiAgICB0b3A6IDA7XHJcbiAgICBsZWZ0OiAwO1xyXG59XHJcblxyXG4ucHJvZmlsZV9fcGhvdG9zX19waG90byB7XHJcbiAgICBvYmplY3QtZml0OiBjb3ZlcjtcclxuICAgIHdpZHRoOiAxMzJweDtcclxuICAgIGhlaWdodDogMTMycHg7XHJcblxyXG4gICAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gICAgdG9wOiAxMTVweDtcclxuICAgIGxlZnQ6IDE1cHg7XHJcbiAgICBib3JkZXI6IDVweCBzb2xpZCB3aGl0ZTtcclxuICAgIGJvcmRlci1yYWRpdXM6IDUwJTtcclxufVxyXG5cclxuLnByb2ZpbGVfX2luZm8ge1xyXG4gICAgcGFkZGluZy10b3A6IDEycHg7XHJcbiAgICBwYWRkaW5nLXJpZ2h0OiAxNnB4O1xyXG4gICAgcGFkZGluZy1sZWZ0OiAxNnB4O1xyXG59XHJcblxyXG4ucHJvZmlsZV9fYmFja0ljb24ge1xyXG4gICAgY29sb3I6IHZhcigtLXR3aXR0ZXItY29sb3IpO1xyXG4gICAgZm9udC1zaXplOiAyNXB4ICFpbXBvcnRhbnQ7XHJcbiAgICBwYWRkaW5nOiAxMHB4O1xyXG59XHJcbi5wcm9maWxlX19iYWNrSWNvbjpob3ZlcntcclxuICAgIGJhY2tncm91bmQtY29sb3I6IHZhcigtLXR3aXR0ZXItbGlnaHRlc3QtY29sb3IpO1xyXG4gICAgYm9yZGVyLXJhZGl1czogNTAlO1xyXG4gICAgY29sb3I6IHZhcigtLXR3aXR0ZXItY29sb3IpO1xyXG4gICAgdHJhbnNpdGlvbjogY29sb3IgMTAwbXMgZWFzZS1vdXQ7XHJcbiAgICBjdXJzb3I6IHBvaW50ZXI7XHJcbn1cclxuXHJcbi8qKiBFZGl0IFByb2ZpbGUgb3IgRm9sbG93L1VuZm9sbG93IGJ1dHRvbiAqL1xyXG4ucHJvZmlsZV9faW5mb19fZWRpdFByb2ZpbGUge1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGp1c3RpZnktY29udGVudDogZmxleC1lbmQ7XHJcbn1cclxuLnByb2ZpbGVfX2luZm9fX2VkaXRQcm9maWxlID4gLnByb2ZpbGVfX2luZm9fX2VkaXRQcm9maWxlX19vdXRsaW5lZEJ0biB7XHJcbiAgICBjb2xvcjogdmFyKC0tdHdpdHRlci1jb2xvcikgIWltcG9ydGFudDtcclxuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLXR3aXR0ZXItY29sb3IpICFpbXBvcnRhbnQ7XHJcbiAgICBib3JkZXItcmFkaXVzOiAyMHB4ICFpbXBvcnRhbnQ7XHJcbiAgICBmb250LXNpemU6IDE1cHggIWltcG9ydGFudDtcclxuICAgIGZvbnQtd2VpZ2h0OiBib2xkICFpbXBvcnRhbnQ7XHJcbiAgICB0ZXh0LXRyYW5zZm9ybTogbm9uZSAhaW1wb3J0YW50O1xyXG59XHJcbi5wcm9maWxlX19pbmZvX19lZGl0UHJvZmlsZSA+IC5wcm9maWxlX19pbmZvX19lZGl0UHJvZmlsZV9fb3V0bGluZWRCdG5bbmFtZT1cImRpZmZlcmVudFVzZXJcIl0ge1xyXG4gICAgd2lkdGg6IDEwMHB4O1xyXG59XHJcbi5wcm9maWxlX19pbmZvX19lZGl0UHJvZmlsZSA+IC5wcm9maWxlX19pbmZvX19lZGl0UHJvZmlsZV9fb3V0bGluZWRCdG5bbmFtZT1cImRpZmZlcmVudFVzZXJcIl06aG92ZXIge1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tdHdpdHRlci1saWdodGVzdC1jb2xvcikgIWltcG9ydGFudDtcclxufVxyXG4ucHJvZmlsZV9faW5mb19fZWRpdFByb2ZpbGUgPiAucHJvZmlsZV9faW5mb19fZWRpdFByb2ZpbGVfX2J0biB7XHJcbiAgICB3aWR0aDogMTAwcHg7XHJcbiAgICBjb2xvcjogd2hpdGUgIWltcG9ydGFudDtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IHZhcigtLXR3aXR0ZXItY29sb3IpICFpbXBvcnRhbnQ7XHJcbiAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS10d2l0dGVyLWNvbG9yKSAhaW1wb3J0YW50O1xyXG4gICAgYm9yZGVyLXJhZGl1czogMjBweCAhaW1wb3J0YW50O1xyXG4gICAgZm9udC1zaXplOiAxNXB4ICFpbXBvcnRhbnQ7XHJcbiAgICBmb250LXdlaWdodDogYm9sZCAhaW1wb3J0YW50O1xyXG4gICAgdGV4dC10cmFuc2Zvcm06IG5vbmUgIWltcG9ydGFudDtcclxufVxyXG4ucHJvZmlsZV9faW5mb19fZWRpdFByb2ZpbGUgPiAucHJvZmlsZV9faW5mb19fZWRpdFByb2ZpbGVfX2J0bjpob3ZlciBzcGFuIHNwYW5bbmFtZT1cImZvbGxvd2luZ1wiXSB7XHJcbiAgICBkaXNwbGF5OiBub25lO1xyXG59XHJcbi5wcm9maWxlX19pbmZvX19lZGl0UHJvZmlsZSA+IC5wcm9maWxlX19pbmZvX19lZGl0UHJvZmlsZV9fYnRuOmhvdmVyIHNwYW4gc3BhbltuYW1lPVwidW5mb2xsb3dcIl0ge1xyXG4gICAgZGlzcGxheTogYmxvY2sgIWltcG9ydGFudDtcclxufVxyXG4ucHJvZmlsZV9faW5mb19fZWRpdFByb2ZpbGUgPiAucHJvZmlsZV9faW5mb19fZWRpdFByb2ZpbGVfX2J0bjpob3ZlciB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS10d2l0dGVyLXJlZCkgIWltcG9ydGFudDtcclxuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLXR3aXR0ZXItcmVkKSAhaW1wb3J0YW50O1xyXG59XHJcblxyXG4ucHJvZmlsZV9faW5mb19fdXNlcm5hbWUge1xyXG4gICAgY29sb3I6IHZhcigtLXR3aXR0ZXItZ3JleSk7XHJcbiAgICBtYXJnaW4tYm90dG9tOiAxMHB4O1xyXG59XHJcblxyXG4ucHJvZmlsZV9faW5mb19fYmlvIHtcclxuICAgIG1hcmdpbi1ib3R0b206IDEwcHg7XHJcbn1cclxuXHJcbi5wcm9maWxlX19pbmZvX19taXNjZWxsYW5lb3VzIHtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBjb2xvcjogdmFyKC0tdHdpdHRlci1ncmV5KTtcclxufVxyXG4ucHJvZmlsZV9faW5mb19fbWlzY2VsbGFuZW91cyA+IHNwYW4ge1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIG1hcmdpbi1yaWdodDogMTJweDtcclxufVxyXG4ucHJvZmlsZV9faW5mb19faWNvbnMge1xyXG4gICAgbWFyZ2luLXJpZ2h0OiA1cHg7XHJcbn1cclxuLnByb2ZpbGVfX2luZm9fX3dlYnNpdGUge1xyXG4gICAgY29sb3I6IHZhcigtLXR3aXR0ZXItY29sb3IpO1xyXG4gICAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xyXG59XHJcbi5wcm9maWxlX19pbmZvX193ZWJzaXRlOmhvdmVyIHtcclxuICAgIHRleHQtZGVjb3JhdGlvbjogdW5kZXJsaW5lO1xyXG59XHJcblxyXG4vKiogRWRpdCBEaWFsb2cgKi9cclxuLnByb2ZpbGVfX2VkaXREaWFsb2cgLk11aVBhcGVyLXJvb3Qge1xyXG4gICAgYm9yZGVyLXJhZGl1czogMTZweDtcclxufVxyXG5cclxuLnByb2ZpbGVfX2VkaXREaWFsb2dfX2Nsb3NlQnV0dG9uIHtcclxuICAgIHBvc2l0aW9uOiAnYWJzb2x1dGUnO1xyXG4gICAgcmlnaHQ6IDA7XHJcbiAgICB0b3A6IDA7XHJcbn1cclxuXHJcbi5wcm9maWxlX19lZGl0RGlhbG9nX19jbG9zZUJ1dHRvbiB7XHJcbiAgICBjb2xvcjogdmFyKC0tdHdpdHRlci1jb2xvcikgIWltcG9ydGFudDtcclxufVxyXG4ucHJvZmlsZV9fZWRpdERpYWxvZ19fY2xvc2VCdXR0b246aG92ZXIge1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tdHdpdHRlci1saWdodGVzdC1jb2xvcikgIWltcG9ydGFudDtcclxufVxyXG4ucHJvZmlsZV9fZWRpdERpYWxvZ19fdGl0bGUge1xyXG4gICAgcGFkZGluZzogOHB4IDE2cHggIWltcG9ydGFudDtcclxufVxyXG4ucHJvZmlsZV9fZWRpdERpYWxvZ19fc2F2ZUJ1dHRvbiB7XHJcbiAgICBmbG9hdDogcmlnaHQ7XHJcbiAgICBjb2xvcjogd2hpdGUgIWltcG9ydGFudDtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IHZhcigtLXR3aXR0ZXItY29sb3IpICFpbXBvcnRhbnQ7XHJcbiAgICBib3JkZXItcmFkaXVzOiAyMHB4ICFpbXBvcnRhbnQ7XHJcbiAgICBmb250LXNpemU6IDE1cHggIWltcG9ydGFudDtcclxuICAgIGZvbnQtd2VpZ2h0OiBib2xkICFpbXBvcnRhbnQ7XHJcbiAgICB0ZXh0LXRyYW5zZm9ybTogbm9uZSAhaW1wb3J0YW50O1xyXG59XHJcbi5wcm9maWxlX19lZGl0RGlhbG9nX19zYXZlQnV0dG9uOmhvdmVyIHtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IHZhcigtLXR3aXR0ZXItZGFya2VyLWNvbG9yKSAhaW1wb3J0YW50O1xyXG59XHJcbi5wcm9maWxlX19lZGl0RGlhbG9nX19jb250ZW50ID4gKiB7XHJcbiAgICB3aWR0aDogMTAwJSAhaW1wb3J0YW50O1xyXG4gICAgbWFyZ2luLXRvcDogMTZweCAhaW1wb3J0YW50O1xyXG4gICAgbWFyZ2luLWJvdHRvbTogOHB4ICFpbXBvcnRhbnQ7XHJcbn1cclxuXHJcbi5wcm9maWxlX19pbmZvX19mb2xsb3dzIHtcclxuICAgIG1hcmdpbi10b3A6IDEwcHg7XHJcbiAgICBjb2xvcjogdmFyKC0tdHdpdHRlci1ncmV5KTtcclxufVxyXG4ucHJvZmlsZV9faW5mb19fZm9sbG93cyA+IHNwYW4gPiBiIHtcclxuICAgIGNvbG9yOiBibGFjaztcclxufVxyXG4ucHJvZmlsZV9faW5mb19fZm9sbG93aW5nc0NvdW50IHtcclxuICAgIG1hcmdpbi1yaWdodDogMjBweDtcclxufSIsIi5wcm9maWxlVHdlZXRzX190d2VldHNUYWJQYW5lbCA+IC5NdWlCb3gtcm9vdCB7XHJcbiAgICBwYWRkaW5nOiAwcHggIWltcG9ydGFudDtcclxufVxyXG5cclxuLnByb2ZpbGVUd2VldHNfX3RhYiB7XHJcbiAgICBtYXJnaW4tcmlnaHQ6IDBweCAhaW1wb3J0YW50O1xyXG59IiwiLndpZGdldHMge1xyXG4gICAgZmxleDogMC4zO1xyXG4gICAgb3ZlcmZsb3cteTogc2Nyb2xsO1xyXG5cclxuICAgIEBtZWRpYSAobWF4LXdpZHRoOiAxMjgwcHgpIHtcclxuICAgICAgICBmbGV4OiAwIDAgMzc1cHg7XHJcbiAgICB9XHJcblxyXG4gICAgQG1lZGlhIChtYXgtd2lkdGg6IDEwMDRweCkge1xyXG4gICAgICAgIGRpc3BsYXk6IG5vbmU7XHJcbiAgICB9XHJcbn1cclxuXHJcbi8qIEhpZGUgc2Nyb2xsYmFyIGZvciBDaHJvbWUsIFNhZmFyaSBhbmQgT3BlcmEgKi9cclxuLndpZGdldHM6Oi13ZWJraXQtc2Nyb2xsYmFyIHtcclxuICAgIGRpc3BsYXk6IG5vbmU7XHJcbn1cclxuXHJcbi8qIEhpZGUgc2Nyb2xsYmFyIGZvciBJRSwgRWRnZSBhbmQgRmlyZWJveCAqL1xyXG4ud2lkZ2V0cyB7XHJcbiAgICAtbXMtb3ZlcmZsb3ctc3R5bGU6IG5vbmU7IC8qIElFLCBFZGdlICovXHJcbiAgICBzY3JvbGxiYXItd2lkdGg6IG5vbmU7IC8qIEZpcmVmb3ggKi9cclxufVxyXG5cclxuLndpZGdldHNfX2hlYWRlciB7XHJcbiAgICBwb3NpdGlvbjogc3RpY2t5O1xyXG4gICAgdG9wOiAwO1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XHJcbiAgICB6LWluZGV4OiAxMDA7XHJcbiAgICBwYWRkaW5nLXRvcDogMTBweDtcclxuICAgIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCB3aGl0ZTtcclxufVxyXG4gIFxyXG4ud2lkZ2V0c19faW5wdXQge1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS10d2l0dGVyLWJhY2tncm91bmQpO1xyXG4gICAgcGFkZGluZzogMTBweDtcclxuICAgIGJvcmRlcjogMXB4IHNvbGlkIHdoaXRlO1xyXG4gICAgYm9yZGVyLXJhZGl1czogMjBweDtcclxuICAgIC8qIG1hcmdpbi10b3A6IDEwcHg7ICovXHJcbiAgICBtYXJnaW4tbGVmdDogMjBweDtcclxuICAgIG1hcmdpbi1ib3R0b206IDVweDtcclxufVxyXG4ud2lkZ2V0c19faW5wdXQtLWFjdGl2ZSB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcclxuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLXR3aXR0ZXItY29sb3IpO1xyXG59XHJcbiAgXHJcbi53aWRnZXRzX19pbnB1dCA+IGlucHV0IHtcclxuICAgIGJvcmRlcjogbm9uZTtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IHZhcigtLXR3aXR0ZXItYmFja2dyb3VuZCk7XHJcbiAgICB3aWR0aDogMTAwJTtcclxufVxyXG4ud2lkZ2V0c19faW5wdXQgPiBpbnB1dDpmb2N1cyB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcclxufVxyXG4gIFxyXG4ud2lkZ2V0c19fc2VhcmNoSWNvbiB7XHJcbiAgICBjb2xvcjogZ3JheTtcclxufVxyXG4ud2lkZ2V0c19fc2VhcmNoSWNvbi0tYWN0aXZlIHtcclxuICAgIGNvbG9yOiB2YXIoLS10d2l0dGVyLWNvbG9yKTtcclxufVxyXG4gIFxyXG4ud2lkZ2V0c19fd2lkZ2V0Q29udGFpbmVyIHtcclxuICAgIG1hcmdpbi10b3A6IDE1cHg7XHJcbiAgICBtYXJnaW4tbGVmdDogMjBweDtcclxuICAgIHBhZGRpbmc6IDIwcHg7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjZjVmOGZhO1xyXG4gICAgYm9yZGVyLXJhZGl1czogMjBweDtcclxufVxyXG4gIFxyXG4ud2lkZ2V0c19fd2lkZ2V0Q29udGFpbmVyID4gaDIge1xyXG4gICAgZm9udC1zaXplOiAxOHB4O1xyXG4gICAgZm9udC13ZWlnaHQ6IDgwMDtcclxufSIsIioge1xuICBmb250LWZhbWlseTogLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCBcIlNlZ29lIFVJXCIsIFJvYm90bywgSGVsdmV0aWNhLCBBcmlhbCwgc2Fucy1zZXJpZjtcbn1cblxuYm9keSB7XG4gIC8qKiBHbG9iYWwgY29sb3JzICovXG4gIC0tdHdpdHRlci1jb2xvcjogcmdiKDI5LCAxNjEsIDI0Mik7XG4gIC0tdHdpdHRlci1saWdodGVyLWNvbG9yOiByZ2IoMTQyLDIwOCwyNDkpO1xuICAtLXR3aXR0ZXItbGlnaHRlc3QtY29sb3I6IHJnYmEoMjksIDE2MSwgMjQyLCAwLjEpO1xuICAtLXR3aXR0ZXItZGFya2VyLWNvbG9yOiByZ2IoMjYsIDE0NSwgMjE4KTtcbiAgLS10d2l0dGVyLWJvcmRlcjogcmdiKDIzNSwgMjM4LCAyNDApO1xuICAtLXR3aXR0ZXItYmFja2dyb3VuZDogcmdiKDI0NywgMjQ5LCAyNTApO1xuICAtLXR3aXR0ZXItZ3JleTogcmdiKDgzLCAxMDAsIDExMyk7XG4gIC0tdHdpdHRlci1yZWQ6IHJnYigyMDIsIDMyLCA4NSk7XG59XG5cbi5hcHAge1xuICBkaXNwbGF5OiBmbGV4O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBtYXgtd2lkdGg6IDEzMDBweDtcbiAgbWFyZ2luLWxlZnQ6IGF1dG87XG4gIG1hcmdpbi1yaWdodDogYXV0bztcbiAgcGFkZGluZzogMCAxMHB4O1xufVxuXG5pbnB1dDpmb2N1cyB7XG4gIG91dGxpbmU6IG5vbmUgIWltcG9ydGFudDtcbn0iXSwibmFtZXMiOltdLCJzb3VyY2VSb290IjoiIn0=*/
