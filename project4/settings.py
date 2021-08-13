@@ -38,22 +38,22 @@ ALLOWED_HOSTS = ['zach-reactdjango-twitterclone.herokuapp.com', '127.0.0.1', 'lo
 # Application definition
 
 INSTALLED_APPS = [
+    'network', # activate the new app
+    'rest_framework',
+    'frontend', # enable the frontend app
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'network.apps.NetworkConfig', # activate the new app
-    'rest_framework',
-    'frontend', # enable the frontend app
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
 
     'whitenoise.middleware.WhiteNoiseMiddleware', # enable whitenoise
-    
+
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
