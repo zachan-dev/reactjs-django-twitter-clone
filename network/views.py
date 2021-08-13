@@ -254,9 +254,9 @@ def login_view(request):
     if request.method == "POST":
 
         # Attempt to sign user in
-        username = request.POST["username"]
+        username_or_email = request.POST["username/email"]
         password = request.POST["password"]
-        user = authenticate(request, username=username, password=password)
+        user = authenticate(request, username=username_or_email, password=password) # username
 
         # Check if authentication successful
         if user is not None:
