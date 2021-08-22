@@ -110,7 +110,7 @@ Make sure npm and python are installed.
   ```
 * python
   ```sh
-  python --version
+  python3 --version
   ```
 
 ### Installation
@@ -123,17 +123,22 @@ Make sure npm and python are installed.
 2. Activate python virtual environment
    - Windows:
    ```sh
-   python -m venv testVenv
+   python3 -m venv testVenv
    testVenv\Scripts\activate.bat
    ```
    - Linux/MacOS:
    ```sh
-   python -m venv testVenv
+   python3 -m venv testVenv
    source testVenv/bin/activate
    ```
+3. Export postgres path
+  - MacOS:
+  ```sh
+  export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
+  ```
 3. Install PIP packages
    ```sh
-   pip install -r requirements.py
+   pip install -r requirements.txt
    ```
 4. Install NPM packages
    ```sh
@@ -151,13 +156,14 @@ Make sure npm and python are installed.
    ```
 6. Create a top-level .env file
    ```
+   cd ..
+    touch .env
     SECRET_KEY=<your_secret_key>
     DEBUG=True
     DATABASE_URL= // leave blank
    ```
 7. Django Init
    ```sh
-   cd ..
    python manage.py makemigrations network
    python manage.py makemigrations
    python manage.py migrate
