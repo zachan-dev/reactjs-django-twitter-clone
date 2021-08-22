@@ -155,9 +155,12 @@ Make sure npm and python are installed.
    npm run build
    ```
 6. Create a top-level .env file
-   ```
+   ```sh
    cd ..
-    touch .env
+   touch .env
+   ```
+   ```sh
+   // .env
     SECRET_KEY=<your_secret_key>
     DEBUG=True
     DATABASE_URL= // leave blank
