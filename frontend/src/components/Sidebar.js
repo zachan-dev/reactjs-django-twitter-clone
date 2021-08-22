@@ -83,3 +83,4 @@ function Sidebar({ user }) {
 };
 
 export default Sidebar;
+
