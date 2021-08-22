@@ -115,14 +115,21 @@ Make sure npm and python are installed.
 
 ### Installation
 
-1. Clone the repo
+1. Clone the repo and navigate to directory
    ```sh
    git clone https://github.com/zachan-dev/reactjs-django-twitter-clone.git
+   cd reactjs-django-twitter-clone
    ```
 2. Activate python virtual environment
+   Windows:
    ```sh
    python -m venv testVenv
-   .\\testVenv\\Scripts\\activate.bat
+   testVenv\Scripts\activate.bat
+   ```
+   Linux/MacOS:
+   ```sh
+   python -m venv testVenv
+   source testVenv/bin/activate
    ```
 3. Install PIP packages
    ```sh
@@ -142,14 +149,21 @@ Make sure npm and python are installed.
    ```sh
    npm run build
    ```
-6. Django Init
+6. Create a top-level .env file
+   ```
+   #BASIC CONFIG
+  SECRET_KEY=
+  DEBUG=True
+  DATABASE_URL=
+   ```
+7. Django Init
    ```sh
    cd ..
    python manage.py makemigrations network
    python manage.py makemigrations
    python manage.py migrate
    python manage.py createsuperuser
-7. Run Django Server
+8. Run Django Server
    ```sh
    python manage.py runserver
    ```
