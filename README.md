@@ -131,11 +131,11 @@ Make sure npm and python are installed.
    python3 -m venv testVenv
    source testVenv/bin/activate
    ```
-3. Export postgres path
-  - MacOS:
-  ```sh
-  export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
-  ```
+   Export postgres path
+    - MacOS:
+    ```sh
+    export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
+    ```
 3. Install PIP packages
    ```sh
    pip install -r requirements.txt
