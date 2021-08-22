@@ -151,10 +151,9 @@ Make sure npm and python are installed.
    ```
 6. Create a top-level .env file
    ```
-   #BASIC CONFIG
-  SECRET_KEY=
-  DEBUG=True
-  DATABASE_URL=
+    SECRET_KEY=<your_secret_key>
+    DEBUG=True
+    DATABASE_URL= // leave blank
    ```
 7. Django Init
    ```sh
