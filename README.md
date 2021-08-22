@@ -121,12 +121,12 @@ Make sure npm and python are installed.
    cd reactjs-django-twitter-clone
    ```
 2. Activate python virtual environment
-   Windows:
+   - Windows:
    ```sh
    python -m venv testVenv
    testVenv\Scripts\activate.bat
    ```
-   Linux/MacOS:
+   - Linux/MacOS:
    ```sh
    python -m venv testVenv
    source testVenv/bin/activate
