@@ -110,7 +110,7 @@ Make sure npm and python are installed.
   ```
 * python
   ```sh
-  python --version
+  python3 --version
   ```
 * [Postgres.app](https://https://postgresapp.com/)
   * Only for Mac
@@ -118,18 +118,30 @@ Make sure npm and python are installed.
 
 ### Installation
 
-1. Clone the repo
+1. Clone the repo and navigate to directory
    ```sh
    git clone https://github.com/zachan-dev/reactjs-django-twitter-clone.git
+   cd reactjs-django-twitter-clone
    ```
 2. Activate python virtual environment
+   - Windows:
    ```sh
-   python -m venv testVenv
-   .\\testVenv\\Scripts\\activate.bat
+   python3 -m venv testVenv
+   testVenv\Scripts\activate.bat
    ```
+   - Linux/MacOS:
+   ```sh
+   python3 -m venv testVenv
+   source testVenv/bin/activate
+   ```
+   Export postgres path
+    - MacOS:
+    ```sh
+    export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
+    ```
 3. Install PIP packages
    ```sh
-   pip install -r requirements.py
+   pip install -r requirements.txt
    ```
 4. Install NPM packages
    ```sh
@@ -145,22 +157,27 @@ Make sure npm and python are installed.
    ```sh
    npm run build
    ```
-6. Make a `.env` file in the current directory
+  
+6. Create a top-level `.env` file
+   ```sh
+   cd ..
+   touch .env
+   ```
    - With Following Contents:
       ```raw
-      SECRET_KEY=WhatEverYouLike
+      SECRET_KEY=<your_secret_key>
       DEBUG=True
       DATABASE_URL=
       ```
       (Simply leave DATABASE_URL as empty.)
-   
+      
 7. Django Init
    ```sh
-   cd ..
    python manage.py makemigrations network
    python manage.py makemigrations
    python manage.py migrate
    python manage.py createsuperuser
+
 8. Run Django Server
    ```sh
    python manage.py runserver

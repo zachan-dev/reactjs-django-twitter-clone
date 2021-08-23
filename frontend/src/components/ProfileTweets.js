@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import SwipeableViews from 'react-swipeable-views';
 import { makeStyles, withStyles, useTheme } from '@material-ui/core/styles';
@@ -10,6 +10,8 @@ import Post from './Post';
 import FlipMove from 'react-flip-move';
 import '../styles/components/ProfileTweets.css'
 import HeadingCard from './HeadingCard';
+import { NavLink, useParams } from 'react-router-dom';
+
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -108,6 +110,17 @@ export default function ProfileTweets({ currentUser, profileUser, loadUserProfil
   const classes = useStyles();
   const theme = useTheme();
   const [value, setValue] = useState(0);
+  let { tab } = useParams();
+
+  useEffect(() => {
+    if (tab === 'media') {
+      setValue(1)
+    } else if (tab === 'likes') {
+      setValue(2)
+    } else {
+      setValue(0)
+    }
+  })
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -115,18 +128,18 @@ export default function ProfileTweets({ currentUser, profileUser, loadUserProfil
 
   const handleChangeIndex = (index) => {
     setValue(index);
-  };
-
+  }; 
+  
   return (
     <div className={classes.root}>
         <AntTabs
           value={value}
           onChange={handleChange}
           variant="fullWidth"
-        >
-          <AntTab label="Tweets" {...a11yProps(0)} />
-          <AntTab label="Media" {...a11yProps(1)} />
-          <AntTab label="Likes" {...a11yProps(2)} />
+        > 
+          <NavLink to={`/profile/${currentUser.username}/tweets`}><AntTab label="Tweets" {...a11yProps(0)}></AntTab></NavLink>
+          <NavLink to={`/profile/${currentUser.username}/media`}><AntTab label="Media" {...a11yProps(1)}></AntTab></NavLink>
+          <NavLink to={`/profile/${currentUser.username}/likes`}><AntTab label="Likes" {...a11yProps(2)}></AntTab></NavLink>
         </AntTabs>
         <SwipeableViews
             axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
@@ -220,3 +233,4 @@ export default function ProfileTweets({ currentUser, profileUser, loadUserProfil
     </div>
   );
 }
+
