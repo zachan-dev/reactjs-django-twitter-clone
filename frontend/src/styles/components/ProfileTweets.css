@@ -5,3 +5,10 @@
 .profileTweets__tab {
     margin-right: 0px !important;
 }
+
+.profileTweets__tab__link {
+    text-decoration: none;
+    display: inline-flex;
+    flex: 1;
+    color: black;
+}

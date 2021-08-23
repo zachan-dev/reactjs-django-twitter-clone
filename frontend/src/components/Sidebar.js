@@ -52,7 +52,7 @@ function Sidebar({ user }) {
             <SidebarOption Icon={MailOutlineIcon} text="Messages" to="/messages" end={false} />
             <SidebarOption Icon={BookmarkBorderIcon} text="Bookmarks" to="/bookmarks" end={false} />
             <SidebarOption Icon={ListAltIcon} text="Lists" to="/lists" end={false} />
-            <SidebarOption Icon={PermIdentityIcon} text="Profile" to={`/profile/${user.username}/tweets`} end={false} />
+            <SidebarOption Icon={PermIdentityIcon} text="Profile" to={`/profile/${user.username}`} end={false} />
             <SidebarOption Icon={MoreHorizIcon} text="More" to="/more" end={false} />
 
             {/* Button -> Tweet */}

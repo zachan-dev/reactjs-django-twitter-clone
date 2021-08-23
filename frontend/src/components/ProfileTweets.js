@@ -104,7 +104,7 @@ const AntTab = withStyles((theme) => ({
       },
     },
     selected: {},
-  }))((props) => <Tab className="profileTweets__tab" {...props} />);
+  }))((props) => <NavLink className="profileTweets__tab__link" to={props.to}><Tab className="profileTweets__tab" {...props} /></NavLink>);
 
 export default function ProfileTweets({ currentUser, profileUser, loadUserProfile }) {
   const classes = useStyles();
@@ -137,9 +137,9 @@ export default function ProfileTweets({ currentUser, profileUser, loadUserProfil
           onChange={handleChange}
           variant="fullWidth"
         > 
-          <NavLink to={`/profile/${currentUser.username}/tweets`}><AntTab label="Tweets" {...a11yProps(0)}></AntTab></NavLink>
-          <NavLink to={`/profile/${currentUser.username}/media`}><AntTab label="Media" {...a11yProps(1)}></AntTab></NavLink>
-          <NavLink to={`/profile/${currentUser.username}/likes`}><AntTab label="Likes" {...a11yProps(2)}></AntTab></NavLink>
+          <AntTab to={`/profile/${currentUser.username}/`} label="Tweets" {...a11yProps(0)}></AntTab>
+          <AntTab to={`/profile/${currentUser.username}/media`} label="Media" {...a11yProps(1)}></AntTab>
+          <AntTab to={`/profile/${currentUser.username}/likes`} label="Likes" {...a11yProps(2)}></AntTab>
         </AntTabs>
         <SwipeableViews
             axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
