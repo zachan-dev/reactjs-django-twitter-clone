@@ -32,7 +32,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/zachan-dev/reactjs-django-twitter-clone">
+  <a href="https://zach-reactdjango-twitterclone.herokuapp.com/">
     <img src="README_contents/images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
@@ -44,7 +44,7 @@
     <a href="https://github.com/zachan-dev/reactjs-django-twitter-clone"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/zachan-dev/reactjs-django-twitter-clone">View Demo</a>
+    <a href="https://zach-reactdjango-twitterclone.herokuapp.com/">View Deployment</a>
     ·
     <a href="https://github.com/zachan-dev/reactjs-django-twitter-clone/issues">Report Bug</a>
     ·
@@ -112,6 +112,9 @@ Make sure npm and python are installed.
   ```sh
   python --version
   ```
+* [Postgres.app](https://https://postgresapp.com/)
+  * Only for Mac
+  
 
 ### Installation
 
@@ -142,14 +145,23 @@ Make sure npm and python are installed.
    ```sh
    npm run build
    ```
-6. Django Init
+6. Make a `.env` file in the current directory
+   - With Following Contents:
+      ```raw
+      SECRET_KEY=WhatEverYouLike
+      DEBUG=True
+      DATABASE_URL=
+      ```
+      (Simply leave DATABASE_URL as empty.)
+   
+7. Django Init
    ```sh
    cd ..
    python manage.py makemigrations network
    python manage.py makemigrations
    python manage.py migrate
    python manage.py createsuperuser
-7. Run Django Server
+8. Run Django Server
    ```sh
    python manage.py runserver
    ```
