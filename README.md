@@ -112,7 +112,7 @@ Make sure npm and python are installed.
   ```sh
   python3 --version
   ```
-* [Postgres.app](https://https://postgresapp.com/)
+* [Postgres.app](https://postgresapp.com/)
   * Only for Mac
   
 
