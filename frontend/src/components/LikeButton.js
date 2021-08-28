@@ -1,7 +1,11 @@
+// React Imports
 import React from 'react';
-import '../styles/components/LikeButton.css'
-import APIHelper from '../helpers/api'
+// Custom Components
 import Tooltip from '@material-ui/core/Tooltip';
+// Custom Helpers
+import APIHelper from '../helpers/api'
+// Custom Styling
+import '../styles/components/LikeButton.css'
 
 function LikeButton({tweet, liked, fetchPosts}) {
     const toggleLike = () => {

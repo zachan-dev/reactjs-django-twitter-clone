@@ -1,31 +1,38 @@
+// React Imports
 import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import '../styles/components/Profile.css';
-import APIHelper from '../helpers/api';
-import MathHelper from '../helpers/math';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import Button from '@material-ui/core/Button';
+// Internal Imports
 import moment from 'moment-timezone';
-import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
-import LinkIcon from '@material-ui/icons/Link';
-import DateRangeIcon from '@material-ui/icons/DateRange';
+import MomentUtils from '@date-io/moment';
+// Material UI Imports
+//// Core
+import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import CloseIcon from '@material-ui/icons/Close';
-// Dialog
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogTitle from '@material-ui/core/DialogTitle';
-// Fields
 import TextField from '@material-ui/core/TextField';
-import { MuiPickersUtilsProvider, KeyboardDatePicker, } from '@material-ui/pickers';
-import MomentUtils from '@date-io/moment';
 import { withStyles } from "@material-ui/core/styles";
-// Tab
+//// Pickers
+import MuiPickersUtilsProvider from '@material-ui/pickers/MuiPickersUtilsProvider';
+import { KeyboardDatePicker } from '@material-ui/pickers'
+//// Icons
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
+import LinkIcon from '@material-ui/icons/Link';
+import DateRangeIcon from '@material-ui/icons/DateRange';
+import CloseIcon from '@material-ui/icons/Close';
+// Custom Components
 import ProfileTweets from './ProfileTweets'
 import HeadingCard from './HeadingCard'
+// Custom Helpers
+import APIHelper from '../helpers/api';
+import MathHelper from '../helpers/math';
+// Custom Styling
+import '../styles/components/Profile.css';
 
 function Profile({ user, classes }) {
     const navigate = useNavigate();

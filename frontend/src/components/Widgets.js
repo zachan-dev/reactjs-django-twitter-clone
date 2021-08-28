@@ -1,11 +1,16 @@
+// React Imports
 import React, { useState } from 'react';
-import '../styles/components/Widgets.css';
+// Components Imports
 import {
     TwitterTimelineEmbed,
     TwitterShareButton,
     TwitterTweetEmbed
 } from 'react-twitter-embed';
+// Material UI Imports
+//// Icons
 import SearchIcon from '@material-ui/icons/Search';
+// Custom Styling
+import '../styles/components/Widgets.css';
 
 function Widgets() {
     const [focus, setFocus] = useState(false);
@@ -35,7 +40,7 @@ function Widgets() {
                     options={{ height: 400 }}
                 />
                 <TwitterShareButton
-                    url={"https://twitter-clone-cea24.web.app/"}
+                    url={"https://zach-reactdjango-twitterclone.herokuapp.com/"}
                     options={{ text: "Your Twitter Clone is purely awesome!\n", via: "ZachChan10" }}
                 />
             </div>

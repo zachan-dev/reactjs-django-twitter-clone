@@ -1,8 +1,14 @@
+// React Imports
 import React, { useState } from 'react';
-import '../styles/components/Tweetbox.css';
-import { Avatar, Button } from '@material-ui/core';
+// Components Imports
 import TextareaAutosize from 'react-textarea-autosize';
+// Material UI Imports
+import Avatar from '@material-ui/core/Avatar';
+import Button from '@material-ui/core/Button';
+// Custom Helpers
 import APIHelper from '../helpers/api';
+// Custom Styling
+import '../styles/components/Tweetbox.css';
 
 function Tweetbox({ isEditMode, avatar, fetchPosts, initText='', initImage='', tweetID=null, handleEditModalClose=null }) {
     const [tweetMessage, setTweetMessage] = useState(initText);

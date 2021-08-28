@@ -1,29 +1,33 @@
+// React Imports
 import React, { useState } from 'react';
-import '../styles/components/MoreButton.css'
-import APIHelper from '../helpers/api'
-// Core
+// Material UI Imports
+//// Core
 import { withStyles } from '@material-ui/core/styles';
 import Tooltip from '@material-ui/core/Tooltip';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import IconButton from '@material-ui/core/IconButton';
-// Icons
-import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import DeleteForeverOutlinedIcon from '@material-ui/icons/DeleteForeverOutlined';
-import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
-import CloseIcon from '@material-ui/icons/Close';
-import PersonAddOutlinedIcon from '@material-ui/icons/PersonAddOutlined';
-import PersonAddDisabledOutlinedIcon from '@material-ui/icons/PersonAddDisabledOutlined';
-// Dialog
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+//// Icons
+import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
+import DeleteForeverOutlinedIcon from '@material-ui/icons/DeleteForeverOutlined';
+import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
+import CloseIcon from '@material-ui/icons/Close';
+import PersonAddOutlinedIcon from '@material-ui/icons/PersonAddOutlined';
+import PersonAddDisabledOutlinedIcon from '@material-ui/icons/PersonAddDisabledOutlined';
+// Custom Components
 import Tweetbox from './Tweetbox';
+// Custom Helpers
+import APIHelper from '../helpers/api'
+// Custom Styling
+import '../styles/components/MoreButton.css'
 
 const StyledMenu = withStyles({
     paper: {

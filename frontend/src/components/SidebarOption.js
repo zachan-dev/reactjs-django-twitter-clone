@@ -1,5 +1,7 @@
+// React Imports
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+// Custom Styling
 import '../styles/components/SidebarOption.css';
 
 // onHover turn Blue

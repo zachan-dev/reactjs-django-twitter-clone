@@ -1,11 +1,16 @@
+// React Imports
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+// Custom Components
 import Sidebar from './Sidebar';
 import Feed from './Feed';
 import Profile from './Profile';
 import Widgets from './Widgets';
-import '../styles/components/App.css';
+// Custom Helpers
 import APIHelper from '../helpers/api'
+// Custom Styling
+import '../styles/components/App.css';
+
 
 function App() {
   const [user, setUser] = useState({});

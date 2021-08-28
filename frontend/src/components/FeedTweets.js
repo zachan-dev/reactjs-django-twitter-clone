@@ -1,15 +1,20 @@
+// React Imports
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+// Components Imports
 import SwipeableViews from 'react-swipeable-views';
+import FlipMove from 'react-flip-move';
+// Material UI Imports
 import { makeStyles, withStyles, useTheme } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+// Custom Components
 import Post from './Post';
-import FlipMove from 'react-flip-move';
-import '../styles/components/FeedTweets.css'
 import HeadingCard from './HeadingCard';
+// Custom Styling
+import '../styles/components/FeedTweets.css'
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;

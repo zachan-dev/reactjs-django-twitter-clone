@@ -1,9 +1,14 @@
-// rfce: useful snippet
+// React Imports
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import '../styles/components/Sidebar.css';
-import SidebarOption from './SidebarOption';
-/** Icons */
+// Material UI Imports
+//// Cores
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import Dialog from '@material-ui/core/Dialog';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogTitle from '@material-ui/core/DialogTitle';
+//// Icons
 import TwitterIcon from '@material-ui/icons/Twitter';
 import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
 import SearchIcon from '@material-ui/icons/Search';
@@ -15,13 +20,11 @@ import PermIdentityIcon from '@material-ui/icons/PermIdentity';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import PostAddIcon from '@material-ui/icons/PostAdd';
 import CloseIcon from '@material-ui/icons/Close';
-/** Button */
-import { Button, IconButton } from '@material-ui/core';
-// Dialog
-import Dialog from '@material-ui/core/Dialog';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogTitle from '@material-ui/core/DialogTitle';
+// Custom Components
+import SidebarOption from './SidebarOption';
 import Tweetbox from './Tweetbox';
+// Custom Styling
+import '../styles/components/Sidebar.css';
 
 function Sidebar({ user }) {
     const [tweetModalOpen, setTweetModalOpen] = useState(false);

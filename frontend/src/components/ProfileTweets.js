@@ -1,16 +1,21 @@
+// React Imports
 import React, { useEffect, useState } from 'react';
+import { NavLink, useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
+// Components Imports
 import SwipeableViews from 'react-swipeable-views';
+import FlipMove from 'react-flip-move';
+// Material UI Imports
 import { makeStyles, withStyles, useTheme } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+// Custom Components
 import Post from './Post';
-import FlipMove from 'react-flip-move';
-import '../styles/components/ProfileTweets.css'
 import HeadingCard from './HeadingCard';
-import { NavLink, useParams } from 'react-router-dom';
+// Custom Styling
+import '../styles/components/ProfileTweets.css'
 
 
 function TabPanel(props) {
@@ -137,9 +142,9 @@ export default function ProfileTweets({ currentUser, profileUser, loadUserProfil
           onChange={handleChange}
           variant="fullWidth"
         > 
-          <AntTab to={`/profile/${currentUser.username}/`} label="Tweets" {...a11yProps(0)}></AntTab>
-          <AntTab to={`/profile/${currentUser.username}/media`} label="Media" {...a11yProps(1)}></AntTab>
-          <AntTab to={`/profile/${currentUser.username}/likes`} label="Likes" {...a11yProps(2)}></AntTab>
+          <AntTab to={`/profile/${profileUser.username}/`} label="Tweets" {...a11yProps(0)}></AntTab>
+          <AntTab to={`/profile/${profileUser.username}/media`} label="Media" {...a11yProps(1)}></AntTab>
+          <AntTab to={`/profile/${profileUser.username}/likes`} label="Likes" {...a11yProps(2)}></AntTab>
         </AntTabs>
         <SwipeableViews
             axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}

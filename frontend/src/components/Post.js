@@ -1,16 +1,22 @@
-import { Avatar } from '@material-ui/core';
+// React Imports
 import React, { forwardRef, useState } from 'react'
-import '../styles/components/Post.css';
-import LikeButton from './LikeButton';
-import MoreButton from './MoreButton';
+import { Link } from 'react-router-dom'
+// Internal Imports
+import moment from 'moment-timezone';
+// Material UI Imports
+import Avatar from '@material-ui/core/Avatar';
 import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
 import ChatBubbleOutlineIcon from "@material-ui/icons/ChatBubbleOutline";
 import RepeatIcon from "@material-ui/icons/Repeat";
 import PublishIcon from "@material-ui/icons/Publish";
-import moment from 'moment-timezone';
 import Tooltip from '@material-ui/core/Tooltip';
+// Custom Components
+import LikeButton from './LikeButton';
+import MoreButton from './MoreButton';
+// Custom Helpers
 import MathHelper from '../helpers/math'
-import { Link } from 'react-router-dom'
+// Custom Styling
+import '../styles/components/Post.css';
 
 const Post = forwardRef((
     { 

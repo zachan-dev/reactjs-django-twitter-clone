@@ -1,4 +1,6 @@
+// React Imports
 import React from 'react';
+// Custom Styling
 import '../styles/components/HeadingCard.css'
 
 const HeadingCard = ({ line_1, line_2 }) => {

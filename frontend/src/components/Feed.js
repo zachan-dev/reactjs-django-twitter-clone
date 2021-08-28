@@ -1,8 +1,12 @@
+// React Imports
 import React, { useState, useEffect } from 'react';
+// Custom Components
 import Tweetbox from './Tweetbox';
-import '../styles/components/Feed.css';
-import APIHelper from '../helpers/api';
 import FeedTweets from './FeedTweets';
+// Custom Helpers
+import APIHelper from '../helpers/api';
+// Custom Styling
+import '../styles/components/Feed.css';
 
 function Feed({ user }) {
     const [posts, setPosts] = useState([]);
