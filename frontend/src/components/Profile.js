@@ -17,8 +17,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import TextField from '@material-ui/core/TextField';
 import { withStyles } from "@material-ui/core/styles";
 //// Pickers
-import MuiPickersUtilsProvider from '@material-ui/pickers/MuiPickersUtilsProvider';
-import { KeyboardDatePicker } from '@material-ui/pickers'
+import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers'
 //// Icons
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
