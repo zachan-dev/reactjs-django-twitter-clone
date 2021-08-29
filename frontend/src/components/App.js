@@ -29,7 +29,8 @@ function App() {
 
       {/* Routes (middle) */}
       <Routes>
-        <Route path="/" element={<Feed user={user}/>} /> 
+        <Route path="/" element={<Feed user={user}/>} />
+        <Route path="/following" element={<Feed user={user}/>} /> 
         <Route path="/:tab" element={<Feed user={user}/>} /> 
         <Route path="/profile/:username/" element={<Profile user={user}/>} /> {/* Profile/username */}
         <Route path="/profile/:username/:tab" element={<Profile user={user}/>} /> 

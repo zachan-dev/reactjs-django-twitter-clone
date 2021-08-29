@@ -1,5 +1,5 @@
 // React Imports
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 // Components Imports
 import SwipeableViews from 'react-swipeable-views';
@@ -15,6 +15,8 @@ import Post from './Post';
 import HeadingCard from './HeadingCard';
 // Custom Styling
 import '../styles/components/FeedTweets.css'
+// React Router
+import { NavLink } from "react-router-dom"
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -106,13 +108,19 @@ const AntTab = withStyles((theme) => ({
       },
     },
     selected: {},
-  }))((props) => <Tab className="feedTweets__tab" {...props} />);
+  }))((props) => <NavLink className="profileTweets__tab__link" to={props.to}><Tab className="feedTweets__tab" {...props} /></NavLink>);
 
 export default function FeedTweets({ user, tweets, fetchPosts }) {
   const classes = useStyles();
   const theme = useTheme();
   const [value, setValue] = useState(0);
   const tweetsFollowing = tweets.filter(post => post.is_following);
+
+  useEffect(() => {
+    if(document.location.href.match(/following/gi)) {
+      setValue(1)
+    }
+  })
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -129,8 +137,8 @@ export default function FeedTweets({ user, tweets, fetchPosts }) {
           onChange={handleChange}
           variant="fullWidth"
         >
-          <AntTab label="All" {...a11yProps(0)} />
-          <AntTab label="Following" {...a11yProps(1)} />
+          <AntTab to="/" label="All" {...a11yProps(0)} />
+          <AntTab to="/following" label="Following" {...a11yProps(1)} />
         </AntTabs>
         <SwipeableViews
             axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
