@@ -13,6 +13,7 @@ import Box from '@material-ui/core/Box';
 // Custom Components
 import Post from './Post';
 import HeadingCard from './HeadingCard';
+import TweetPagination from './TweetPagination';
 // Custom Styling
 import '../styles/components/FeedTweets.css'
 
@@ -108,11 +109,14 @@ const AntTab = withStyles((theme) => ({
     selected: {},
   }))((props) => <Tab className="feedTweets__tab" {...props} />);
 
-export default function FeedTweets({ user, tweets, fetchPosts }) {
+export default function FeedTweets({ 
+  user, tweets, tweetsFollowing, fetchPosts, 
+  pageCount, currentPage, setCurrentPage, 
+  followingPageCount, currentFollowingPage, setCurrentFollowingPage 
+}) {
   const classes = useStyles();
   const theme = useTheme();
   const [value, setValue] = useState(0);
-  const tweetsFollowing = tweets.filter(post => post.is_following);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -163,6 +167,12 @@ export default function FeedTweets({ user, tweets, fetchPosts }) {
                   <HeadingCard line_1={`Nobody has Tweeted anything yet`} line_2="When they do, their tweets will show up here."/>
                   : null
                 }
+                {/* Pagination */}
+                <TweetPagination 
+                    pageCount={pageCount}
+                    currentPage={currentPage}
+                    setCurrentPage={setCurrentPage}
+                />
             </TabPanel>
             <TabPanel className="feedTweets__tweetsTabPanel" value={value} index={1} dir={theme.direction}>
                 {/* Tweets by users following */}
@@ -190,6 +200,12 @@ export default function FeedTweets({ user, tweets, fetchPosts }) {
                   <HeadingCard line_1={`Users you follow haven't Tweeted anything yet`} line_2="When they do, their tweets will show up here."/>
                   : null
                 }
+                {/* Pagination */}
+                <TweetPagination 
+                    pageCount={followingPageCount}
+                    currentPage={currentFollowingPage}
+                    setCurrentPage={setCurrentFollowingPage}
+                />
             </TabPanel>
         </SwipeableViews>
     </div>

@@ -42,6 +42,14 @@ function Profile({ user, classes }) {
     const [unfollowModalOpen, setUnfollowModalOpen] = useState(false);
     const [isFollowing, setIsFollowing] = useState(false);
 
+    /** Pagination */
+    const [tweets_currentPage, tweets_setCurrentPage] = useState(0);
+    const [media_currentPage, media_setCurrentPage] = useState(0);
+    const [likes_currentPage, likes_setCurrentPage] = useState(0);
+    useEffect(() => {
+        loadUserProfile();
+    }, [tweets_currentPage, media_currentPage, likes_currentPage]);
+
     const loadUserFollowed = (userId) => {
         APIHelper.isUserFollowedByMe(userId)
             .then(data => {
@@ -53,17 +61,20 @@ function Profile({ user, classes }) {
     };
 
     const loadUserProfile = () => {
-        APIHelper.getUserInfoByUsername(username)
-            .then(data => {
-                if (APIHelper.type(data) === "Object" && data.error) {
-                    console.error(data.error);
-                }
-                setProfileUser(data);
-                if (profileUser.birth_date) {
-                    setEditBirthDate(moment(profileUser.birth_date));
-                }
-                loadUserFollowed(profileUser.id);
-            });
+        APIHelper.getUserInfoByUsername(username, {
+            tweets_page: tweets_currentPage + 1, 
+            media_page: media_currentPage + 1, 
+            likes_page: likes_currentPage + 1
+        }).then(data => {
+            if (APIHelper.type(data) === "Object" && data.error) {
+                console.error(data.error);
+            }
+            setProfileUser(data);
+            if (profileUser.birth_date) {
+                setEditBirthDate(moment(profileUser.birth_date));
+            }
+            loadUserFollowed(profileUser.id);
+        });
     };
 
     const handleScroll = (e) => {
@@ -214,7 +225,17 @@ function Profile({ user, classes }) {
                                 <span className="profile__info__followersCount"><b>{profileUser.followers_count}</b> Followers</span>
                             </p>
                         </div>
-                        <ProfileTweets currentUser={user} profileUser={profileUser} loadUserProfile={loadUserProfile}/>
+                        <ProfileTweets 
+                            currentUser={user} 
+                            profileUser={profileUser} 
+                            loadUserProfile={loadUserProfile} 
+                            tweets_currentPage={tweets_currentPage}
+                            tweets_setCurrentPage={tweets_setCurrentPage}
+                            media_currentPage={media_currentPage}
+                            media_setCurrentPage={media_setCurrentPage}
+                            likes_currentPage={likes_currentPage}
+                            likes_setCurrentPage={likes_setCurrentPage}
+                        />
                                 
                         {/** Unfollow Dialog */}
                         <Dialog

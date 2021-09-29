@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 from django.core.exceptions import PermissionDenied
+from django.core.paginator import Paginator
 
 from .models import User, Tweet, TweetLike, UserFollower
 from .serializers import (
@@ -17,6 +18,8 @@ from rest_framework import viewsets, mixins
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.decorators import action
+
+MAX_PAGE_LENGTH = 10
 
 class UserAPIView(mixins.CreateModelMixin, 
                    mixins.RetrieveModelMixin,
@@ -47,7 +50,13 @@ class UserByUsernameView(APIView):
         data = serializer.data
         # Users' Tweets
         tweets = Tweet.objects.filter(user=user).order_by('-created_at')
-        data['tweets'] = TweetUserSerializer(tweets, many=True).data
+
+        # Users' Tweets' Pagination
+        tweets_page = self.request.query_params.get('tweets_page', 1)
+        tweets_paginator = Paginator(tweets, MAX_PAGE_LENGTH)
+        data['tweets_pages'] = tweets_paginator.num_pages
+        data['tweets'] = TweetUserSerializer(tweets_paginator.get_page(tweets_page), many=True).data
+
         # Users' Tweets' Likes Count and liked by user
         if isinstance(data['tweets'], list):
             for tweet in data['tweets']:
@@ -58,9 +67,36 @@ class UserByUsernameView(APIView):
                     likes_set,
                     many=True
                 ).data
+
+        # Users' Media
+        media = tweets.exclude(image__isnull=True).exclude(image='')
+
+        # Users' Media' Pagination
+        media_page = self.request.query_params.get('media_page', 1)
+        media_paginator = Paginator(media, MAX_PAGE_LENGTH)
+        data['media_pages'] = media_paginator.num_pages
+        data['media'] = TweetUserSerializer(media_paginator.get_page(media_page), many=True).data
+
+        # Users' Media' Likes Count and liked by user
+        if isinstance(data['media'], list):
+            for tweet in data['media']:
+                likes_set = TweetLike.objects.filter(tweet=tweet['id'])
+                tweet['likes_count'] = likes_set.count()
+                likes_set = likes_set.filter(user=request.user)
+                tweet['likes'] = TweetLikeSerializer(
+                    likes_set,
+                    many=True
+                ).data
+
         # Users' Likes
         likes = TweetLike.objects.filter(user=user).order_by('-created_at')
-        data['likes'] = TweetLikeExposeTweetSerializer(likes, many=True).data
+
+        # Users' Likes' Pagination
+        likes_page = self.request.query_params.get('likes_page', 1)
+        likes_paginator = Paginator(likes, MAX_PAGE_LENGTH)
+        data['likes_pages'] = likes_paginator.num_pages
+        data['likes'] = TweetLikeExposeTweetSerializer(likes_paginator.get_page(likes_page), many=True).data
+
         # Users' LikedTweets' Likes Count and liked by user
         if isinstance(data['likes'], list):
             for tweetLike in data['likes']:
@@ -83,6 +119,7 @@ class UserByUsernameView(APIView):
 
 class TweetAPIView(viewsets.ModelViewSet):
     queryset = Tweet.objects.all()
+    pages = 0
 
     def get_queryset(self):
         queryset = Tweet.objects.all()
@@ -90,6 +127,20 @@ class TweetAPIView(viewsets.ModelViewSet):
         sort = self.request.query_params.get('sort', None)
         if sort and sort.lower() == 'latest':
             queryset = queryset.order_by('-created_at')
+        # show following tweets if filter=following
+        filter = self.request.query_params.get('filter', None)
+        if filter and filter.lower() == 'following':
+            followings = UserFollower.objects.filter(follower=self.request.user)
+            users_following = []
+            for following in followings:
+                users_following.append(following.user)
+            queryset = queryset.filter(user__in=users_following)
+        
+        # Tweets' Pagination
+        page = self.request.query_params.get('page', 1)
+        paginator = Paginator(queryset, MAX_PAGE_LENGTH)
+        queryset = paginator.get_page(page)
+        self.pages = paginator.num_pages
         return queryset
     
     def get_serializer_class(self):
@@ -126,7 +177,7 @@ class TweetAPIView(viewsets.ModelViewSet):
                             tweet['is_following'] = True
                             break
 
-        return Response(serializer.data)
+        return Response(serializer.data, headers={'pages': self.pages})
     
     def perform_create(self, serializer):
         kwargs = {

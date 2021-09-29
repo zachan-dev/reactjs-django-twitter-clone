@@ -15,6 +15,7 @@ function LikeButton({tweet, liked, fetchPosts}) {
                     return console.error(data.error);
                 }
                 fetchPosts();
+                fetchPosts(true);
             });
         } else {
             APIHelper.unlikeTweet(tweet).then(data => {
@@ -22,6 +23,7 @@ function LikeButton({tweet, liked, fetchPosts}) {
                     return console.error(data.error);
                 }
                 fetchPosts();
+                fetchPosts(true);
             });
         }
     };

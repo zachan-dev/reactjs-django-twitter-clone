@@ -56,8 +56,8 @@ const getCurrentUserInfo = () => {
     });
 };
 
-const getUserInfoByUsername = (username) => {
-    return fetch(`/api/username/${username}/`).then(response => {
+const getUserInfoByUsername = (username, query={}) => {
+    return fetch(withQuery(`/api/username/${username}/`, query)).then(response => {
         if (response.status >= 400) {
             return { 
                 'error': 'Retrieve user by username: Something went wrong' 
@@ -95,7 +95,16 @@ const getAllTweets = (query) => {
                     'error': 'Retrieve all tweets: Something went wrong' 
                 };
             }
-            return response.json();
+            let pages = 1;
+            for (let header of response.headers.entries()) {
+                if (header[0] === 'pages') {
+                    pages = header[1];
+                }
+            }
+            return {
+                'tweets': response.json(),
+                'pages': pages || 1,
+            };
         });
 };
 

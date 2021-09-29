@@ -14,6 +14,7 @@ import Box from '@material-ui/core/Box';
 // Custom Components
 import Post from './Post';
 import HeadingCard from './HeadingCard';
+import TweetPagination from './TweetPagination';
 // Custom Styling
 import '../styles/components/ProfileTweets.css'
 
@@ -111,7 +112,12 @@ const AntTab = withStyles((theme) => ({
     selected: {},
   }))((props) => <NavLink className="profileTweets__tab__link" to={props.to}><Tab className="profileTweets__tab" {...props} /></NavLink>);
 
-export default function ProfileTweets({ currentUser, profileUser, loadUserProfile }) {
+export default function ProfileTweets({ 
+  currentUser, profileUser, loadUserProfile,
+  tweets_currentPage, tweets_setCurrentPage,
+  media_currentPage, media_setCurrentPage,
+  likes_currentPage, likes_setCurrentPage,
+}) {
   const classes = useStyles();
   const theme = useTheme();
   const [value, setValue] = useState(0);
@@ -125,7 +131,7 @@ export default function ProfileTweets({ currentUser, profileUser, loadUserProfil
     } else {
       setValue(0)
     }
-  })
+  });
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -177,11 +183,17 @@ export default function ProfileTweets({ currentUser, profileUser, loadUserProfil
                   <HeadingCard line_1={`@${profileUser.username} hasn't Tweeted anything yet`} line_2="When they do, their tweets will show up here."/>
                   : null
                 }
+                {/* Pagination */}
+                <TweetPagination 
+                    pageCount={profileUser.tweets_pages}
+                    currentPage={tweets_currentPage}
+                    setCurrentPage={tweets_setCurrentPage}
+                />
             </TabPanel>
             <TabPanel className="profileTweets__tweetsTabPanel" value={value} index={1} dir={theme.direction}>
                 {/* User's Tweets with Media */}
                 <FlipMove>
-                    {profileUser.tweets.filter(post => post.image).map(post => (
+                    {profileUser.media.map(post => (
                         <Post
                             key={post.id}
                             tweet={post.id}
@@ -200,10 +212,16 @@ export default function ProfileTweets({ currentUser, profileUser, loadUserProfil
                         />
                     ))}
                 </FlipMove>
-                {profileUser.tweets.filter(post => post.image).length === 0 ? 
+                {profileUser.media.length === 0 ? 
                   <HeadingCard line_1={`@${profileUser.username} hasn't Tweeted any photos`} line_2="When they do, their media will show up here."/>
                   : null
                 }
+                {/* Pagination */}
+                <TweetPagination 
+                    pageCount={profileUser.media_pages}
+                    currentPage={media_currentPage}
+                    setCurrentPage={media_setCurrentPage}
+                />
             </TabPanel>
             <TabPanel className="profileTweets__tweetsTabPanel" value={value} index={2} dir={theme.direction}>
                 {/* User's LikedTweets */}
@@ -233,6 +251,12 @@ export default function ProfileTweets({ currentUser, profileUser, loadUserProfil
                   <HeadingCard line_1={`@${profileUser.username} hasn't Liked any Tweets`} line_2="When they do, their liked tweets will show up here."/>
                   : null
                 }
+                {/* Pagination */}
+                <TweetPagination 
+                    pageCount={profileUser.likes_pages}
+                    currentPage={likes_currentPage}
+                    setCurrentPage={likes_setCurrentPage}
+                />
             </TabPanel>
         </SwipeableViews>
     </div>

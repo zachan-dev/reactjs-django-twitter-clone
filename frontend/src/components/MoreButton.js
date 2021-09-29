@@ -82,6 +82,7 @@ function MoreButton({ tweetUserID, avatar, text, image, tweet, fetchPosts, curre
                     return console.error(data.error);
                 }
                 fetchPosts();
+                fetchPosts(true);
             });
     };
 

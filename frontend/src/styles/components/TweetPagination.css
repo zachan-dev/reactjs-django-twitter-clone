@@ -1,0 +1,57 @@
+.tweetPagination {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    text-align: center;
+}
+
+.tweetPagination > ul {
+    padding: 0;
+    margin: 0;
+}
+
+.tweetPagination li {
+    display: inline-block;
+}
+
+.tweetPagination li > a {
+    padding: 0.5rem;
+    margin: 1px;
+    display: inline-block;
+    cursor: pointer;
+    background-color: #fff;
+    border: 1px solid #d8eef5;
+    border-radius: 2px;
+    min-width: 1rem;
+}
+
+.tweetPagination li > a:focus {
+    outline: none;
+}
+
+/** */
+.tweetPagination .active a {
+    box-shadow: 0 0 2px #1b7d9e;
+    background-color: #f3fcff;
+}
+
+.tweetPagination .disabled > a {
+    color: #ccc;
+    background-color: #f8f8f8;
+    border-color: #eee;
+    cursor: default;
+}
+
+.tweetPagination .disabled > a:hover {
+    background-color: #f8f8f8;
+}
+.tweetPagination .break {
+    margin: 0 8px;
+}
+
+.tweetPagination .previous {
+    margin-right: 1rem;
+}
+
+.tweetPagination .next {
+    margin-left: 1rem;
+}

@@ -29,6 +29,7 @@ function Tweetbox({ isEditMode, avatar, fetchPosts, initText='', initImage='', t
                     }
                     if (handleEditModalClose) handleEditModalClose();
                     fetchPosts();
+                    fetchPosts(true);
                 });
             }
         } else {
@@ -43,6 +44,7 @@ function Tweetbox({ isEditMode, avatar, fetchPosts, initText='', initImage='', t
                 setTweetMessage('');
                 setTweetImage('');
                 fetchPosts();
+                fetchPosts(true);
             });
         }
     };
