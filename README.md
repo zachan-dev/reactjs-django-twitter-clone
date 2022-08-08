@@ -85,7 +85,9 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+![Screen Shot](./README_contents/images/screenshot.png)
+
+Twitter Clone is a Django-React web application cloning Twitter web app.
 
 ### Built With
 
